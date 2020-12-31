@@ -22,7 +22,7 @@ public class Controller {
 	
 	@GetMapping (value= "/data")
 	public  String saluto() {
-		return "say Hi, mommy. Questa è una provaa";
+		return "ritento, per sicurezza";
 	}
 	
 	
