@@ -3,11 +3,12 @@
  */
 package it.univpm.progetto.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.json.simple.JSONObject;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.univpm.progetto.configuration.Scheduler;
+import it.univpm.progetto.model.WeatherData;
 
 /**
  * @author colleluori
@@ -17,20 +18,15 @@ import it.univpm.progetto.configuration.Scheduler;
 @RestController 
 public class Controller {
 
-	@Autowired 
-	Scheduler schedule;
 	
 	@GetMapping (value= "/data")
-	public  String saluto() {
-		return "ritento, per sicurezza";
+	public  JSONObject givaMeData() {
+		WeatherData wd = new WeatherData("Pescara");
+		return wd.print();
 	}
 	
+
 	
-	@GetMapping ("/prova")
-	public void prova() {
-		schedule.callOpenWeather();
-		
-	}
 	
 	
 	

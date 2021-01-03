@@ -3,7 +3,10 @@
  */
 package it.univpm.progetto.model;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -11,7 +14,6 @@ import org.json.simple.parser.ParseException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import it.univpm.progetto.configuration.AppidFromFile;
 
 /**
  * @author colleluori
@@ -24,7 +26,7 @@ public class Parser {
 	private Double visibility;
 	private Double speed;
 	
-	AppidFromFile appid;
+	//AppidFromFile appid = new AppidFromFile(); // non va bene????
 	
 	/**
 	 * Costruttore della classe Parser
@@ -57,6 +59,34 @@ public class Parser {
 	public Double getSpeed() {
 		return speed;
 	}
+	
+	
+	
+	public String appidFromFile() throws FileNotFoundException {
+
+		char[] appidChar = new char[35];
+		try {
+			int next;
+			int i=0;
+			BufferedReader reader = new BufferedReader(new FileReader("appid.txt"));
+			do {
+				next = reader.read();
+				if(next!=-1) {
+					char c = (char) next;
+					appidChar[i] = c;
+					i++;
+				}
+			}while(next!=-1);
+			//converto appidChar da char[] ad una String
+
+			reader.close();
+		}catch(IOException e) {
+			System.out.println(e);
+		}
+		return new String(appidChar);
+	}
+	
+
 	/**
 	 * metodo che effettua il parsing dell'JSON ritornato dalla chiamata a OpenWeather
 	 * @throws ParseException
@@ -69,7 +99,10 @@ public class Parser {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		String jsonResponse = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weahter?q="+this.cityName+
-														"&appid="+appid.appidFromFile(), String.class);
+														"&appid="+"edf5872114c84e16c695b5644567722e", String.class);
+		
+		//IL PROBLEMA POTREBBE ESSERE NELLE DUE RIGHE PRECEDENTI, provare con HttpRequeste...
+		
 		try {
 			obj = (JSONObject) parser.parse(jsonResponse);
 			this.cityName = (String) obj.get("name");

@@ -4,7 +4,10 @@
 package it.univpm.progetto.model;
 
 import java.io.FileNotFoundException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.client.RestClientException;
 
@@ -43,12 +46,36 @@ public class WeatherData {
 		return speed;
 	}
 	
-	public void setWeatherData(String cityName) throws RestClientException, FileNotFoundException, ParseException {
+	/**
+	 * @param cityName
+	 * @param date
+	 * @param visibility
+	 * @param speed
+	 */
+	public WeatherData(String cityName) {
 		Parser parser = new Parser(cityName);
-		parser.parseMethod();
+		try {
+			parser.parseMethod();
+		} catch (RestClientException | FileNotFoundException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.cityName = parser.getCityName();
 		this.date = parser.getDate();
-		this.speed = parser.getSpeed();
 		this.visibility = parser.getVisibility();
+		this.speed = parser.getSpeed();
+	}
+	
+	@SuppressWarnings ("unchecked")
+	public JSONObject print() {
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("cityname", this.cityName);
+		jsonObj.put("date", this.date);
+		jsonObj.put("visibility", this.visibility);
+		Map m1 = new LinkedHashMap(1);	// www.educba.com/json-in-java
+		m1.put("speed", this.speed);  
+		jsonObj.put("wind", m1);
+		
+		return jsonObj;
 	}
 }

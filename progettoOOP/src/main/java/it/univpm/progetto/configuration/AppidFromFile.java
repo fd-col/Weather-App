@@ -33,9 +33,10 @@ public class AppidFromFile {
 	 * @return the API key
 	 * @throws FileNotFoundException
 	 */
+/**
 	public String appidFromFile() throws FileNotFoundException {
 		
-		char[] appidChar = new char[32];
+		char[] appidChar = new char[33];
 		try {
 			int next;
 			int i=0;
@@ -48,12 +49,13 @@ public class AppidFromFile {
 					i++;
 				}
 			}while(next!=-1);
-			appid = new String(appidChar); //converto appidChar da char[] ad una String
+			 //converto appidChar da char[] ad una String
 			
 			reader.close();
 		}catch(IOException e) {
 			System.out.println(e);
 		}
-		return appid;
+		return new String(appidChar);
 	}
+*/
 }
