@@ -24,10 +24,6 @@ public class Controller {
 		WeatherData wd = new WeatherData("Pescara");
 		return wd.print();
 	}
-	
 
-	
-	
-	
 	
 }

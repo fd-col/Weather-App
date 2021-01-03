@@ -99,7 +99,7 @@ public class Parser {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		String jsonResponse = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weahter?q="+this.cityName+
-														"&appid="+"edf5872114c84e16c695b5644567722e", String.class);
+														"&appid="+appidFromFile(), String.class);
 		
 		//IL PROBLEMA POTREBBE ESSERE NELLE DUE RIGHE PRECEDENTI, provare con HttpRequeste...
 		

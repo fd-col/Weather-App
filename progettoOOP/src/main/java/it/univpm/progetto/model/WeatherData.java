@@ -60,10 +60,10 @@ public class WeatherData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.cityName = parser.getCityName();
-		this.date = parser.getDate();
-		this.visibility = parser.getVisibility();
-		this.speed = parser.getSpeed();
+		cityName = parser.getCityName();
+		date = parser.getDate();
+		visibility = parser.getVisibility();
+		speed = parser.getSpeed();
 	}
 	
 	@SuppressWarnings ("unchecked")
