@@ -72,7 +72,7 @@ public class WeatherData {
 		jsonObj.put("cityname", this.cityName);
 		jsonObj.put("date", this.date);
 		jsonObj.put("visibility", this.visibility);
-		Map m1 = new LinkedHashMap(1);	// www.educba.com/json-in-java
+		Map<String, Double> m1 = new LinkedHashMap<String, Double>(1);	// www.educba.com/json-in-java
 		m1.put("speed", this.speed);  
 		jsonObj.put("wind", m1);
 		
