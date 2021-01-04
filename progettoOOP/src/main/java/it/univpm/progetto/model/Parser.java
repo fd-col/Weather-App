@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,7 +25,7 @@ public class Parser {
 
 	private String cityName;
 	private Long date;
-	private Double visibility;
+	private Long visibility;
 	private Double speed;
 	
 	//AppidFromFile appid = new AppidFromFile(); // non va bene????
@@ -50,7 +52,7 @@ public class Parser {
 	/**
 	 * @return the visibility
 	 */
-	public Double getVisibility() {
+	public Long getVisibility() {
 		return visibility;
 	}
 	/**
@@ -92,22 +94,26 @@ public class Parser {
 	 * @throws ParseException
 	 * @throws FileNotFoundException 
 	 * @throws RestClientException 
+	 * @throws URISyntaxException 
 	 */
-	public void parseMethod() throws ParseException, RestClientException, FileNotFoundException {
+	public void parseMethod() throws ParseException, RestClientException, FileNotFoundException, URISyntaxException {
 		JSONParser parser = new JSONParser();
 		JSONObject obj = new JSONObject();
 		
-		RestTemplate restTemplate = new RestTemplate();
-		String jsonResponse = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weahter?q="+this.cityName+
-														"&appid="+appidFromFile(), String.class);
+	
+		URI uri = new URI("http://api.openweathermap.org/data/2.5/weather?q=Trieste&appid=edf5872114c84e16c695b5644567722e");
 		
+		RestTemplate restTemplate = new RestTemplate();
+		String jsonResponse = restTemplate.getForObject(uri, String.class);
+		
+		System.out.println(jsonResponse);
 		//IL PROBLEMA POTREBBE ESSERE NELLE DUE RIGHE PRECEDENTI, provare con HttpRequeste...
 		
 		try {
 			obj = (JSONObject) parser.parse(jsonResponse);
 			this.cityName = (String) obj.get("name");
 			this.date = (Long) obj.get("dt");	
-			this.visibility = (Double) obj.get("visibility");
+			this.visibility = (Long) obj.get("visibility");
 			
 			JSONObject wind = (JSONObject) obj.get("wind");
 			this.speed = (Double) Double.parseDouble( wind.get("speed").toString() );

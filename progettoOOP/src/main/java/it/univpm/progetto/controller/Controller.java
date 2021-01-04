@@ -21,7 +21,7 @@ public class Controller {
 	
 	@GetMapping (value= "/data")
 	public  JSONObject givaMeData() {
-		WeatherData wd = new WeatherData("Pescara");
+		WeatherData wd = new WeatherData("Trieste");
 		return wd.print();
 	}
 
