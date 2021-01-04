@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,11 +21,11 @@ import org.springframework.web.client.RestTemplate;
  * @author colleluori
  * @author camplese
  */
-public class Parser {
+public class WeatherParser {
 
 	private String cityName;
 	private Long date;
-	private Double visibility;
+	private Long visibility;
 	private Double speed;
 	
 	//AppidFromFile appid = new AppidFromFile(); // non va bene????
@@ -32,7 +34,7 @@ public class Parser {
 	 * Costruttore della classe Parser
 	 * @param cityName
 	 */
-	public Parser(String cityName) {
+	public WeatherParser(String cityName) {
 		this.cityName = cityName;
 	}
 	/**
@@ -50,7 +52,7 @@ public class Parser {
 	/**
 	 * @return the visibility
 	 */
-	public Double getVisibility() {
+	public Long getVisibility() {
 		return visibility;
 	}
 	/**
@@ -64,10 +66,10 @@ public class Parser {
 	
 	public String appidFromFile() throws FileNotFoundException {
 
-		char[] appidChar = new char[35];
+		char[] appidChar = new char[32];
+		int i=0;
 		try {
 			int next;
-			int i=0;
 			BufferedReader reader = new BufferedReader(new FileReader("appid.txt"));
 			do {
 				next = reader.read();
@@ -92,22 +94,24 @@ public class Parser {
 	 * @throws ParseException
 	 * @throws FileNotFoundException 
 	 * @throws RestClientException 
+	 * @throws URISyntaxException 
 	 */
-	public void parseMethod() throws ParseException, RestClientException, FileNotFoundException {
+	public void parseMethod() throws ParseException, RestClientException, FileNotFoundException, URISyntaxException {
 		JSONParser parser = new JSONParser();
 		JSONObject obj = new JSONObject();
 		
-		RestTemplate restTemplate = new RestTemplate();
-		String jsonResponse = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weahter?q="+this.cityName+
-														"&appid="+appidFromFile(), String.class);
+		URI uri = new URI("http://api.openweathermap.org/data/2.5/weather?q="+this.cityName+"&appid="+appidFromFile());
 		
-		//IL PROBLEMA POTREBBE ESSERE NELLE DUE RIGHE PRECEDENTI, provare con HttpRequeste...
+		RestTemplate restTemplate = new RestTemplate();
+		String jsonResponse = restTemplate.getForObject(uri, String.class);
+		
+		//IL PROBLEMA POTREBBE ESSERE NELLE DUE RIGHE PRECEDENTI, provare con HttpRequest...
 		
 		try {
 			obj = (JSONObject) parser.parse(jsonResponse);
 			this.cityName = (String) obj.get("name");
 			this.date = (Long) obj.get("dt");	
-			this.visibility = (Double) obj.get("visibility");
+			this.visibility = (Long) obj.get("visibility");
 			
 			JSONObject wind = (JSONObject) obj.get("wind");
 			this.speed = (Double) Double.parseDouble( wind.get("speed").toString() );

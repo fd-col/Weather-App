@@ -4,6 +4,7 @@
 package it.univpm.progetto.model;
 
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import org.springframework.web.client.RestClientException;
 public class WeatherData {
 	private String cityName;
 	private Long date;
-	private Double visibility;
+	private Long visibility;
 	private Double speed;
 	/**
 	 * @return the cityName
@@ -36,7 +37,7 @@ public class WeatherData {
 	/**
 	 * @return the visibility
 	 */
-	public Double getVisibility() {
+	public Long getVisibility() {
 		return visibility;
 	}
 	/**
@@ -51,16 +52,17 @@ public class WeatherData {
 	 * @param date
 	 * @param visibility
 	 * @param speed
+	 * @throws URISyntaxException 
 	 */
-	public WeatherData(String cityName) {
-		Parser parser = new Parser(cityName);
+	public WeatherData(String cityName) throws URISyntaxException {
+		WeatherParser parser = new WeatherParser(cityName);
 		try {
 			parser.parseMethod();
 		} catch (RestClientException | FileNotFoundException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		cityName = parser.getCityName();
+		this.cityName = parser.getCityName();
 		date = parser.getDate();
 		visibility = parser.getVisibility();
 		speed = parser.getSpeed();

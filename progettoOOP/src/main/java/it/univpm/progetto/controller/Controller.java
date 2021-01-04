@@ -3,6 +3,8 @@
  */
 package it.univpm.progetto.controller;
 
+import java.net.URISyntaxException;
+
 import org.json.simple.JSONObject;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +22,8 @@ public class Controller {
 
 	
 	@GetMapping (value= "/data")
-	public  JSONObject givaMeData() {
-		WeatherData wd = new WeatherData("Pescara");
+	public  JSONObject givaMeData() throws URISyntaxException {
+		WeatherData wd = new WeatherData("Trieste");
 		return wd.print();
 	}
 
