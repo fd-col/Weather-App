@@ -61,15 +61,18 @@ public class Parser {
 	public Double getSpeed() {
 		return speed;
 	}
-	
-	
-	
+	/**
+	 * prende l'API key da un file
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public String appidFromFile() throws FileNotFoundException {
 
-		char[] appidChar = new char[35];
+		char[] appidChar = new char[32];
+		int i=0;
 		try {
 			int next;
-			int i=0;
+			
 			BufferedReader reader = new BufferedReader(new FileReader("appid.txt"));
 			do {
 				next = reader.read();
@@ -87,8 +90,6 @@ public class Parser {
 		}
 		return new String(appidChar);
 	}
-	
-
 	/**
 	 * metodo che effettua il parsing dell'JSON ritornato dalla chiamata a OpenWeather
 	 * @throws ParseException
@@ -101,14 +102,11 @@ public class Parser {
 		JSONObject obj = new JSONObject();
 		
 	
-		URI uri = new URI("http://api.openweathermap.org/data/2.5/weather?q=Trieste&appid=edf5872114c84e16c695b5644567722e");
+		URI uri = new URI("http://api.openweathermap.org/data/2.5/weather?q="+this.cityName+"&appid="+appidFromFile());
 		
 		RestTemplate restTemplate = new RestTemplate();
 		String jsonResponse = restTemplate.getForObject(uri, String.class);
-		
-		System.out.println(jsonResponse);
-		//IL PROBLEMA POTREBBE ESSERE NELLE DUE RIGHE PRECEDENTI, provare con HttpRequeste...
-		
+	
 		try {
 			obj = (JSONObject) parser.parse(jsonResponse);
 			this.cityName = (String) obj.get("name");
