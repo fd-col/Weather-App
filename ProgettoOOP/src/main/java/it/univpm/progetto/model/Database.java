@@ -10,15 +10,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
 
-import org.springframework.stereotype.Component;
-
 
 /**
  * accumula dati su file locale dalle API di OpenWeather
  * @author fedju
  *
  */
-@Component
+
 public class Database {
 	/**
 	 * Metodo per salvare un oggetto in un file di testo .json.

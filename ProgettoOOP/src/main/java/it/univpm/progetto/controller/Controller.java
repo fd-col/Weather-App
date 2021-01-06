@@ -30,11 +30,13 @@ public class Controller {
 	@GetMapping(value= "/salva")
 	public void prova() {
 		Database db1 = new Database(); //OPPURE UNA @COMPONENT PER LA CLASSE DATABASE,E PROVARE A CHIAMARE DA LI salveFile
-		Database db2 = new Database();
-		Database db3 = new Database();
 		db1.salvaFile("Trieste", "dati_storici.json");
+/*		Database db2 = new Database();
+		Database db3 = new Database();
+		
 		db2.salvaFile("Ortona", "dati_storici.json");
 		db3.salvaFile("Venezia", "dati_storici.json");
+*/	
 	}
 	
 }
