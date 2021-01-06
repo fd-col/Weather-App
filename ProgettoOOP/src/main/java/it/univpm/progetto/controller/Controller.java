@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.progetto.model.Database;
 import it.univpm.progetto.model.WeatherData;
-
 /**
  * @author colleluori
  * @author camplese
