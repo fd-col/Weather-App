@@ -16,7 +16,6 @@ import java.net.URISyntaxException;
  * @author fedju
  *
  */
-
 public class Database {
 	/**
 	 * Metodo per salvare un oggetto in un file di testo .json.
@@ -25,21 +24,27 @@ public class Database {
 	 * @param nome_file Nome del file in cui salvare l'oggetto.
 	 * @param isObject Specifica se l'oggetto da salvare è un JSONObject oppure un JSONArray.
 	 */
-	public void salvaFile(String cityName, String nf) {
-		String nome_file = nf;
+	public void appendToFile(String cityName, String nome_file) {
 		try {
-			WeatherData wd = new WeatherData(cityName);
+			WeatherData wd = new WeatherData(cityName); //inizializzo gli attributi del JSONObject
 			PrintWriter file_output = new PrintWriter(
 										new BufferedWriter(
 											new FileWriter(nome_file, true)));
-			file_output.println(wd.print());
+			file_output.println(wd.formatter()+","); //stampo su file il JSONObject
 			file_output.close();
 			System.out.println("File salvato!"); //PER VERIFICA
 		} catch (IOException | URISyntaxException e) {
 			e.printStackTrace();
 		}
 	}
-
 	
+	public void printData(String cityName, boolean flag) {
+			
+		if(flag)
+			appendToFile(cityName, "dati-attuali-"+cityName+".json" );
+		else
+			appendToFile(cityName, "dati-storici-"+cityName+".json");
+			
+	}
 
 }

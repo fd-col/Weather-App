@@ -24,19 +24,15 @@ public class Controller {
 	@GetMapping (value= "/data")
 	public  JSONObject givaMeData() throws URISyntaxException {
 		WeatherData wd = new WeatherData("Trieste");
-		return wd.print();
+		return wd.formatter();
 	}
 	
-	@GetMapping(value= "/salva")
+	@GetMapping(value= "/save")
 	public void prova() {
-		Database db1 = new Database(); //OPPURE UNA @COMPONENT PER LA CLASSE DATABASE,E PROVARE A CHIAMARE DA LI salveFile
-		db1.salvaFile("Trieste", "dati_storici.json");
-/*		Database db2 = new Database();
-		Database db3 = new Database();
-		
-		db2.salvaFile("Ortona", "dati_storici.json");
-		db3.salvaFile("Venezia", "dati_storici.json");
-*/	
+		Database db = new Database(); //OPPURE UNA @COMPONENT PER LA CLASSE DATABASE,E PROVARE A CHIAMARE DA LI salveFile
+		db.printData("Trieste", false);
+		db.printData("Ortona", false);
+		db.printData("Venezia", false);
 	}
 	
 }

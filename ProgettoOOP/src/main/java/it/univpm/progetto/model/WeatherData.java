@@ -69,7 +69,7 @@ public class WeatherData {
 	}
 	
 	@SuppressWarnings ("unchecked")
-	public JSONObject print() {
+	public JSONObject formatter() {
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("cityname", this.cityName);
 		jsonObj.put("date", this.date);
