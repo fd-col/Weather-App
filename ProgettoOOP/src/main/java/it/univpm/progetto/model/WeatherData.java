@@ -19,7 +19,7 @@ import org.springframework.web.client.RestClientException;
  */
 public class WeatherData {
 	private String cityName;
-	private Long date;
+	private Long timeUNIX;
 	private Long visibility;
 	private Double speed;
 	/**
@@ -31,8 +31,8 @@ public class WeatherData {
 	/**
 	 * @return the date
 	 */
-	public Long getDate() {
-		return date;
+	public Long getTimeUNIX() {
+		return timeUNIX;
 	}
 	/**
 	 * @return the visibility
@@ -46,7 +46,6 @@ public class WeatherData {
 	public Double getSpeed() {
 		return speed;
 	}
-	
 	/**
 	 * @param cityName
 	 * @param date
@@ -63,7 +62,7 @@ public class WeatherData {
 			e.printStackTrace();
 		}
 		this.cityName = parser.getCityName();
-		date = parser.getDate();
+		timeUNIX = parser.getTimeUNIX();
 		visibility = parser.getVisibility();
 		speed = parser.getSpeed();
 	}
@@ -72,7 +71,7 @@ public class WeatherData {
 	public JSONObject formatter() {
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("cityname", this.cityName);
-		jsonObj.put("date", this.date);
+		jsonObj.put("date", this.timeUNIX);
 		jsonObj.put("visibility", this.visibility);
 		Map<String, Double> m1 = new LinkedHashMap<String, Double>(1);	// www.educba.com/json-in-java
 		m1.put("speed", this.speed);  

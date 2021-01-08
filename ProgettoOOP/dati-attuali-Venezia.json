@@ -1,5 +1,1 @@
-[{"date":1609934400,"visibility":300,"cityname":"Venice","wind":{"speed":2.90}},
-{"date":1610020800,"visibility":,"cityname":"Venice","wind":{"speed":1.34}},
-{"date":1610107200,"visibility":600,"cityname":"Venice","wind":{"speed":1.78}},
-{"date":1610193600,"visibility":2800,"cityname":"Venice","wind":{"speed":0.46}},
-{"date":1610280000,"visibility":10000,"cityname":"Venice","wind":{"speed":0.66}}]
+[{"date":1609934400,"visibility":300,"cityname":"Venice","wind":{"speed":2.90}},{"date":1610020800,"visibility":300"cityname":"Venice","wind":{"speed":1.34}},{"date":1610107200,"visibility":680,"cityname":"Venice","wind":{"speed":1.78}},{"date":1610193600,"visibility":2800,"cityname":"Venice","wind":{"speed":0.46}},{"date":1610280000,"visibility":10000,"cityname":"Venice","wind":{"speed":0.66}}]

@@ -1,1 +1,5 @@
-{"date":1610034744,"visibility":300,"cityname":"Venice","wind":{"speed":1.54}},
+[{"date":1609502400,"visibility":8000,"cityname":"Venice","wind":{"speed":1.33}},
+{"date":1609588800,"visibility":10000,"cityname":"Venice","wind":{"speed":1.72}},
+{"date":1609675200,"visibility":10000,"cityname":"Venice","wind":{"speed":0.82}},
+{"date":1609761600,"visibility":10000,"cityname":"Venice","wind":{"speed":1.77}},
+{"date":1609848000,"visibility":300,"cityname":"Venice","wind":{"speed":1.64}}]

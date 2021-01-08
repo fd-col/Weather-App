@@ -15,8 +15,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
-
 /**
  * @author colleluori
  * @author camplese
@@ -24,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherParser {
 
 	private String cityName;
-	private Long date;
+	private Long timeUNIX;
 	private Long visibility;
 	private Double speed;
 	
@@ -46,8 +44,8 @@ public class WeatherParser {
 	/**
 	 * @return the date
 	 */
-	public Long getDate() {
-		return date;
+	public Long getTimeUNIX() {
+		return timeUNIX;
 	}
 	/**
 	 * @return the visibility
@@ -107,7 +105,7 @@ public class WeatherParser {
 		try {
 			obj = (JSONObject) parser.parse(jsonResponse);
 			this.cityName = (String) obj.get("name");
-			this.date = (Long) obj.get("dt");	
+			this.timeUNIX = (Long) obj.get("dt");	
 			this.visibility = (Long) obj.get("visibility");
 			JSONObject wind = (JSONObject) obj.get("wind");
 			this.speed = (Double) Double.parseDouble( wind.get("speed").toString() );

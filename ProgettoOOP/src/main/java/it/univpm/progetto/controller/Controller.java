@@ -4,12 +4,15 @@
 package it.univpm.progetto.controller;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.univpm.progetto.configuration.SaveToFile;
 import it.univpm.progetto.model.Database;
 import it.univpm.progetto.model.WeatherData;
 /**
@@ -27,12 +30,27 @@ public class Controller {
 		return wd.formatter();
 	}
 	
+	@GetMapping (value= "/current_weather")
+	public  ArrayList<JSONArray> current() throws URISyntaxException {
+		Database db = new Database("Trieste","Ortona","Venezia",true);
+		return db.getDatiAttuali();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping(value= "/save")
 	public void prova() {
-		Database db = new Database(); //OPPURE UNA @COMPONENT PER LA CLASSE DATABASE,E PROVARE A CHIAMARE DA LI salveFile
-		db.printData("Trieste", false);
-		db.printData("Ortona", false);
-		db.printData("Venezia", false);
+		SaveToFile saveToFile = new SaveToFile(); 
+/*		saveToFile.printData("Trieste", false);
+		saveToFile.printData("Ortona", false);
+		saveToFile.printData("Venezia", false);
+*/	
+		saveToFile.printData("London", true);
 	}
 	
 }

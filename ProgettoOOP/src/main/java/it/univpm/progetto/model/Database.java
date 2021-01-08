@@ -1,50 +1,84 @@
-/**
+/** 
  * 
  */
 package it.univpm.progetto.model;
 
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URISyntaxException;
+import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
- * accumula dati su file locale dalle API di OpenWeather
  * @author fedju
  *
  */
 public class Database {
+
+	private ArrayList<JSONArray> datiAttuali;
+	private ArrayList<JSONArray> datiStorici;
 	/**
-	 * Metodo per salvare un oggetto in un file di testo .json.
-	 * Posso scegliere se salvare un JSONObject oppure un JSONArray.
-	 * 
-	 * @param nome_file Nome del file in cui salvare l'oggetto.
-	 * @param isObject Specifica se l'oggetto da salvare è un JSONObject oppure un JSONArray.
+	 * @return the arrayJson
 	 */
-	public void appendToFile(String cityName, String nome_file) {
-		try {
-			WeatherData wd = new WeatherData(cityName); //inizializzo gli attributi del JSONObject
-			PrintWriter file_output = new PrintWriter(
-										new BufferedWriter(
-											new FileWriter(nome_file, true)));
-			file_output.println(wd.formatter()+","); //stampo su file il JSONObject
-			file_output.close();
-			System.out.println("File salvato!"); //PER VERIFICA
-		} catch (IOException | URISyntaxException e) {
-			e.printStackTrace();
+	public ArrayList<JSONArray> getDatiAttuali() {
+		return datiAttuali;
+	}
+	/**
+	 * @return the dati_storici
+	 */
+	public ArrayList<JSONArray> getDatiStorici() {
+		return datiStorici;
+	}
+	/**
+	 * costruttore della classe
+	 */
+	public Database(String cityName1, String cityName2, String cityName3,  boolean flag) {
+		datiAttuali = new ArrayList<JSONArray>();
+		datiStorici = new ArrayList<JSONArray>();
+		
+		JSONArray jsonArray1 = reader(nomeFile(cityName1, flag));
+		JSONArray jsonArray2 = reader(nomeFile(cityName2, flag));
+		JSONArray jsonArray3 = reader(nomeFile(cityName3, flag));
+		
+		if(flag) {
+			datiAttuali.add(jsonArray1); 
+			datiAttuali.add(jsonArray2); 
+			datiAttuali.add(jsonArray3); } 
+		else {
+			datiStorici.add(jsonArray1); 
+			datiStorici.add(jsonArray2); 
+			datiStorici.add(jsonArray3); 
 		}
 	}
-	
-	public void printData(String cityName, boolean flag) {
-			
-		if(flag)
-			appendToFile(cityName, "dati-attuali-"+cityName+".json" );
-		else
-			appendToFile(cityName, "dati-storici-"+cityName+".json");
-			
-	}
 
+	public String nomeFile(String cityName, boolean flag) {
+		if(flag)
+			return "dati-attuali-"+cityName+".json";
+		else
+			return "dati-storici-"+cityName+".json";
+	}
+	
+	public JSONArray reader(String nome_file) {
+		JSONParser parser = new JSONParser();
+		JSONArray jsonArray = new JSONArray();
+		try {
+			BufferedReader buffRead = new BufferedReader(new FileReader(nome_file));
+			String line = buffRead.readLine();
+			jsonArray = (JSONArray) parser.parse(line);
+
+			buffRead.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return jsonArray;
+	}
+	
 }
