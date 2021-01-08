@@ -42,9 +42,9 @@ public class SaveToFile {
 	 */
 	public void printData(String cityName, boolean flag) {
 		if(flag)
-			appendToFile(cityName, "dati-attuali-"+cityName+".json" );
+			appendToFile(cityName, "database/dati-attuali-"+cityName+".json" );
 		else
-			appendToFile(cityName, "dati-storici-"+cityName+".json");
+			appendToFile(cityName, "database/dati-storici-"+cityName+".json");
 			
 	}
 

@@ -57,9 +57,9 @@ public class Database {
 
 	public String nomeFile(String cityName, boolean flag) {
 		if(flag)
-			return "dati-attuali-"+cityName+".json";
+			return "database/dati-attuali-"+cityName+".json";
 		else
-			return "dati-storici-"+cityName+".json";
+			return "database/dati-storici-"+cityName+".json";
 	}
 	
 	public JSONArray reader(String nome_file) {
