@@ -71,7 +71,7 @@ public class WeatherData {
 	public JSONObject formatter() {
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("cityname", this.cityName);
-		jsonObj.put("date", this.timeUNIX);
+		jsonObj.put("timeUNIX", this.timeUNIX);
 		jsonObj.put("visibility", this.visibility);
 		Map<String, Double> m1 = new LinkedHashMap<String, Double>(1);	// www.educba.com/json-in-java
 		m1.put("speed", this.speed);  

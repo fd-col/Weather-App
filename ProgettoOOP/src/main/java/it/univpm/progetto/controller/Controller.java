@@ -36,7 +36,11 @@ public class Controller {
 		return db.getDatiAttuali();
 	}
 	
-	
+	@GetMapping (value= "/historical_weather")
+	public  ArrayList<JSONArray> historical() throws URISyntaxException {
+		Database db = new Database("Trieste","Ortona","Venezia",false);
+		return db.getDatiStorici();
+	}
 	
 	
 	

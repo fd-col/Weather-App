@@ -1,5 +1,1 @@
-[{"date":1609502400,"visibility":10000,"cityname":"Trieste","wind":{"speed":0.06}},
-{"date":1609588800,"visibility":10000,"cityname":"Trieste","wind":{"speed":0.45}},
-{"date":1609675200,"visibility":10000,"cityname":"Trieste","wind":{"speed":0.12}},
-{"date":1609761600,"visibility":10000,"cityname":"Trieste","wind":{"speed":1.23}},
-{"date":1609848000,"visibility":10000,"cityname":"Trieste","wind":{"speed":1.78}}]
+[{"date":1609502400,"visibility":10000,"cityname":"Trieste","wind":{"speed":0.06}},{"date":1609588800,"visibility":10000,"cityname":"Trieste","wind":{"speed":0.45}},{"date":1609675200,"visibility":10000,"cityname":"Trieste","wind":{"speed":0.12}},{"date":1609761600,"visibility":10000,"cityname":"Trieste","wind":{"speed":1.23}},{"date":1609848000,"visibility":10000,"cityname":"Trieste","wind":{"speed":1.78}}]
