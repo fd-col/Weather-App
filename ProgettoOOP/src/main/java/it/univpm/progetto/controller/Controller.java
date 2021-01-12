@@ -30,11 +30,15 @@ public class Controller {
 		return wd.formatter();
 	}
 	
+	
+	
 	@GetMapping (value= "/current_weather")
-	public  ArrayList<JSONArray> current() throws URISyntaxException {
+	public  JSONArray current() throws URISyntaxException {
 		Database db = new Database("Trieste","Ortona","Venezia",true);
-		return db.getDatiAttuali();
-	}
+		return db.getDatiAttuali(1); //inserire come param un intero:
+	}															// 1=Trieste, 2=Ortona, 3=Venezia
+	
+	
 	
 	@GetMapping (value= "/historical_weather")
 	public  ArrayList<JSONArray> historical() throws URISyntaxException {
@@ -47,13 +51,16 @@ public class Controller {
 	
 	
 	
+	
+	
+	
 	@GetMapping(value= "/save")
 	public void prova() {
 		SaveToFile saveToFile = new SaveToFile(); 
 /*		saveToFile.printData("Trieste", false);
 		saveToFile.printData("Ortona", false);
 		saveToFile.printData("Venezia", false);
-*/	
+*/		
 		saveToFile.printData("London", true);
 	}
 	

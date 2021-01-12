@@ -66,7 +66,10 @@ public class WeatherData {
 		visibility = parser.getVisibility();
 		speed = parser.getSpeed();
 	}
-	
+	/**
+	 * formattatore del json restituito
+	 * @return JSONObject
+	 */
 	@SuppressWarnings ("unchecked")
 	public JSONObject formatter() {
 		JSONObject jsonObj = new JSONObject();

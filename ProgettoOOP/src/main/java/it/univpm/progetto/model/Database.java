@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -26,8 +25,12 @@ public class Database {
 	/**
 	 * @return the arrayJson
 	 */
-	public ArrayList<JSONArray> getDatiAttuali() {
-		return datiAttuali;
+	@SuppressWarnings("unchecked")
+	public JSONArray getDatiAttuali(int fine) {
+		JSONArray jsonArrayTemp = new JSONArray();
+		for(int inizio = 0; inizio <= fine-1; inizio++)
+			jsonArrayTemp.addAll( datiAttuali.get(inizio) ); 
+		return (JSONArray)jsonArrayTemp;
 	}
 	/**
 	 * @return the dati_storici
@@ -72,7 +75,7 @@ public class Database {
 		wp.parsingForecast("previsioni-future-Trieste");
 
 		JSONArray jsonArray1 = new JSONArray();
-		
+		//prima formattare il jsonObject preso da file
 		jsonArray1.add(		wp.getObj1()	);
 		
 		
@@ -91,12 +94,12 @@ public class Database {
 	public JSONArray reader(String nome_file) {
 		JSONParser parser = new JSONParser();
 		JSONArray jsonArray = new JSONArray();
-		JSONObject jsonObj = new JSONObject();
+		//JSONObject jsonObj = new JSONObject();
 		try {
 			BufferedReader buffRead = new BufferedReader(new FileReader(nome_file));
 			String line = buffRead.readLine();
 			jsonArray = (JSONArray) parser.parse(line);
-			jsonObj = (JSONObject) parser.parse(line);
+			//jsonObj = (JSONObject) parser.parse(line);
 
 			buffRead.close();
 		} catch (FileNotFoundException e) {
