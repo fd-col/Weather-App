@@ -14,11 +14,12 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- * @author fedju
+ * @author colleluori
+ * @author camplese
  *
  */
 public class Database {
-
+	
 	private ArrayList<JSONArray> datiAttuali;
 	private ArrayList<JSONArray> datiStorici;
 	private ArrayList<JSONArray> datiFuturi;	
@@ -26,10 +27,10 @@ public class Database {
 	 * @return the arrayJson
 	 */
 	@SuppressWarnings("unchecked")
-	public JSONArray getDatiAttuali(int fine) {
+	public JSONArray getDatiAttuali(int inizio, int fine) {
 		JSONArray jsonArrayTemp = new JSONArray();
-		for(int inizio = 0; inizio <= fine-1; inizio++)
-			jsonArrayTemp.addAll( datiAttuali.get(inizio) ); 
+		for(int i=inizio; i <= fine; i++)
+			jsonArrayTemp.addAll( datiAttuali.get(i-1) ); 
 		return (JSONArray)jsonArrayTemp;
 	}
 	/**
