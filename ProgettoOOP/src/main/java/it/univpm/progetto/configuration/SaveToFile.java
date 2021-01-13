@@ -7,15 +7,16 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URISyntaxException;
 
 import it.univpm.progetto.model.WeatherData;
 /**
  * accumula dati su file locale dalle API di OpenWeather
- * @author fedju
+ * @author colleluori
+ * @author camplese
  *
  */
 public class SaveToFile {
+	
 	/**
 	 * Metodo per salvare un oggetto in un file di testo .json
 	 * @param nome_file Nome del file in cui salvare l'oggetto.
@@ -29,14 +30,14 @@ public class SaveToFile {
 											new FileWriter(nome_file, true)));
 			file_output.print(wd.formatter()+","); //stampo su file il JSONObject
 			file_output.close();
-			System.out.println("File salvato!"); //PER VERIFICA
-		} catch (IOException | URISyntaxException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+	
 	/**
-	 * richiama il metodo appendToFile e tramite il "flag" si effettua la scelta 
-	 * di salvataggio (true=dati attuali, false=dati storici)
+	 * richiama il metodo appendToFile, ed effettua l'alternativa di salvataggio,
+	 * tramite il "flag" (true=dati attuali, false=dati storici).
 	 * @param cityName
 	 * @param flag
 	 */

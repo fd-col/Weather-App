@@ -3,14 +3,11 @@
  */
 package it.univpm.progetto.model;
 
-import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
-import org.springframework.web.client.RestClientException;
 
 /**
  * @author camplese
@@ -53,14 +50,9 @@ public class WeatherData {
 	 * @param speed
 	 * @throws URISyntaxException 
 	 */
-	public WeatherData(String cityName) throws URISyntaxException {
-		WeatherParser parser = new WeatherParser(cityName);
-		try {
-			parser.parseMethod();
-		} catch (RestClientException | FileNotFoundException | ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public WeatherData(String cityName) {
+		CurrentWeatherParser parser = new CurrentWeatherParser(cityName);
+		parser.parsing();
 		this.cityName = parser.getCityName();
 		timeUNIX = parser.getTimeUNIX();
 		visibility = parser.getVisibility();

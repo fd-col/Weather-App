@@ -4,7 +4,6 @@
 package it.univpm.progetto.controller;
 
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -12,7 +11,6 @@ import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.progetto.configuration.SaveToFile;
@@ -27,9 +25,14 @@ import it.univpm.progetto.model.WeatherData;
 public class Controller {
 
 	
+	/**
+	 * metodo per ottenere il formato dei metadati contenuti nel database
+	 * @return dati meteo attuali in formato JSON
+	 * @throws URISyntaxException
+	 */
 	@GetMapping (value= "/data")
 	public  JSONObject givaMeData() throws URISyntaxException {
-		WeatherData wd = new WeatherData("Trieste");
+		WeatherData wd = new WeatherData("London");
 		return wd.formatter();
 	}
 	/**
@@ -42,17 +45,17 @@ public class Controller {
 	 * @throws URISyntaxException
 	 */
 	@PostMapping (value= "/current_weather")
-	public  JSONArray current(@RequestBody Index i) throws URISyntaxException {
+	public  JSONArray current(@RequestBody Index i) {
 		Database db = new Database("Trieste","Ortona","Venezia",true);
-		return db.getDatiAttuali(i.inizio, i.fine); 
-	}															// 1=Trieste, 2=Ortona, 3=Venezia
+		return db.getDatiAttuali(i.inizio, i.fine);				// 1=Trieste, 2=Ortona, 3=Venezia
+	}															
 	
 	
 	
-	@GetMapping (value= "/historical_weather")
-	public  ArrayList<JSONArray> historical() throws URISyntaxException {
+	@PostMapping (value= "/historical_weather")
+	public  JSONArray historical(@RequestBody Index i) {
 		Database db = new Database("Trieste","Ortona","Venezia",false);
-		return db.getDatiStorici();
+		return db.getDatiStorici(i.inizio, i.fine);
 	}
 	
 	
@@ -60,17 +63,18 @@ public class Controller {
 	
 	
 	
+
+	/**
+	 * metodo per gestire il salvataggio dei dati di OpenWeather tramite chiamate alle relative API
+	 */
+/*	@GetMapping(value= "/save")
+	public void save() {
 	
-	
-	
-	@GetMapping(value= "/save")
-	public void prova() {
 		SaveToFile saveToFile = new SaveToFile(); 
-/*		saveToFile.printData("Trieste", false);
+		
+		saveToFile.printData("Trieste", false);
 		saveToFile.printData("Ortona", false);
-		saveToFile.printData("Venezia", false);
-*/		
-		saveToFile.printData("London", true);
+		saveToFile.printData("Venezia", false);	
 	}
-	
+*/	
 }
