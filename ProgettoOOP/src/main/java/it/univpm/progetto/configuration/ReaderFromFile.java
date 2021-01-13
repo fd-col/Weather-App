@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -30,7 +31,11 @@ public class ReaderFromFile {
 	}
 	
 	
-	//NOTA BENE: QUANDO LO USO PER LEGGERE UN JSON-OBJECT PROVARE A INSERIRLO IN UN JSONARRAY E FAR RESTITUIRE IL JSONOBJECT IN PRIMA POSIZIONE
+	//NOTA BENE: QUANDO LO USO PER LEGGERE UN JSON-OBJECT PROVARE A INSERIRLO 
+	//IN UN JSONARRAY E FAR RESTITUIRE IL JSONOBJECT IN PRIMA POSIZIONE
+	//---> pare non funzionare
+	
+	// cercare Generics come tipo di ritorno
 	public JSONArray readFile(String nome_file) {
 		JSONParser parser = new JSONParser();
 		JSONArray jsonArrayFromFile = new JSONArray();
@@ -50,5 +55,24 @@ public class ReaderFromFile {
 			e.printStackTrace();
 		}
 		return jsonArrayFromFile;
+	}
+	
+	public JSONObject readFileToJSONObject(String nome_file) {
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObjFromFile = new JSONObject();
+		try {
+			BufferedReader buffRead = new BufferedReader(new FileReader(nome_file));
+			String line = buffRead.readLine();
+			jsonObjFromFile = (JSONObject) parser.parse(line);
+
+			buffRead.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return jsonObjFromFile;
 	}
 }

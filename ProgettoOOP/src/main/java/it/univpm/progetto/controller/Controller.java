@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.progetto.configuration.SaveToFile;
 import it.univpm.progetto.model.Database;
+import it.univpm.progetto.model.ForecastWeatherParser;
 import it.univpm.progetto.model.WeatherData;
 /**
  * @author colleluori
@@ -44,7 +45,7 @@ public class Controller {
 	 * 		   
 	 * @throws URISyntaxException
 	 */
-	@PostMapping (value= "/current_weather")
+/*	@PostMapping (value= "/current_weather")
 	public  JSONArray current(@RequestBody Index i) {
 		Database db = new Database("Trieste","Ortona","Venezia",true);
 		return db.getDatiAttuali(i.inizio, i.fine);				// 1=Trieste, 2=Ortona, 3=Venezia
@@ -56,6 +57,13 @@ public class Controller {
 	public  JSONArray historical(@RequestBody Index i) {
 		Database db = new Database("Trieste","Ortona","Venezia",false);
 		return db.getDatiStorici(i.inizio, i.fine);
+	}
+*/	
+	@GetMapping (value= "/forecast_weather")
+	public JSONArray prova() {
+		
+		Database db = new Database("Trieste");
+		return db.getDatiFuturi();
 	}
 	
 	
