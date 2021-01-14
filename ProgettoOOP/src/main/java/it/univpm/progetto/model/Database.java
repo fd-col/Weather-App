@@ -24,7 +24,7 @@ public class Database {
 	 * costruttore (dati meteo attuali, dati meteo storici)
 	 * flag=true per i dati attuali, flag=false per i dati storici
 	 */
-/*	public Database(String cityName1, String cityName2, String cityName3,  boolean flag) {
+	public Database(String cityName1, String cityName2, String cityName3,  boolean flag) {
 		
 		ReaderFromFile rff = new ReaderFromFile();
 		
@@ -43,27 +43,6 @@ public class Database {
 			datiStorici.add(jsonArray2); 
 			datiStorici.add(jsonArray3); 
 		}
-	}
-*/	
-	/**
-	 * secondo costruttore (dati meteo futuri)
-	 */
-	public Database(String cityName) {
-		ForecastWeatherParser forecastParser = new ForecastWeatherParser(cityName);
-		forecastParser.parsing();
-		
-		//for(int i=0; i < forecastParser.jsonArrayLoaded.size(); i++ ) {
-		//	JSONObject jObj = (JSONObject) forecastParser.jsonArrayLoaded.get(i);
-		//}
-		
-		
-		//!!!!!adesso bisognerebbe formattarlo; conviene formattarlo prima, nella classe ForecastWeatherParser
-		
-	
-		this.datiFuturi = forecastParser.jsonArrayLoaded;
-		
-		//prima formattare il jsonObject preso da file
-		//jsonArray1.add(			);
 	}
 	
 	/**

@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
  * @author fedju
  *
  */
-public class CurrentWeatherParser extends JsonParser {
+public class CurrentWeatherParser extends WeatherJsonParser {
 	
 	/**
 	 * costruttore della classe che inizializza il nome della città
@@ -71,18 +71,16 @@ public class CurrentWeatherParser extends JsonParser {
 															"&appid="+appidFromFile(), String.class);
 			obj = (JSONObject) parser.parse(jsonResponse);
 			
-		} catch (RestClientException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
+		} catch (RestClientException | FileNotFoundException | ParseException e) {
 			e.printStackTrace();
 		}
+		
 		this.setCityName((String) obj.get("name"));
 		this.setTimeUNIX((Long) obj.get("dt"));	
 		this.setVisibility((Long) obj.get("visibility"));
 		JSONObject wind = (JSONObject) obj.get("wind");
 		this.setSpeed((Double) Double.parseDouble( wind.get("speed").toString() ));
+		
 	}
 
 }

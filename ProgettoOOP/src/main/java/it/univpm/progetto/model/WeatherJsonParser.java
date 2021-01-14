@@ -3,18 +3,23 @@
  */
 package it.univpm.progetto.model;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.json.simple.JSONObject;
+
 /**
  * @author colleluori
  * @author camplese
  */
-public class JsonParser {
+public class WeatherJsonParser {
 	private String cityName;
 	private Long timeUNIX;
 	private Long visibility;
 	private Double speed;
 	
-	public JsonParser(String cityName) {
-		this.setCityName(cityName);
+	public WeatherJsonParser(String cityName) {
+		this.cityName = cityName;
 	}
 	
 	/**
@@ -74,6 +79,24 @@ public class JsonParser {
 	}
 
 	public void parsing() {}
+	
+	/**
+	 * formattatore generale del json restituito
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	public JSONObject formatter() {
+		
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("cityname", this.cityName);
+		jsonObj.put("timeUNIX", this.timeUNIX);
+		jsonObj.put("visibility", this.visibility);
+		Map<String, Double> m1 = new LinkedHashMap<String, Double>(1);	// www.educba.com/json-in-java
+		m1.put("speed", this.speed);  
+		jsonObj.put("wind", m1);
+		
+		return jsonObj;
+	}
 
 }
 

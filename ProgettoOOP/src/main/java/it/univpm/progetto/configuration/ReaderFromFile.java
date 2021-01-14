@@ -17,8 +17,14 @@ import org.json.simple.parser.ParseException;
  * @author fedju
  *
  */
-public class ReaderFromFile {
+public class ReaderFromFile implements Reader {
 
+	
+	/**
+	 *	stabilisce il nome del file in base al cityName passato come parametro
+	 *  e alla scelta effettuata tramite il boolean "flag"
+	 *  @return nome del file 
+	 */
 	public String nomeFile(String cityName, boolean flag) {
 		if(flag)
 			return "database/dati-attuali-"+cityName+".json";
@@ -26,16 +32,20 @@ public class ReaderFromFile {
 			return "database/dati-storici-"+cityName+".json";
 	}
 	
+	/**
+	 * stabilisce il nome del file in base al cityName
+	 * @param cityName
+	 * @return nome del file
+	 */
 	public String nomeFile(String cityName) {
 		return "database/previsioni-future-"+cityName+".json";
 	}
 	
-	
 	//NOTA BENE: QUANDO LO USO PER LEGGERE UN JSON-OBJECT PROVARE A INSERIRLO 
 	//IN UN JSONARRAY E FAR RESTITUIRE IL JSONOBJECT IN PRIMA POSIZIONE
-	//---> pare non funzionare
-	
+	//---> pare non funzionare.
 	// cercare Generics come tipo di ritorno
+	
 	public JSONArray readFile(String nome_file) {
 		JSONParser parser = new JSONParser();
 		JSONArray jsonArrayFromFile = new JSONArray();
@@ -47,17 +57,14 @@ public class ReaderFromFile {
 			//jsonObj = (JSONObject) parser.parse(line);
 
 			buffRead.close();
-		} catch (FileNotFoundException e) {
+			
+		} catch (IOException | ParseException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		} 
 		return jsonArrayFromFile;
 	}
 	
-	public JSONObject readFileToJSONObject(String nome_file) {
+	public JSONObject readFileToJsonObject(String nome_file) {
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObjFromFile = new JSONObject();
 		try {
@@ -66,13 +73,11 @@ public class ReaderFromFile {
 			jsonObjFromFile = (JSONObject) parser.parse(line);
 
 			buffRead.close();
-		} catch (FileNotFoundException e) {
+			
+		} catch (IOException | ParseException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		} 
 		return jsonObjFromFile;
 	}
+
 }

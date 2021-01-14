@@ -24,7 +24,6 @@ import it.univpm.progetto.model.WeatherData;
  */
 @RestController 
 public class Controller {
-
 	
 	/**
 	 * metodo per ottenere il formato dei metadati contenuti nel database
@@ -34,23 +33,21 @@ public class Controller {
 	@GetMapping (value= "/data")
 	public  JSONObject givaMeData() throws URISyntaxException {
 		WeatherData wd = new WeatherData("London");
-		return wd.formatter();
+		return wd.getJsonObj();
 	}
 	/**
 	 * dati attuali (dal database) delle città selezionate: 1=Trieste, 2=Ortona, 3=Venezia ;
 	 * indicare nella chiamata su Postman l'indice d'inizio e di fine selezione tramite un body
 	 *
 	 * @param attributi della classe Index.java: "inizio" e "fine" 
-	 * @return i dati attuali delle città scelte
-	 * 		   
+	 * @return i dati attuali delle città scelte   
 	 * @throws URISyntaxException
 	 */
-/*	@PostMapping (value= "/current_weather")
+	@PostMapping (value= "/current_weather")
 	public  JSONArray current(@RequestBody Index i) {
 		Database db = new Database("Trieste","Ortona","Venezia",true);
 		return db.getDatiAttuali(i.inizio, i.fine);				// 1=Trieste, 2=Ortona, 3=Venezia
 	}															
-	
 	
 	
 	@PostMapping (value= "/historical_weather")
@@ -58,12 +55,13 @@ public class Controller {
 		Database db = new Database("Trieste","Ortona","Venezia",false);
 		return db.getDatiStorici(i.inizio, i.fine);
 	}
-*/	
+	
+	
 	@GetMapping (value= "/forecast_weather")
 	public JSONArray prova() {
 		
-		Database db = new Database("Trieste");
-		return db.getDatiFuturi();
+		WeatherData wd = new WeatherData("Trieste",0);
+		return wd.getJsonArrayFormatted();
 	}
 	
 	
@@ -72,10 +70,11 @@ public class Controller {
 	
 	
 
+	
 	/**
 	 * metodo per gestire il salvataggio dei dati di OpenWeather tramite chiamate alle relative API
 	 */
-/*	@GetMapping(value= "/save")
+	@GetMapping(value= "/save")
 	public void save() {
 	
 		SaveToFile saveToFile = new SaveToFile(); 
@@ -84,5 +83,5 @@ public class Controller {
 		saveToFile.printData("Ortona", false);
 		saveToFile.printData("Venezia", false);	
 	}
-*/	
+	
 }

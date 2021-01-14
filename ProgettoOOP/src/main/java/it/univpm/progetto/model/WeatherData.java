@@ -4,9 +4,8 @@
 package it.univpm.progetto.model;
 
 import java.net.URISyntaxException;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -15,35 +14,11 @@ import org.json.simple.JSONObject;
  *
  */
 public class WeatherData {
-	private String cityName;
-	private Long timeUNIX;
-	private Long visibility;
-	private Double speed;
+	
+	JSONObject jsonObjFormatted = new JSONObject();
+	JSONArray jsonArrayFormatted = new JSONArray();
 	/**
-	 * @return the cityName
-	 */
-	public String getCityName() {
-		return cityName;
-	}
-	/**
-	 * @return the date
-	 */
-	public Long getTimeUNIX() {
-		return timeUNIX;
-	}
-	/**
-	 * @return the visibility
-	 */
-	public Long getVisibility() {
-		return visibility;
-	}
-	/**
-	 * @return the speed
-	 */
-	public Double getSpeed() {
-		return speed;
-	}
-	/**
+	 * primo costruttore
 	 * @param cityName
 	 * @param date
 	 * @param visibility
@@ -51,27 +26,41 @@ public class WeatherData {
 	 * @throws URISyntaxException 
 	 */
 	public WeatherData(String cityName) {
-		CurrentWeatherParser parser = new CurrentWeatherParser(cityName);
-		parser.parsing();
-		this.cityName = parser.getCityName();
-		timeUNIX = parser.getTimeUNIX();
-		visibility = parser.getVisibility();
-		speed = parser.getSpeed();
+		CurrentWeatherParser currentWeatherParser = new CurrentWeatherParser(cityName);
+		currentWeatherParser.parsing();
+		jsonObjFormatted = currentWeatherParser.formatter(); //accedo al metodo formatter() della superclasse
 	}
+	
 	/**
-	 * formattatore del json restituito
-	 * @return JSONObject
+	 * secondo costruttore
+	 * @param cityName
+	 * @param p
 	 */
-	@SuppressWarnings ("unchecked")
-	public JSONObject formatter() {
-		JSONObject jsonObj = new JSONObject();
-		jsonObj.put("cityname", this.cityName);
-		jsonObj.put("timeUNIX", this.timeUNIX);
-		jsonObj.put("visibility", this.visibility);
-		Map<String, Double> m1 = new LinkedHashMap<String, Double>(1);	// www.educba.com/json-in-java
-		m1.put("speed", this.speed);  
-		jsonObj.put("wind", m1);
-		
-		return jsonObj;
+	public WeatherData(String cityName, int p) {
+		for(int i=0; i<5; i++) {
+			ForecastWeatherParser forecastWeatherParser = new ForecastWeatherParser(cityName, i);
+			forecastWeatherParser.parsing();
+			jsonArrayFormatted.add(forecastWeatherParser.formatter());
+		}
 	}
+
+	/**
+	 * @return the jsonObj
+	 */
+	public JSONObject getJsonObj() {
+		return jsonObjFormatted;
+	}
+	
+	/**
+	 * @return the jsonArrayFormatted
+	 */
+	public JSONArray getJsonArrayFormatted() {
+		return jsonArrayFormatted;
+	}
+	
+	
+	//SI POTREBBE FARE UN ALTRO COSTRUTTORE ANALOGO AL PRECEDENTE, 
+	//con il costruttore ForecastWeatherParser e i medesimi comandi
+	
+	
 }
