@@ -7,7 +7,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
- * @author fedju
+ * @author colleluori
+ * @author camplese
  *
  */
 public interface Reader {

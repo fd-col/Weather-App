@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.progetto.configuration.SaveToFile;
 import it.univpm.progetto.model.Database;
-import it.univpm.progetto.model.ForecastWeatherParser;
 import it.univpm.progetto.model.WeatherData;
+
 /**
  * @author colleluori
  * @author camplese
@@ -30,11 +30,12 @@ public class Controller {
 	 * @return dati meteo attuali in formato JSON
 	 * @throws URISyntaxException
 	 */
-	@GetMapping (value= "/data")
+	@GetMapping (value= "/metadata")
 	public  JSONObject givaMeData() throws URISyntaxException {
 		WeatherData wd = new WeatherData("London");
 		return wd.getJsonObj();
 	}
+	
 	/**
 	 * dati attuali (dal database) delle città selezionate: 1=Trieste, 2=Ortona, 3=Venezia ;
 	 * indicare nella chiamata su Postman l'indice d'inizio e di fine selezione tramite un body
@@ -57,11 +58,10 @@ public class Controller {
 	}
 	
 	
-	@GetMapping (value= "/forecast_weather")
-	public JSONArray prova() {
-		
-		WeatherData wd = new WeatherData("Trieste",0);
-		return wd.getJsonArrayFormatted();
+	@PostMapping (value= "/forecast_weather")
+	public JSONArray forecast(@RequestBody Index2 i) {
+		Database db = new Database(i.cityName, i.giornoIniziale, i.giornoFinale);
+		return db.getDatiFuturi();
 	}
 	
 	

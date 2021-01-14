@@ -6,7 +6,6 @@ package it.univpm.progetto.model;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 import it.univpm.progetto.configuration.ReaderFromFile;
 
@@ -42,6 +41,21 @@ public class Database {
 			datiStorici.add(jsonArray1); 
 			datiStorici.add(jsonArray2); 
 			datiStorici.add(jsonArray3); 
+		}
+	}
+	
+	/**
+	 * secondo costruttore (dati futuri)
+	 * @param cityName
+	 * @param giornoIniziale
+	 * @param giornoFinale
+	 */
+	public Database(String cityName, int giornoIniziale, int giornoFinale) {
+		datiFuturi = new JSONArray();
+		for(int i=giornoIniziale; i<=giornoFinale; i++) {
+			ForecastWeatherParser forecastWeatherParser = new ForecastWeatherParser(cityName, i-1);
+			forecastWeatherParser.parsing();
+			datiFuturi.add(forecastWeatherParser.formatter());
 		}
 	}
 	

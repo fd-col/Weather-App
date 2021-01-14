@@ -3,8 +3,11 @@
  */
 package it.univpm.progetto.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 import org.json.simple.JSONObject;
 
@@ -12,13 +15,14 @@ import org.json.simple.JSONObject;
  * @author colleluori
  * @author camplese
  */
-public class WeatherJsonParser {
+public class WeatherParser {
+	
 	private String cityName;
 	private Long timeUNIX;
 	private Long visibility;
 	private Double speed;
 	
-	public WeatherJsonParser(String cityName) {
+	public WeatherParser(String cityName) {
 		this.cityName = cityName;
 	}
 	
@@ -86,16 +90,24 @@ public class WeatherJsonParser {
 	 */
 	@SuppressWarnings("unchecked")
 	public JSONObject formatter() {
-		
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("cityname", this.cityName);
 		jsonObj.put("timeUNIX", this.timeUNIX);
+		jsonObj.put("date", formatDate());
 		jsonObj.put("visibility", this.visibility);
 		Map<String, Double> m1 = new LinkedHashMap<String, Double>(1);	// www.educba.com/json-in-java
 		m1.put("speed", this.speed);  
 		jsonObj.put("wind", m1);
 		
 		return jsonObj;
+	}
+	
+	public String formatDate() {
+		Date date = new Date(this.timeUNIX*1000L);
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+		String java_date = simpleDateFormat.format(date);
+		return java_date;
 	}
 
 }

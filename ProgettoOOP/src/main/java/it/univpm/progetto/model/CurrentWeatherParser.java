@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
  * @author fedju
  *
  */
-public class CurrentWeatherParser extends WeatherJsonParser {
+public class CurrentWeatherParser extends WeatherParser {
 	
 	/**
 	 * costruttore della classe che inizializza il nome della città

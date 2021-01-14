@@ -4,7 +4,6 @@
 package it.univpm.progetto.configuration;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -18,7 +17,6 @@ import org.json.simple.parser.ParseException;
  *
  */
 public class ReaderFromFile implements Reader {
-
 	
 	/**
 	 *	stabilisce il nome del file in base al cityName passato come parametro
