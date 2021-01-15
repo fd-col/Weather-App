@@ -9,7 +9,7 @@ Il dataset è costruito con due differenti modalità:
  - previsioni-future sono raccolte dalla rispettiva  API di OpenWeather così come sono, mediante una chiamata al client Postman ( e successivamente parsate tramite l’app SpringBoot )
 
 <h2 id="formato-dei-dati-restituiti">Formato dei dati restituiti</h2>
-I metadati 
+
 <pre><code>{
  "date": 1609502400,
  "visibility": 10000,
@@ -21,6 +21,6 @@ I metadati
 </code></pre>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NjYwNTAxMiwtMTU1NzQ0MTcyNSwyMj
-MzMjI0MiwxMzE0Nzk0MDAxXX0=
+eyJoaXN0b3J5IjpbLTEzMzcyMzIxMDgsLTE1NTc0NDE3MjUsMj
+IzMzIyNDIsMTMxNDc5NDAwMV19
 -->
