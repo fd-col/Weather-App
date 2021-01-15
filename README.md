@@ -8,6 +8,8 @@ Il dataset è costruito con due differenti modalità :
  - previsioni-future sono raccolte dalla rispettiva  API di OpenWeather così come sono, mediante una chiamata al client Postman ( e successivamente parsate tramite l’app SpringBoot )
  
 ### Previsioni dal 01/01/2021 al 10/01/2021
+ - List item
+
 <h2 id="formato-dei-dati-restituiti">Formato dei dati restituiti</h2>
 
 <pre><code>{
@@ -21,6 +23,6 @@ Il dataset è costruito con due differenti modalità :
 </code></pre>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2Mjk3MjY5MjcsLTE1NTc0NDE3MjUsMj
+eyJoaXN0b3J5IjpbLTE3MDk3OTEzODEsLTE1NTc0NDE3MjUsMj
 IzMzIyNDIsMTMxNDc5NDAwMV19
 -->
