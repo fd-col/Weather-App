@@ -9,11 +9,11 @@ Il dataset è costruito con due differenti modalità :
  
 ### Previsioni dal 01/01/2021 al 10/01/2021
  - dati storici :	  01/01 - 05/01
- - dati attuali :	  06/01 - 10-01
- - previsioni future : 06/01 - 10 -01
+ - dati attuali :	  06/01 - 10/01
+ - previsioni future : 06/01 - 10/01
 
 <h2 id="formato-dei-dati-restituiti">Formato dei dati restituiti</h2>
-
+Metadati ralat
 <pre><code>{
  "date": 1609502400,
  "visibility": 10000,
@@ -25,6 +25,6 @@ Il dataset è costruito con due differenti modalità :
 </code></pre>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMzNjkwNTUzLC0xNTU3NDQxNzI1LDIyMz
-MyMjQyLDEzMTQ3OTQwMDFdfQ==
+eyJoaXN0b3J5IjpbLTI5ODcwNjQ4MCwtMTU1NzQ0MTcyNSwyMj
+MzMjI0MiwxMzE0Nzk0MDAxXX0=
 -->
