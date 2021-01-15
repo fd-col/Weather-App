@@ -14,7 +14,7 @@ import it.univpm.progetto.configuration.ReaderFromFile;
  * @author camplese
  *
  */
-public class Database {
+public class Dataset {
 	
 	private ArrayList<JSONArray> datiAttuali;
 	private ArrayList<JSONArray> datiStorici;
@@ -23,7 +23,7 @@ public class Database {
 	 * costruttore (dati meteo attuali, dati meteo storici)
 	 * flag=true per i dati attuali, flag=false per i dati storici
 	 */
-	public Database(String cityName1, String cityName2, String cityName3,  boolean flag) {
+	public Dataset(String cityName1, String cityName2, String cityName3,  boolean flag) {
 		
 		ReaderFromFile rff = new ReaderFromFile();
 		
@@ -50,7 +50,7 @@ public class Database {
 	 * @param giornoIniziale
 	 * @param giornoFinale
 	 */
-	public Database(String cityName, int giornoIniziale, int giornoFinale) {
+	public Dataset(String cityName, int giornoIniziale, int giornoFinale) {
 		datiFuturi = new JSONArray();
 		for(int i=giornoIniziale; i<=giornoFinale; i++) {
 			ForecastWeatherParser forecastWeatherParser = new ForecastWeatherParser(cityName, i-1);
@@ -64,20 +64,12 @@ public class Database {
 	 */
 	public JSONArray getDatiAttuali(int inizio, int fine) {
 		JSONArray jsonArrayTemp = new JSONArray();
-		try {
-			for(int i=inizio; i <= fine; i++)
-				jsonArrayTemp.addAll( datiAttuali.get(i-1) ); 
-		}catch(UnsupportedOperationException e) {
-			e.printStackTrace();
-		}
-		catch(ClassCastException e) {
-			e.printStackTrace();
-		}
-		catch(NullPointerException e) {
-			e.printStackTrace();
-		}
+		for(int i=inizio; i <= fine; i++)
+			jsonArrayTemp.addAll( datiAttuali.get(i-1) ); 
+
 		return (JSONArray)jsonArrayTemp;
 	}
+	
 	/**
 	 * @return the datiStorici
 	 */
@@ -97,15 +89,11 @@ public class Database {
 		}
 		return (JSONArray)jsonArrayTemp;
 	}
+	
 	/**
 	 * @return the datiFuturi
 	 */
 	public JSONArray getDatiFuturi() {
 		return datiFuturi;
-	}
-	
-
-	
-	
-	
+	}	
 }

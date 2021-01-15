@@ -5,7 +5,6 @@ package it.univpm.progetto.model;
 
 import java.net.URISyntaxException;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**

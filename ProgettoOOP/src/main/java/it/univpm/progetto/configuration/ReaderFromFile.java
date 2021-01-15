@@ -25,9 +25,9 @@ public class ReaderFromFile implements Reader {
 	 */
 	public String nomeFile(String cityName, boolean flag) {
 		if(flag)
-			return "database/dati-attuali-"+cityName+".json";
+			return "dataset/dati-attuali-"+cityName+".json";
 		else
-			return "database/dati-storici-"+cityName+".json";
+			return "dataset/dati-storici-"+cityName+".json";
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class ReaderFromFile implements Reader {
 	 * @return nome del file
 	 */
 	public String nomeFile(String cityName) {
-		return "database/previsioni-future-"+cityName+".json";
+		return "dataset/previsioni-future-"+cityName+".json";
 	}
 	
 	//NOTA BENE: QUANDO LO USO PER LEGGERE UN JSON-OBJECT PROVARE A INSERIRLO 
