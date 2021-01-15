@@ -8,7 +8,10 @@ package it.univpm.progetto.controller;
  *
  */
 public class Index {
-	public int inizio;
-	public int fine;
+	public String cityName;
+	public int primaCitta;
+	public int ultimaCitta;
+	public int giornoIniziale;
+	public int giornoFinale;
 }
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.progetto.configuration.SaveToFile;
 import it.univpm.progetto.model.Dataset;
+import it.univpm.progetto.model.Stats;
 import it.univpm.progetto.model.WeatherData;
 
 /**
@@ -47,23 +48,28 @@ public class Controller {
 	@PostMapping (value= "/current_weather")
 	public  JSONArray current(@RequestBody Index i) {
 		Dataset ds = new Dataset("Trieste","Ortona","Venezia",true);
-		return ds.getDatiAttuali(i.inizio, i.fine);				// 1=Trieste, 2=Ortona, 3=Venezia
+		return ds.getDatiAttuali(i.primaCitta, i.ultimaCitta);				// 1=Trieste, 2=Ortona, 3=Venezia
 	}															
 	
 	
 	@PostMapping (value= "/historical_weather")
 	public  JSONArray historical(@RequestBody Index i) {
 		Dataset ds = new Dataset("Trieste","Ortona","Venezia",false);
-		return ds.getDatiStorici(i.inizio, i.fine);
+		return ds.getDatiStorici(i.primaCitta, i.ultimaCitta);
 	}
 	
 	
 	@PostMapping (value= "/forecast_weather")
-	public JSONArray forecast(@RequestBody Index2 i) {
+	public JSONArray forecast(@RequestBody Index i) {
 		Dataset ds = new Dataset(i.cityName, i.giornoIniziale, i.giornoFinale);
 		return ds.getDatiFuturi();
 	}
 	
+	@PostMapping (value= "/stats")
+	public JSONObject stats(@RequestBody Index i) {
+		Stats stats = new Stats("Trieste","Ortona","Venezia", false); 		//statistiche riguardanti dati storici
+		return stats.formatter(i.primaCitta, i.ultimaCitta, i.giornoIniziale, i.giornoFinale);
+	}
 	
 	
 	

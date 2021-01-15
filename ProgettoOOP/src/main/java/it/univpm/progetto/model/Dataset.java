@@ -23,7 +23,7 @@ public class Dataset {
 	 * costruttore (dati meteo attuali, dati meteo storici)
 	 * flag=true per i dati attuali, flag=false per i dati storici
 	 */
-	public Dataset(String cityName1, String cityName2, String cityName3,  boolean flag) {
+	public Dataset(String cityName1, String cityName2, String cityName3, boolean flag) {
 		
 		ReaderFromFile rff = new ReaderFromFile();
 		
