@@ -6,7 +6,7 @@
 Il dataset è costruito con due differenti modalità:
 
  - dati-attuali & dati-storici vengono già parsati come oggetti JSONArray tramite la rotta “/save” dell’app SpringBoot
- - previsioni-future sono ritornate così come sono dalle API di OpenWeather, mediante una chiamata al client Postman, e successivamente parsate tramite l’app SpringBoot
+ - previsioni-future sono ritornate così come sono dall' API di OpenWeather, mediante una chiamata al client Postman ( e successivamente parsate tramite l’app SpringBoot )
 
 <h3 id="formato-dei-dati-restituiti">Formato dei dati restituiti</h3>
 <pre><code>{
@@ -20,6 +20,6 @@ Il dataset è costruito con due differenti modalità:
 </code></pre>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ3NDkyOTMyLC0xNTU3NDQxNzI1LDIyMz
-MyMjQyLDEzMTQ3OTQwMDFdfQ==
+eyJoaXN0b3J5IjpbLTI3ODM2Mzk2MSwtMTU1NzQ0MTcyNSwyMj
+MzMjI0MiwxMzE0Nzk0MDAxXX0=
 -->
