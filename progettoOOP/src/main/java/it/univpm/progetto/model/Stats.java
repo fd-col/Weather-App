@@ -11,7 +11,7 @@ import org.json.simple.JSONObject;
  */
 public class Stats extends Dataset{
 
-	private Long visibilityAverage;
+	private Double visibilityAverage;
 	private Double speedAverage;
 	private Double visibilityVariance;
 	private Double speedVariance;
@@ -24,20 +24,23 @@ public class Stats extends Dataset{
 
 	/**
 	 * @param visibilityAverage the visibilityAverage to set
+	 * @return 
 	 */
-	public void setVisibilityAverage(int i, int j, int k, int l) throws Exception {
+	public Double visibilityAverage(int i, int j, int k, int l) throws Exception {
 		if(i != j) 
 			throw new Exception("Errore di inserimento parametri");
 		else
 		{
 		JSONArray jsonArray = getDatiStorici(i,j);
-		Long sum = null;
+		Double sum = null;
 		for(int m = k; m <= l; m++) {
 			JSONObject jObject= (JSONObject) jsonArray.get(m);
 			 sum += (Long) jObject.get("visibility");
 		}
 		
-		visibilityAverage = sum/(l-k);
+		visibilityAverage = (Double) sum/(l-k);
+		
+		return visibilityAverage;
 		
 		}
 	}
@@ -46,25 +49,67 @@ public class Stats extends Dataset{
 	/**
 	 * @param speedAverage the speedAverage to set
 	 */
-	public void setSpeedAverage(Double speedAverage) {
-		this.speedAverage = speedAverage;
+	public Double speedAverage(int i, int j, int k, int l) throws Exception {
+		if(i != j) 
+			throw new Exception("Errore di inserimento parametri");
+		else
+		{
+		Double sum = null;
+		for(int m = k; m <= l; m++) {
+			JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(m);
+			JSONObject wind = (JSONObject) jObject.get("wind");
+			Double rawSpeed = (Double) Double.parseDouble(wind.get("speed").toString());
+			sum += (Double) rawSpeed;
+		}
+		
+		speedAverage = sum/(l-k);
+		
+		return speedAverage;
+		}
 	}
 
 
 	/**
 	 * @param visibilitiVariance the visibilitiVariance to set
+	 * @return 
+	 * @throws Exception 
 	 */
-	public void setVisibilytiVariance(Double visibilitiVariance) {
-		this.visibilityVariance = visibilitiVariance;
+	public Double visibilytiVariance(int i, int j, int k, int l) throws Exception {
+		Double media = visibilityAverage(i,j,k,l);
+		Double sommaScartiQuad = null;
+		for(int m = k; m <= l; m++) {
+			JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(m);
+			sommaScartiQuad += ((Double) jObject.get("visibility") - media)
+								*((Double) jObject.get("visibility")- media);
+		
+		}
+		
+		visibilityVariance = sommaScartiQuad/(l-k);
+		
+		return visibilityVariance;
+
+		
 	}
 
 
 
 	/**
 	 * @param speedVariance the speedVariance to set
+	 * @throws Exception 
 	 */
-	public void setSpeedVariance(Double speedVariance) {
-		this.speedVariance = speedVariance;
+	public Double setSpeedVariance(int i, int j, int k, int l) throws Exception {
+		Double media = speedAverage(i,j,k,l);
+		Double sommaScartiQuad = null;
+		for(int m = k; m <= l; m++) {
+			JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(m);
+			JSONObject wind = (JSONObject) jObject.get("wind");
+			Double rawSpeed = (Double) Double.parseDouble(wind.get("speed").toString());
+			sommaScartiQuad += (rawSpeed - media)*(rawSpeed - media);
+		}
+		
+		speedVariance = sommaScartiQuad/(l-k);
+		
+		return speedVariance;
 	}
 	
 	
