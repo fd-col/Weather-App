@@ -13,5 +13,6 @@ public class Index {
 	public int ultimaCitta;
 	public int giornoIniziale;
 	public int giornoFinale;
+	int soglia_errore;
 }
 

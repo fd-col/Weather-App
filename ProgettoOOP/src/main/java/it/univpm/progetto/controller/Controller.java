@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import it.univpm.progetto.configuration.SaveToFile;
 import it.univpm.progetto.model.Dataset;
 import it.univpm.progetto.model.Stats;
+import it.univpm.progetto.model.StatsForecast;
 import it.univpm.progetto.model.WeatherData;
 
 /**
@@ -71,7 +72,14 @@ public class Controller {
 		return stats.formatter(i.primaCitta, i.ultimaCitta, i.giornoIniziale, i.giornoFinale);
 	}
 	
-	
+	@PostMapping (value= "/stats_forecast")
+	public String statsForecast(@RequestBody Index i) {
+		StatsForecast statsForecast = new StatsForecast(i.cityName, i.giornoIniziale, i.giornoFinale); 		//statistiche riguardanti dati storici
+		if( statsForecast.confronta(i.soglia_errore) )
+			return "OK, PREVISIONI AZZECCATE";
+		else 
+			return "NO, TIJ SBAJAT";
+	}
 	
 	
 	

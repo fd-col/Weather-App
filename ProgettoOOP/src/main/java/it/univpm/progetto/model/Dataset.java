@@ -61,9 +61,9 @@ public class Dataset {
 	/**
 	 * @return the datiAttuali
 	 */
-	public JSONArray getDatiAttuali(int inizio, int fine) {
+	public JSONArray getDatiAttuali(int primaCitta, int ultimaCitta) {
 		JSONArray jsonArrayTemp = new JSONArray();
-		for(int i=inizio; i <= fine; i++)
+		for(int i=primaCitta; i <= ultimaCitta; i++)
 			jsonArrayTemp.addAll( datiAttuali.get(i-1) ); 
 
 		return (JSONArray)jsonArrayTemp;
@@ -72,10 +72,10 @@ public class Dataset {
 	/**
 	 * @return the datiStorici
 	 */
-	public JSONArray getDatiStorici(int inizio, int fine) {
+	public JSONArray getDatiStorici(int primaCitta, int ultimaCitta) {
 		JSONArray jsonArrayTemp = new JSONArray();
 		try {
-			for(int i=inizio; i <= fine; i++)
+			for(int i=primaCitta; i <= ultimaCitta; i++)
 				jsonArrayTemp.addAll( datiStorici.get(i-1) ); 
 		}catch(UnsupportedOperationException e) {
 			e.printStackTrace();
