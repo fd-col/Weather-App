@@ -5,7 +5,6 @@ package it.univpm.progetto.model;
 
 import java.security.InvalidParameterException;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 /**
  * @author falco
@@ -33,11 +32,11 @@ public class Stats extends Dataset {
 	 * @return the visibilityMin
 	 */
 	public Long visibilityMin(int i, int j, int k, int l) {
-		JSONArray jsonArray = getDatiStorici(i,j);
-		JSONObject jObject= (JSONObject) jsonArray.get(k);
+		
+		JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(k);
 		Long visibilityMin = (Long) jObject.get("visibility");
 		for(int m = k-1; m < l; m++) {
-			JSONObject jObj= (JSONObject) jsonArray.get(m);
+			JSONObject jObj= (JSONObject) getDatiStorici(i,j).get(m);
 			if(visibilityMin > (Long) jObj.get("visibility")) {
 				visibilityMin = (Long) jObj.get("visibility");
 			}
@@ -54,11 +53,11 @@ public class Stats extends Dataset {
 	 * @return the visibilityMax
 	 */
 	public Long visibilityMax(int i, int j, int k, int l) {
-		JSONArray jsonArray = getDatiStorici(i,j);
-		JSONObject jObject= (JSONObject) jsonArray.get(k);
+		
+		JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(k);
 		Long visibilityMax = (Long) jObject.get("visibility");
 		for(int m = k-1; m < l; m++) {
-			JSONObject jObj= (JSONObject) jsonArray.get(m);
+			JSONObject jObj= (JSONObject) getDatiStorici(i,j).get(m);
 			if(visibilityMax < (Long) jObj.get("visibility")) {
 				visibilityMax = (Long) jObj.get("visibility");
 			}
@@ -75,12 +74,12 @@ public class Stats extends Dataset {
 	 * @return the speedMin
 	 */
 	public Double speedMin(int i, int j, int k, int l) {
-		JSONArray jsonArray = getDatiStorici(i,j);
-		JSONObject jObject= (JSONObject) jsonArray.get(k);
+		
+		JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(k);
 		JSONObject wind1 = (JSONObject) jObject.get("wind");
 		Double speedMin = (Double) Double.parseDouble(wind1.get("speed").toString());
 		for(int m = k-1; m < l; m++) {
-			JSONObject jObj= (JSONObject) jsonArray.get(m);
+			JSONObject jObj= (JSONObject) getDatiStorici(i,j).get(m);
 			JSONObject wind2 = (JSONObject) jObj.get("wind");
 			if(speedMin > (Double) Double.parseDouble(wind2.get("speed").toString())) {
 				speedMin = (Double) Double.parseDouble(wind2.get("speed").toString());
@@ -98,12 +97,12 @@ public class Stats extends Dataset {
 	 * @return the speedMax
 	 */
 	public Double speedMax(int i, int j, int k, int l) {
-		JSONArray jsonArray = getDatiStorici(i,j);
-		JSONObject jObject= (JSONObject) jsonArray.get(k);
+		
+		JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(k);
 		JSONObject wind1 = (JSONObject) jObject.get("wind");
 		Double speedMax = (Double) Double.parseDouble(wind1.get("speed").toString());
 		for(int m = k-1; m < l; m++) {
-			JSONObject jObj= (JSONObject) jsonArray.get(m);
+			JSONObject jObj= (JSONObject) getDatiStorici(i,j).get(m);
 			JSONObject wind2 = (JSONObject) jObj.get("wind");
 			if(speedMax < (Double) Double.parseDouble(wind2.get("speed").toString())) {
 				speedMax = (Double) Double.parseDouble(wind2.get("speed").toString());
