@@ -12,7 +12,6 @@ import it.univpm.progetto.configuration.ReaderFromFile;
 /**
  * @author colleluori
  * @author camplese
- *
  */
 public class Dataset {
 	

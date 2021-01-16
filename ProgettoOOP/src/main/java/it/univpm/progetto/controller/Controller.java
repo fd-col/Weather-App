@@ -32,7 +32,7 @@ public class Controller {
 	 * @throws URISyntaxException
 	 */
 	@GetMapping (value= "/metadata")
-	public  JSONObject givaMeData() throws URISyntaxException {
+	public  JSONObject givaMeData() {
 		WeatherData wd = new WeatherData("London");
 		return wd.getJsonObj();
 	}
