@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.univpm.progetto.model;
+package it.univpm.progetto.stats;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,12 +24,14 @@ public class StatsForecast extends Stats {
 	 * @param giornoIniziale
 	 * @param giornoFinale
 	 */
-	public StatsForecast(String cityName1, String cityName2, String cityName3, boolean flag,boolean flag2, 
+	public StatsForecast(String allCityName, boolean flag,boolean flag2, 
 							String cityName, int giornoIniziale, int giornoFinale) {
-		super(cityName1, cityName2, cityName3, flag, flag2, cityName, giornoIniziale, giornoFinale );
+		
+		super(allCityName, flag, flag2, cityName, giornoIniziale, giornoFinale );
+		
 		this.numeroGiorni = giornoFinale - giornoIniziale;
+		
 		datiAttuali = getDatiAttuali(3,3);
-		//datiFuturi = getDatiFuturi();
 	}
 	
 	

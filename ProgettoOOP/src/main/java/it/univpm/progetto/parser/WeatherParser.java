@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.univpm.progetto.model.parser;
+package it.univpm.progetto.parser;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

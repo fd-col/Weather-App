@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.univpm.progetto.model;
+package it.univpm.progetto.parser;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

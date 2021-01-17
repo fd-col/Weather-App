@@ -7,7 +7,7 @@ import java.net.URISyntaxException;
 
 import org.json.simple.JSONObject;
 
-import it.univpm.progetto.model.parser.CurrentWeatherParser;
+import it.univpm.progetto.parser.CurrentWeatherParser;
 
 /**
  * @author camplese

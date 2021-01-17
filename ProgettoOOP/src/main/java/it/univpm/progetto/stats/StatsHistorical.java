@@ -1,13 +1,15 @@
 /**
  * 
  */
-package it.univpm.progetto.model;
+package it.univpm.progetto.stats;
 
 import java.security.InvalidParameterException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
+
+import it.univpm.progetto.model.Dataset;
 /**
  * @author falco
  *
@@ -21,9 +23,10 @@ public class StatsHistorical extends Dataset {
 	 * @param cityName3
 	 * @param flag
 	 */
-	public StatsHistorical(String cityName1, String cityName2, String cityName3, boolean flag, boolean flag2, 
-				String cityName, int giornoIniziale, int giornoFinale) {
-		super(cityName1, cityName2, cityName3, flag, flag2, cityName, giornoIniziale, giornoFinale);
+	public StatsHistorical(String allCityName, boolean flag, boolean flag2, 
+							String cityName, int giornoIniziale, int giornoFinale) {
+		
+		super(allCityName, flag, flag2, cityName, giornoIniziale, giornoFinale);
 	}
 
 	/**
@@ -34,11 +37,10 @@ public class StatsHistorical extends Dataset {
 	 * @param l
 	 * @return the visibilityMin
 	 */
-	public Double visibilityMin(int i, int j, int k, int l) {
-		
-		JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(k);
+	public Double visibilityMin(int i, int j, int giornoIniziale, int giornoFinale) {
+		JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(giornoIniziale);
 		Double visibilityMin = (Double) jObject.get("visibility");
-		for(int m = k-1; m < l; m++) {
+		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
 			JSONObject jObj= (JSONObject) getDatiStorici(i,j).get(m);
 			if(visibilityMin > (Double) jObj.get("visibility")) {
 				visibilityMin = (Double) jObj.get("visibility");
@@ -55,11 +57,10 @@ public class StatsHistorical extends Dataset {
 	 * @param l
 	 * @return the visibilityMax
 	 */
-	public Double visibilityMax(int i, int j, int k, int l) {
-		
-		JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(k);
+	public Double visibilityMax(int i, int j, int giornoIniziale, int giornoFinale) {
+		JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(giornoIniziale);
 		Double visibilityMax = (Double) jObject.get("visibility");
-		for(int m = k-1; m < l; m++) {
+		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
 			JSONObject jObj= (JSONObject) getDatiStorici(i,j).get(m);
 			if(visibilityMax < (Double) jObj.get("visibility")) {
 				visibilityMax = (Double) jObj.get("visibility");
@@ -76,12 +77,11 @@ public class StatsHistorical extends Dataset {
 	 * @param l
 	 * @return the speedMin
 	 */
-	public Double speedMin(int i, int j, int k, int l) {
-		
-		JSONObject jsonObject= (JSONObject) getDatiStorici(i,j).get(k);
+	public Double speedMin(int i, int j, int giornoIniziale, int giornoFinale) {
+		JSONObject jsonObject= (JSONObject) getDatiStorici(i,j).get(giornoIniziale);
 		JSONObject wind1 = (JSONObject) jsonObject.get("wind");
 		Double speedMin = (Double) wind1.get("speed");
-		for(int m = k-1; m < l; m++) {
+		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
 			JSONObject object= (JSONObject) getDatiStorici(i,j).get(m);
 			JSONObject wind2 = (JSONObject) object.get("wind");
 			if(speedMin > (Double) Double.parseDouble(wind2.get("speed").toString())) {
@@ -99,12 +99,11 @@ public class StatsHistorical extends Dataset {
 	 * @param l
 	 * @return the speedMax
 	 */
-	public Double speedMax(int i, int j, int k, int l) {
-		
-		JSONObject jsonObject = (JSONObject) getDatiStorici(i,j).get(k);
+	public Double speedMax(int i, int j, int giornoIniziale, int giornoFinale) {
+		JSONObject jsonObject = (JSONObject) getDatiStorici(i,j).get(giornoIniziale);
 		JSONObject wind1 = (JSONObject) jsonObject.get("wind");
 		Double speedMax = (Double) Double.parseDouble(wind1.get("speed").toString());
-		for(int m = k-1; m < l; m++) {
+		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
 			JSONObject object= (JSONObject) getDatiStorici(i,j).get(m);
 			JSONObject wind2 = (JSONObject) object.get("wind");
 			if(speedMax < (Double) wind2.get("speed")) {
@@ -119,14 +118,13 @@ public class StatsHistorical extends Dataset {
 	 * @param visibilityAverage the visibilityAverage to set
 	 * @return visibilityAverage
 	 */
-	public Double visibilityAverage(int i, int j, int k, int l)  {
-		
+	public Double visibilityAverage(int i, int j, int giornoIniziale, int giornoFinale)  {
 		Double sum = (double) 0;
-		for(int m = k-1; m < l; m++) {
+		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
 			JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(m);
 			 sum += (double) jObject.get("visibility");
 		}
-		Double visibilityAverage = (Double) sum/(l-k);
+		Double visibilityAverage = (Double) sum/(giornoFinale-giornoIniziale);
 		return visibilityAverage;
 	}
 
@@ -135,17 +133,15 @@ public class StatsHistorical extends Dataset {
 	 * @param speedAverage the speedAverage to set
 	 * @return speedAverage
 	 */
-	public Double speedAverage(int i, int j, int k, int l) {
-		
-		
+	public Double speedAverage(int i, int j, int giornoIniziale, int giornoFinale) {
 		Double sum = (double) 0;
-		for(int m = k-1; m < l; m++) {
+		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
 			JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(m);
 			JSONObject wind = (JSONObject) jObject.get("wind");
 			Double rawSpeed = (Double) Double.parseDouble(wind.get("speed").toString());
 			sum += (Double) rawSpeed;
 		}
-		Double speedAverage = sum/(l-k);
+		Double speedAverage = sum/(giornoFinale-giornoIniziale);
 		return speedAverage;
 		
 	}
@@ -156,15 +152,15 @@ public class StatsHistorical extends Dataset {
 	 * @return 
 	 * @throws Exception 
 	 */
-	public Double visibilityVariance(int i, int j, int k, int l) {
-		Double media = visibilityAverage(i,j,k,l);
+	public Double visibilityVariance(int i, int j, int giornoIniziale, int giornoFinale) {
+		Double media = visibilityAverage(i,j,giornoIniziale,giornoFinale);
 		Double sommaScartiQuad = (double) 0;
-		for(int m = k-1; m < l; m++) {
+		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
 			JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(m);
 			sommaScartiQuad += ((Double) jObject.get("visibility") - media)
 								*((Double) jObject.get("visibility") - media);
 		}
-		Double visibilityVariance = sommaScartiQuad/(l-k);
+		Double visibilityVariance = sommaScartiQuad/(giornoFinale-giornoIniziale);
 		return visibilityVariance;
 	}
 
@@ -173,16 +169,16 @@ public class StatsHistorical extends Dataset {
 	 * @param speedVariance the speedVariance to set
 	 * @throws Exception 
 	 */
-	public Double speedVariance(int i, int j, int k, int l)  {
-		Double media = speedAverage(i,j,k,l);
+	public Double speedVariance(int i, int j, int giornoIniziale, int giornoFinale)  {
+		Double media = speedAverage(i,j,giornoIniziale,giornoFinale);
 		Double sommaScartiQuad = (double) 0;
-		for(int m = k-1; m < l; m++) {
+		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
 			JSONObject jObject= (JSONObject) getDatiStorici(i,j).get(m);
 			JSONObject wind = (JSONObject) jObject.get("wind");
 			Double rawSpeed = (Double) Double.parseDouble(wind.get("speed").toString());
 			sommaScartiQuad += (rawSpeed - media)*(rawSpeed - media);
 		}
-		Double speedVariance = sommaScartiQuad/(l-k);
+		Double speedVariance = sommaScartiQuad/(giornoFinale-giornoIniziale);
 		return speedVariance;
 	}
 	

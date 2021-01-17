@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.univpm.progetto.model;
+package it.univpm.progetto.parser;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -68,16 +68,18 @@ public class CurrentWeatherParser extends WeatherParser {
 		RestTemplate restTemplate = new RestTemplate();
 		try {
 			jsonResponse = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q="+this.getCityName()+
-															"&appid="+appidFromFile(), String.class);
+													"&appid="+appidFromFile(), String.class);
 			obj = (JSONObject) parser.parse(jsonResponse);
-			
-		} catch (RestClientException | FileNotFoundException | ParseException e) {
+		} catch (RestClientException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
 		this.setCityName((String) obj.get("name"));
 		setAll(obj);
-		
 	}
 
 }
