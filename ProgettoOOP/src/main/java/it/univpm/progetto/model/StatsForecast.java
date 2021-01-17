@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
  * @author fedju
  *
  */
-public class StatsForecast extends Dataset {
+public class StatsForecast extends Stats {
 
 	private int numeroGiorni;
 	private JSONArray datiAttuali = new JSONArray();

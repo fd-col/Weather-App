@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.univpm.progetto.model;
+package it.univpm.progetto.model.parser;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,7 +20,7 @@ public class WeatherParser {
 	private String date;
 	private String cityName;
 	private Long timeUNIX;
-	private Long visibility;
+	private Double visibility;
 	private Double speed;
 	
 	public WeatherParser(String cityName) {
@@ -72,14 +72,14 @@ public class WeatherParser {
 	/**
 	 * @return the visibility
 	 */
-	public Long getVisibility() {
+	public Double getVisibility() {
 		return visibility;
 	}
 
 	/**
-	 * @param visibility the visibility to set
+	 * @param double1 the visibility to set
 	 */
-	public void setVisibility(Long visibility) {
+	public void setVisibility(Double visibility) {
 		this.visibility = visibility;
 	}
 
@@ -105,7 +105,7 @@ public class WeatherParser {
 	public void setAll(JSONObject obj) {
 		this.setTimeUNIX((Long) obj.get("dt"));	
 		this.setDate(formatDate());
-		this.setVisibility((Long) obj.get("visibility"));
+		this.setVisibility( (Double) Double.parseDouble( obj.get("visibility").toString() ) );
 		JSONObject wind = (JSONObject) obj.get("wind");
 		this.setSpeed((Double) Double.parseDouble( wind.get("speed").toString() ));
 	}
