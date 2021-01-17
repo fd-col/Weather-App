@@ -38,7 +38,7 @@ public class ForecastWeatherParser extends WeatherParser {
 	public void parsing() {  
 		ReaderFromFile rff = new ReaderFromFile();
 		JSONObject obj = new JSONObject();			  //il cityName lo prende dalla superclasse
-		obj = (JSONObject) rff.readFile( rff.nomeFile( getCityName(), false, true), true	).get(0);    
+		obj = (JSONObject) rff.readFile( rff.nomeFile( getCityName(), false, true), true  ).get(0);    
 		JSONArray jsonArray = (JSONArray) obj.get("list");
 		jsonArrayLoaded.add( jsonArray.get(0) );	//previsioni meteo 06/01/2021 12.00.00
 		jsonArrayLoaded.add( jsonArray.get(8) );	//previsioni meteo 07/01/2021 12.00.00

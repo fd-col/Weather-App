@@ -27,14 +27,16 @@ public class StatsForecast extends Stats {
 	public StatsForecast(String allCityName, boolean flag,boolean flag2, 
 							String cityName, int giornoIniziale, int giornoFinale) {
 		
-		super(allCityName, flag, flag2, cityName, giornoIniziale, giornoFinale );
+		super(allCityName, flag, flag2, cityName, giornoIniziale, giornoFinale);
 		
 		this.numeroGiorni = giornoFinale - giornoIniziale;
 		
-		datiAttuali = getDatiAttuali(3,3);
+		datiAttuali = getDatiAttuali(1,1);
 	}
 	
 	
+	
+	//NOTA: i dati attuali contengono "visibility" di tipo Double
 	
 	public boolean confronta(double soglia_errore) { 
 		double sogliaErroreDecimale = soglia_errore/100;
@@ -44,14 +46,20 @@ public class StatsForecast extends Stats {
 		for(int i=0; i<=numeroGiorni; i++) {
 			
 			JSONObject jObjAttuali = (JSONObject) datiAttuali.get(i);
-			Long visibilityAttuali = (Long) jObjAttuali.get("visibility");
+			Double visibilityAttuali = (Double) jObjAttuali.get("visibility");
+			
 			Map<String, Double> m = new LinkedHashMap<String, Double>(1);
 			Double speedAttuali =  m.getOrDefault("speed", 0.0);
 			
+			
+			
 			JSONObject jObjFuturi = (JSONObject) getDatiFuturi().get(i);
 			Long visibilityFuturi = (Long) jObjFuturi.get("visibility");
+			
 			Map<String, Double> m1 = new LinkedHashMap<String, Double>(1);
 			Double speedFuturi =  m1.getOrDefault("speed", 0.0);
+			
+			
 			
 			//prendo la differenza in  valore assoluto tra la visibilità dei dati attuali e quella delle previsioni future 
 			Double visibilityDifference = Math.abs( (double) (visibilityAttuali - visibilityFuturi) );

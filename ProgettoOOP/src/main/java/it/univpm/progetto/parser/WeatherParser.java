@@ -100,7 +100,7 @@ public class WeatherParser {
 	public void parsing() {}
 	
 	/**
-	 * assegna il valore agli attributi della classe madre WeatherParser tramite il jsonObject passato come parametro
+	 * assegna il valore agli attributi della classe madre WeatherParser prendendoli dal jsonObject passato come parametro
 	 */
 	public void setAll(JSONObject obj) {
 		this.setTimeUNIX((Long) obj.get("dt"));	

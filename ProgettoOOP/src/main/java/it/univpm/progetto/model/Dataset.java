@@ -63,7 +63,7 @@ public class Dataset {
 	public JSONArray getDatiAttuali(int primaCitta, int ultimaCitta) {
 		JSONArray jsonArrayTemp = new JSONArray();
 		for(int i=primaCitta; i <= ultimaCitta; i++)
-			jsonArrayTemp.add( datiAttuali.get(i-1) ); 
+			jsonArrayTemp.addAll( datiAttuali.get(i-1) ); 
 		
 		return (JSONArray)jsonArrayTemp;
 	}
@@ -74,7 +74,7 @@ public class Dataset {
 	public JSONArray getDatiStorici(int primaCitta, int ultimaCitta) {
 		JSONArray jsonArrayTemp = new JSONArray();
 		for(int i=primaCitta; i <= ultimaCitta; i++)
-			jsonArrayTemp.add( datiStorici.get(i-1) ); 
+			jsonArrayTemp.addAll( datiStorici.get(i-1) ); 
 
 		return (JSONArray)jsonArrayTemp;
 	}

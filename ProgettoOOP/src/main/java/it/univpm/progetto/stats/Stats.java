@@ -11,7 +11,7 @@ import it.univpm.progetto.model.Dataset;
  */
 public class Stats extends Dataset {
 
-	private int giornoIniziale, giornoFinale;
+	protected int giornoIniziale, giornoFinale;
 	/**
 	 * costruttore
 	 */

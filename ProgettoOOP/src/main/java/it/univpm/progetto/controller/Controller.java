@@ -70,7 +70,7 @@ public class Controller {
 	@PostMapping (value= "/stats/historical")
 	public JSONObject stats(@RequestBody Index i) {
 		StatsHistorical statsHistorical = new StatsHistorical("Trieste,Ortona,Venezia", false, false, "Trieste", i.giornoIniziale, i.giornoFinale ); 		//statistiche riguardanti dati storici
-		return statsHistorical.formatter(i.primaCitta, i.ultimaCitta, i.giornoIniziale, i.giornoFinale);
+		return statsHistorical.formatter(i.primaCitta, i.ultimaCitta);
 	}
 	
 	/**
