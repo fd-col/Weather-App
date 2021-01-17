@@ -17,6 +17,7 @@ import org.json.simple.JSONObject;
  */
 public class WeatherParser {
 	
+	private String date;
 	private String cityName;
 	private Long timeUNIX;
 	private Long visibility;
@@ -26,6 +27,20 @@ public class WeatherParser {
 		this.cityName = cityName;
 	}
 	
+	/**
+	 * @return the date
+	 */
+	public String getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	/**
 	 * @return the cityName
 	 */
@@ -85,6 +100,17 @@ public class WeatherParser {
 	public void parsing() {}
 	
 	/**
+	 * assegna il valore agli attributi della classe madre WeatherParser tramite il jsonObject passato come parametro
+	 */
+	public void setAll(JSONObject obj) {
+		this.setTimeUNIX((Long) obj.get("dt"));	
+		this.setDate(formatDate());
+		this.setVisibility((Long) obj.get("visibility"));
+		JSONObject wind = (JSONObject) obj.get("wind");
+		this.setSpeed((Double) Double.parseDouble( wind.get("speed").toString() ));
+	}
+	
+	/**
 	 * formattatore generale del json restituito
 	 * @return JSONObject
 	 */
@@ -93,7 +119,7 @@ public class WeatherParser {
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("cityname", this.cityName);
 		jsonObj.put("timeUNIX", this.timeUNIX);
-		jsonObj.put("date", formatDate());
+		jsonObj.put("date", this.date);
 		jsonObj.put("visibility", this.visibility);
 		Map<String, Double> m1 = new LinkedHashMap<String, Double>(1);	// www.educba.com/json-in-java
 		m1.put("speed", this.speed);  
@@ -102,12 +128,16 @@ public class WeatherParser {
 		return jsonObj;
 	}
 	
+	/**
+	 * formatta una data a partire dal tempo UNIX 
+	 * @return dateFromTimeUnix
+	 */
 	public String formatDate() {
 		Date date = new Date(this.timeUNIX*1000L);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-		String java_date = simpleDateFormat.format(date);
-		return java_date;
+		String dateFromTimeUnix = simpleDateFormat.format(date);
+		return dateFromTimeUnix;
 	}
 
 }

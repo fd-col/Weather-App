@@ -17,24 +17,35 @@ public class Dataset {
 	
 	private ArrayList<JSONArray> datiAttuali;
 	private ArrayList<JSONArray> datiStorici;
-	private JSONArray datiFuturi;	
+	private JSONArray datiFuturi;
+	
 	/**
 	 * costruttore (dati meteo attuali, dati meteo storici)
 	 * flag=true per i dati attuali, flag=false per i dati storici
 	 */
-	public Dataset(String cityName1, String cityName2, String cityName3, boolean flag) {
+	public Dataset(String cityName1, String cityName2, String cityName3, boolean flag1, boolean flag2, 
+					String cityName, int giornoIniziale, int giornoFinale) {
 		
 		ReaderFromFile rff = new ReaderFromFile();
 		
-		JSONArray jsonArray1 = rff.readFile(rff.nomeFile(cityName1, flag));
-		JSONArray jsonArray2 = rff.readFile(rff.nomeFile(cityName2, flag));
-		JSONArray jsonArray3 = rff.readFile(rff.nomeFile(cityName3, flag));
+		JSONArray jsonArray1 = rff.readFile(rff.nomeFile(cityName1, flag1, flag2) , false);
+		JSONArray jsonArray2 = rff.readFile(rff.nomeFile(cityName2, flag1, flag2) , false);
+		JSONArray jsonArray3 = rff.readFile(rff.nomeFile(cityName3, flag1, flag2) , false);
 		
-		if(flag) {
+		if(flag1) {
 			datiAttuali = new ArrayList<JSONArray>();
 			datiAttuali.add(jsonArray1); 
 			datiAttuali.add(jsonArray2); 
-			datiAttuali.add(jsonArray3); } 
+			datiAttuali.add(jsonArray3); 
+			if(flag2) {
+				datiFuturi = new JSONArray();
+				for(int i=giornoIniziale; i<=giornoFinale; i++) {
+					ForecastWeatherParser forecastWeatherParser = new ForecastWeatherParser(cityName, i-1);
+					forecastWeatherParser.parsing();
+					datiFuturi.add(forecastWeatherParser.formatter());
+				} 
+			}
+		}
 		else {
 			datiStorici = new ArrayList<JSONArray>();
 			datiStorici.add(jsonArray1); 
@@ -49,7 +60,7 @@ public class Dataset {
 	 * @param giornoIniziale
 	 * @param giornoFinale
 	 */
-	public Dataset(String cityName, int giornoIniziale, int giornoFinale) {
+/*	
 		datiFuturi = new JSONArray();
 		for(int i=giornoIniziale; i<=giornoFinale; i++) {
 			ForecastWeatherParser forecastWeatherParser = new ForecastWeatherParser(cityName, i-1);
@@ -57,7 +68,7 @@ public class Dataset {
 			datiFuturi.add(forecastWeatherParser.formatter());
 		}
 	}
-	
+*/	
 	/**
 	 * @return the datiAttuali
 	 */
@@ -74,18 +85,9 @@ public class Dataset {
 	 */
 	public JSONArray getDatiStorici(int primaCitta, int ultimaCitta) {
 		JSONArray jsonArrayTemp = new JSONArray();
-		try {
-			for(int i=primaCitta; i <= ultimaCitta; i++)
-				jsonArrayTemp.addAll( datiStorici.get(i-1) ); 
-		}catch(UnsupportedOperationException e) {
-			e.printStackTrace();
-		}
-		catch(ClassCastException e) {
-			e.printStackTrace();
-		}
-		catch(NullPointerException e) {
-			e.printStackTrace();
-		}
+		for(int i=primaCitta; i <= ultimaCitta; i++)
+			jsonArrayTemp.addAll( datiStorici.get(i-1) ); 
+
 		return (JSONArray)jsonArrayTemp;
 	}
 	

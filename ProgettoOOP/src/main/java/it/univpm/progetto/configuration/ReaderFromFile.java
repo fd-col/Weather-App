@@ -23,59 +23,43 @@ public class ReaderFromFile implements Reader {
 	 *  e alla scelta effettuata tramite il boolean "flag"
 	 *  @return nome del file 
 	 */
-	public String nomeFile(String cityName, boolean flag) {
-		if(flag)
+	public String nomeFile(String cityName, boolean flag1, boolean flag2) {
+		if(flag1)
 			return "dataset/dati-attuali-"+cityName+".json";
+		else if(flag2)
+			return "dataset/previsioni-future-"+cityName+".json";
 		else
 			return "dataset/dati-storici-"+cityName+".json";
 	}
 	
 	/**
-	 * stabilisce il nome del file in base al cityName
-	 * @param cityName
-	 * @return nome del file
+	 * legge da file il JSONObject o il JSONArray, e ritorna il JSONObject in prima posizione del JSONArray,
+	 * altrimenti direttamente il JSONArray
+	 * @param nome_file
+	 * @param flag sceglie se prendere un JSONOBJECT o un JSONArray (true=JSONObject, false=JSONArray)
+	 * @return jsonArrayFromFile
 	 */
-	public String nomeFile(String cityName) {
-		return "dataset/previsioni-future-"+cityName+".json";
-	}
-	
-	//NOTA BENE: QUANDO LO USO PER LEGGERE UN JSON-OBJECT PROVARE A INSERIRLO 
-	//IN UN JSONARRAY E FAR RESTITUIRE IL JSONOBJECT IN PRIMA POSIZIONE
-	//---> pare non funzionare.
-	// cercare Generics come tipo di ritorno
-	
-	public JSONArray readFile(String nome_file) {
+	public JSONArray readFile(String nome_file, boolean flag ) {
 		JSONParser parser = new JSONParser();
 		JSONArray jsonArrayFromFile = new JSONArray();
-		//JSONObject jsonObj = new JSONObject();
+		JSONObject jsonObj = new JSONObject();
 		try {
 			BufferedReader buffRead = new BufferedReader(new FileReader(nome_file));
 			String line = buffRead.readLine();
-			jsonArrayFromFile = (JSONArray) parser.parse(line);
-			//jsonObj = (JSONObject) parser.parse(line);
-
-			buffRead.close();
+			//se è un JSONOBJECT 
+			if(flag){
+				jsonObj = (JSONObject) parser.parse(line);
+				jsonArrayFromFile.add(jsonObj);
+			}
+			//altrimenti è un JSONArray 
+			else 
+				jsonArrayFromFile = (JSONArray) parser.parse(line);
 			
+			buffRead.close();
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		} 
 		return jsonArrayFromFile;
-	}
-	
-	public JSONObject readFileToJsonObject(String nome_file) {
-		JSONParser parser = new JSONParser();
-		JSONObject jsonObjFromFile = new JSONObject();
-		try {
-			BufferedReader buffRead = new BufferedReader(new FileReader(nome_file));
-			String line = buffRead.readLine();
-			jsonObjFromFile = (JSONObject) parser.parse(line);
-
-			buffRead.close();
-			
-		} catch (IOException | ParseException e) {
-			e.printStackTrace();
-		} 
-		return jsonObjFromFile;
 	}
 
 }

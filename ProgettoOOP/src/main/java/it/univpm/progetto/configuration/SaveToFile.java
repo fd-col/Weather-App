@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import it.univpm.progetto.model.WeatherParser;
+import it.univpm.progetto.model.WeatherData;
 
 /**
  * accumula dati su file locale dalle API di OpenWeather
@@ -25,11 +25,11 @@ public class SaveToFile {
 	 */
 	public void appendToFile(String cityName, String nome_file) {
 		try {
-			WeatherParser wp = new WeatherParser(cityName); //inizializzo gli attributi del JSONObject
+			WeatherData weatherData = new WeatherData(cityName); //inizializzo gli attributi del JSONObject
 			PrintWriter file_output = new PrintWriter(
 										new BufferedWriter(
 											new FileWriter(nome_file, true)));
-			file_output.print(wp.formatter()+","); //stampo su file il JSONObject
+			file_output.print(weatherData.getJsonObj()+","); //stampo su file il JSONObject
 			file_output.close();
 		} catch (IOException e) {
 			e.printStackTrace();

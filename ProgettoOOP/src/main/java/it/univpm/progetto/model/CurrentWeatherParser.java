@@ -76,10 +76,7 @@ public class CurrentWeatherParser extends WeatherParser {
 		}
 		
 		this.setCityName((String) obj.get("name"));
-		this.setTimeUNIX((Long) obj.get("dt"));	
-		this.setVisibility((Long) obj.get("visibility"));
-		JSONObject wind = (JSONObject) obj.get("wind");
-		this.setSpeed((Double) Double.parseDouble( wind.get("speed").toString() ));
+		setAll(obj);
 		
 	}
 

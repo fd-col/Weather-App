@@ -14,9 +14,8 @@ import it.univpm.progetto.configuration.ReaderFromFile;
  */
 public class ForecastWeatherParser extends WeatherParser {
 	
-	int i;
+	private int i;
 	JSONArray jsonArrayLoaded = new JSONArray();
-	JSONArray jsonArrayParsed = new JSONArray();
 	
 	/**
 	 * @return the jsonArrayLoaded
@@ -39,7 +38,7 @@ public class ForecastWeatherParser extends WeatherParser {
 	public void parsing() {  
 		ReaderFromFile rff = new ReaderFromFile();
 		JSONObject obj = new JSONObject();			  //il cityName lo prende dalla superclasse
-		obj = (JSONObject) rff.readFileToJsonObject(	rff.nomeFile(  getCityName()	)		);    
+		obj = (JSONObject) rff.readFile( rff.nomeFile( getCityName(), false, true), true	).get(0);    
 		JSONArray jsonArray = (JSONArray) obj.get("list");
 		jsonArrayLoaded.add( jsonArray.get(0) );	//previsioni meteo 06/01/2021 12.00.00
 		jsonArrayLoaded.add( jsonArray.get(8) );	//previsioni meteo 07/01/2021 12.00.00
@@ -47,13 +46,9 @@ public class ForecastWeatherParser extends WeatherParser {
 		jsonArrayLoaded.add( jsonArray.get(24) );	//previsioni meteo 09/01/2021 12.00.00
 		jsonArrayLoaded.add( jsonArray.get(32) );	//previsioni meteo 10/01/2021 12.00.00	
 		
-		JSONObject jsonObj = (JSONObject) jsonArrayLoaded.get(i) ; //analizzo ogni singolo giorno delle previsioni meteo
-		this.setTimeUNIX((Long) jsonObj.get("dt"));					//inizializzo gli attributi della superclasse
-		this.setVisibility((Long) jsonObj.get("visibility"));
-		JSONObject wind = (JSONObject) jsonObj.get("wind");
-		this.setSpeed((Double) Double.parseDouble( wind.get("speed").toString() ));
+		JSONObject jsonObject = (JSONObject) jsonArrayLoaded.get(i) ; //analizzo ogni singolo giorno delle previsioni meteo
+																	//inizializzo gli attributi della superclasse
+		setAll(jsonObject);
 	}
-	
-
 
 }

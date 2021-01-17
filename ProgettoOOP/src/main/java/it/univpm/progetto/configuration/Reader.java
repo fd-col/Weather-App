@@ -4,7 +4,6 @@
 package it.univpm.progetto.configuration;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 /**
  * @author colleluori
@@ -13,9 +12,9 @@ import org.json.simple.JSONObject;
  */
 public interface Reader {
 
-	public String nomeFile(String s, boolean f);
+	public String nomeFile(String s, boolean flag1, boolean flag2);
 	
-	public JSONArray readFile(String nome_file);
+	public JSONArray readFile(String nome_file, boolean flag);
 	
-	public JSONObject readFileToJsonObject(String nome_file);
+	//public JSONObject readFileToJsonObject(String nome_file);
 }
