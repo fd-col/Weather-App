@@ -46,7 +46,11 @@ Metadati relativi ai dati delle statistiche:
 	}
 }
 </code></pre>
+In particolare:
+
+ - "**date**" indica la data del giorno a cui fanno riferimento i dati riportati
+ - "
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA0MzA0OTEwLC0xMjk1MDQ0ODcwXX0=
+eyJoaXN0b3J5IjpbLTM2NjYzNTE4NCwtMTI5NTA0NDg3MF19
 -->
