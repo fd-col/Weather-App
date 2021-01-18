@@ -4,7 +4,7 @@
 ---
 
 <h1 id="weather-app">Weather App</h1>
-<p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
+<p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito., in</p>
 <h3 id="dataset">Dataset</h3>
 <p>Il dataset è costruito con due differenti modalità :</p>
 <ul>
@@ -96,6 +96,6 @@ In particolare:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDQ2NzkxNDEsODkyNzQwMjU3LC0xMj
-k1MDQ0ODcwXX0=
+eyJoaXN0b3J5IjpbMTg4NTA4MDQzNiwtMTEwNDY3OTE0MSw4OT
+I3NDAyNTcsLTEyOTUwNDQ4NzBdfQ==
 -->
