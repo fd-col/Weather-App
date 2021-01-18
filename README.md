@@ -1,5 +1,5 @@
-"&gt;W
-# W
+
+# Weather App
 <p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
 <p>Il dataset, che contiene dati relativi alle città di Trieste, Ortona e Venezia, è costruito con due differenti modalità :</p>
@@ -143,7 +143,7 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <strong>n5</strong> deve essere un numero compreso tra 0 e 100, e sta ad indicare la percentuale di soglia di errore.</p>
 <h1 id="uml">UML</h1>
 <h2 id="use-case-diagram">Use Case Diagram</h2>
-https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png
+![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png)
 <h2 id="sequence-diagram">Sequence Diagram</h2>
 <p><img src="
 ## Sequence Diagram
@@ -151,5 +151,5 @@ https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRA
 ![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/SEQUENCE_DIAGRAM_1.png" alt="alt text"></p>
 )
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTQwNzI2NDBdfQ==
+eyJoaXN0b3J5IjpbLTQ1MjM3NzcwMV19
 -->
