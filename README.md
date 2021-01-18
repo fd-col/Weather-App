@@ -68,8 +68,12 @@ In particolare:
 
  -  statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all'utente se le previsioni, in base ai dati raccolti, sono state attendibili oppure no). L'utente inoltre sceglierà la soglia di errore attraverso la quale si valuterà l'attendibilità.
   
+## Rotte dell'applicazione
+
+| GET |  |
+|--|--|
+|  |  |
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDQ3NTI2NzgsLTEyOTUwNDQ4NzBdfQ
-==
+eyJoaXN0b3J5IjpbLTU4ODI3NDM1NSwtMTI5NTA0NDg3MF19
 -->
