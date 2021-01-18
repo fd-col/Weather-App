@@ -93,9 +93,10 @@ In particolare:
 
 ## Filtri
 
-L'utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da resti
+L'utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da restituire e il periodo da considerare.
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzNTc5MTA2OCwtMTEwNDY3OTE0MSw4OT
-I3NDAyNTcsLTEyOTUwNDQ4NzBdfQ==
+eyJoaXN0b3J5IjpbLTEyNDY1NzAzNjUsLTExMDQ2NzkxNDEsOD
+kyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
 -->
