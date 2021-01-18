@@ -1,9 +1,4 @@
----
-
-
----
-
-<h1 id="weather-app">Weather App</h1>
+-app">Weather App</h1>
 <p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
 <p>Il dataset, che contiene dati relativi alle città di Trieste, Ortona e Venezia, è costruito con due differenti modalità :</p>
@@ -151,5 +146,8 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 )
 <h2 id="class-diagram">Class Diagram</h2>
 <p></p><p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png%22" alt="alt text"></p> src="
-![althttps://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png" alt="alt text"&gt;
+![althttps://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png" alt="alt text"&gt;##
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTI2MjY1OTcwOV19
+-->
