@@ -91,9 +91,11 @@ In particolare:
  6. Restituisce le statistiche fatte con i dati storici
  7. Restituisce le statistiche relative alle previsioni
 
+## Filtri
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ1NDU1MTksODkyNzQwMjU3LC0xMjk1MD
-Q0ODcwXX0=
+eyJoaXN0b3J5IjpbLTExMDQ2NzkxNDEsODkyNzQwMjU3LC0xMj
+k1MDQ0ODcwXX0=
 -->
