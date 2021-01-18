@@ -73,12 +73,15 @@ In particolare:
 | Tipo di chiamata| rotta | 
 |--|--| 
 | GET |/metadata  | 
+|GET | /save|
 |POST |/weather/current|
 |POST| /weather/historical|
 |POST| /weather/forecast|
-|POST| /
+|POST| /stats/historical|
+|POST| /stats/forecast|
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODkyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
+eyJoaXN0b3J5IjpbMTc0MTM5NTc1MSw4OTI3NDAyNTcsLTEyOT
+UwNDQ4NzBdfQ==
 -->
