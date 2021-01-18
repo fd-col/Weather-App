@@ -3,6 +3,8 @@
 
 ---
 
+<hr>
+<hr>
 <h1 id="weather-app">Weather App</h1>
 <p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
@@ -29,8 +31,7 @@ Metadati relativi ai dati del dataset :
 	}
  }
 </code></pre>
-
-Metadati relativi ai dati delle statistiche:
+<p>Metadati relativi ai dati delle statistiche:</p>
 <pre><code>{
 "visibilityStats": {
 	"visibilityMax": 10000.0,
@@ -46,80 +47,99 @@ Metadati relativi ai dati delle statistiche:
 	}
 }
 </code></pre>
-In particolare:
+<p>In particolare:</p>
+<ul>
+<li>“<strong>date</strong>” indica la data del giorno a cui fanno riferimento i dati riportati;</li>
+<li>“<strong>visibility</strong>” indica il valore numerico che esprime la visibilità relativa a quella città in quel giorno;</li>
+<li>“<strong>cityname</strong>” indica la città;</li>
+<li>“<strong>timeUnix</strong>” indica la data espressa in secondi a partire dal 1° gennaio 1970;</li>
+<li>“<strong>speed</strong>” indica il valore numerico che esprime la velocità del vento relativa a quella città in quel giorno;</li>
+</ul>
+<p>Considerando invece i metadati relativi alle statistiche:</p>
+<ul>
+<li>“<strong>visibilityMin</strong>”, “<strong>visibilityMax</strong>”, “<strong>visibilityAverage</strong>” e “<strong>visibilityVariance</strong>” indicano rispettivamente il valore minimo,  massimo, la media e la varianza delle visibilità dei giorni presi in considerazione.</li>
+<li>“<strong>speedMin</strong>”, “<strong>speedMax</strong>”, “<strong>speedAverage</strong>” e “<strong>speedVariance</strong>” indicano rispettivamente il valore minimo, massimo, la media e la varianza delle velocità del vento dei giorni presi in considerazione.</li>
+</ul>
+<h2 id="statistiche">Statistiche</h2>
+<p>Le statistiche che la REST API restituisce si distinguono in:</p>
+<ul>
+<li>
+<p>statistiche relative ai dati storici (attraverso un file JSON vengono illustrati i valori descritti in precedenza, ovvero media, varianza, valori minimi e massimi). La città e il periodo da valutare vengono scelti dall’utente.</p>
+</li>
+<li>
+<p>statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all’utente se le previsioni, in base ai dati raccolti, sono state attendibili oppure no). L’utente inoltre sceglierà la soglia di errore attraverso la quale si valuterà l’attendibilità.</p>
+</li>
+</ul>
+<h2 id="rotte-dellapplicazione">Rotte dell’applicazione</h2>
 
- - "**date**" indica la data del giorno a cui fanno riferimento i dati riportati;
- - "**visibility**" indica il valore numerico che esprime la visibilità relativa a quella città in quel giorno;
- - "**cityname**" indica la città;
- - "**timeUnix**" indica la data espressa in secondi a partire dal 1° gennaio 1970;
- - "**speed**" indica il valore numerico che esprime la velocità del vento relativa a quella città in quel giorno;
- 
- Considerando invece i metadati relativi alle statistiche:
- 
- - "**visibilityMin**", "**visibilityMax**", "**visibilityAverage**" e "**visibilityVariance**" indicano rispettivamente il valore minimo,  massimo, la media e la varianza delle visibilità dei giorni presi in considerazione.
- - "**speedMin**", "**speedMax**", "**speedAverage**" e "**speedVariance**" indicano rispettivamente il valore minimo, massimo, la media e la varianza delle velocità del vento dei giorni presi in considerazione.
- 
-## Statistiche
-
- Le statistiche che la REST API restituisce si distinguono in:
- 
-
- - statistiche relative ai dati storici (attraverso un file JSON vengono illustrati i valori descritti in precedenza, ovvero media, varianza, valori minimi e massimi). La città e il periodo da valutare vengono scelti dall'utente.
-
- -  statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all'utente se le previsioni, in base ai dati raccolti, sono state attendibili oppure no). L'utente inoltre sceglierà la soglia di errore attraverso la quale si valuterà l'attendibilità.
-  
-## Rotte dell'applicazione
-
-| Tipo di chiamata| Rotta | 
-|--|--| 
-| 1) **GET** |/metadata  | 
-|2) **GET** | /save|
-|3) **POST** |/weather/current|
-|4) **POST**| /weather/historical|
-|5) **POST**| /weather/forecast|
-|6) **POST**| /stats/historical|
-|7) **POST**| /stats/forecast|
-
- 
-
- 1. Restituisce all'utente i metadati
- 2. E' servita per salvare i dati nel dataset
-	 *Nota*: ciò che viene restituito da questa chiamata viene 		      sovrascritto nel dataset. 
- 3. Restituisce i dati attuali
- 4. Restituisce i dati storici
- 5. Restituisce le previsioni future
- 6. Restituisce le statistiche fatte con i dati storici
- 7. Restituisce le statistiche relative alle previsioni
-
-## Filtri
-
-L'utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da restituire e il periodo da considerare.
-Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente:
-
+<table>
+<thead>
+<tr>
+<th>Tipo di chiamata</th>
+<th>Rotta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1) <strong>GET</strong></td>
+<td>/metadata</td>
+</tr>
+<tr>
+<td>2) <strong>GET</strong></td>
+<td>/save</td>
+</tr>
+<tr>
+<td>3) <strong>POST</strong></td>
+<td>/weather/current</td>
+</tr>
+<tr>
+<td>4) <strong>POST</strong></td>
+<td>/weather/historical</td>
+</tr>
+<tr>
+<td>5) <strong>POST</strong></td>
+<td>/weather/forecast</td>
+</tr>
+<tr>
+<td>6) <strong>POST</strong></td>
+<td>/stats/historical</td>
+</tr>
+<tr>
+<td>7) <strong>POST</strong></td>
+<td>/stats/forecast</td>
+</tr>
+</tbody>
+</table><ol>
+<li>Restituisce all’utente i metadati</li>
+<li>E’ servita per salvare i dati nel dataset<br>
+<em>Nota</em>: ciò che viene restituito da questa chiamata viene 		      sovrascritto nel dataset.</li>
+<li>Restituisce i dati attuali</li>
+<li>Restituisce i dati storici</li>
+<li>Restituisce le previsioni future</li>
+<li>Restituisce le statistiche fatte con i dati storici</li>
+<li>Restituisce le statistiche relative alle previsioni</li>
+</ol>
+<h2 id="filtri">Filtri</h2>
+<p>L’utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da restituire e il periodo da considerare.<br>
+Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente:</p>
 <pre><code>{
-    "primaCitta": <<n>n1>,
-    "ultimaCitta": <<n>n2>,
-    "giornoIniziale": <<n>n3>,
-    "giornoFinale": <<n>n4>
+    "primaCitta": &lt;n1&gt;,
+    "ultimaCitta": &lt;n2&gt;,
+    "giornoIniziale": &lt;n3&gt;,
+    "giornoFinale": &lt;n4&gt;
 }</code></pre>
-I numeri **n1** e **n2** devono essere compresi tra 1 e 3 (1 per Trieste, 2 per Ortona e 3 per Venezia), in questo modo l'utente può scegliere quali città mostrare. 
-I numeri **n3** e **n4** invece devono essere compresi tra 1 e 5 ( giorni che vanno dal 01/01 al 05/01 per i dati storici, dal 06/01 al 10/01 per i dati attuali e dal 06/01 al 10/01 per le previsioni), così facendo l'utente può scegliere il periodo da considerare.
-
-*Nota*: n2 deve essere necessariamente maggiore o uguale di n1 (quest'ultimo caso se si vuole considerare una sola città), così come n4 deve essere maggiore o uguale di n3.
-
-Per la chiamata 6 si utilizza lo stesso body, ma in questo caso **n1** e **n2** devono essere uguali, in quanto le statistiche possono essere fatte solo per ogni singola città.
-
-La chiamata 7 ha il seguente body (sempre in JSON):
+<p>I numeri <strong>n1</strong> e <strong>n2</strong> devono essere compresi tra 1 e 3 (1 per Trieste, 2 per Ortona e 3 per Venezia), in questo modo l’utente può scegliere quali città mostrare.<br>
+I numeri <strong>n3</strong> e <strong>n4</strong> invece devono essere compresi tra 1 e 5 ( giorni che vanno dal 01/01 al 05/01 per i dati storici, dal 06/01 al 10/01 per i dati attuali e dal 06/01 al 10/01 per le previsioni), così facendo l’utente può scegliere il periodo da considerare.</p>
+<p><em>Nota</em>: n2 deve essere necessariamente maggiore o uguale di n1 (quest’ultimo caso se si vuole considerare una sola città), così come n4 deve essere maggiore o uguale di n3.</p>
+<p>Per la chiamata 6 si utilizza lo stesso body, ma in questo caso <strong>n1</strong> e <strong>n2</strong> devono essere uguali, in quanto le statistiche possono essere fatte solo per ogni singola città.</p>
+<p>La chiamata 7 ha il seguente body (sempre in JSON):</p>
 <pre><code>{
-    "primaCitta": <<n>n1>,
-    "ultimaCitta": <<n>n2>,
-    "giornoIniziale": <<n>n3>,
-    "giornoFinale": <<n>n4>,
-    "soglia_errore": <<n>n5>
+    "primaCitta": &lt;n1&gt;,
+    "ultimaCitta": &lt;n2&gt;,
+    "giornoIniziale": &lt;n3&gt;,
+    "giornoFinale": &lt;n4&gt;,
+    "soglia_errore": &lt;n5&gt;
 }</code></pre>
-Valgono gli stessi criteri di scelta per n1, n2, n3 e n4.
-**n5** deve essere un numero compreso tra 0 e 100, e sta ad indicare la percentuale di soglia di errore.
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzAwNjgwMjksLTEyNDY1NzAzNjUsLT
-ExMDQ2NzkxNDEsODkyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
--->
+<p>Valgono gli stessi criteri di scelta per n1, n2, n3 e n4.<br>
+<strong>n5</strong> deve essere un numero compreso tra 0 e 100, e sta ad indicare la percentuale di soglia di errore.</p>
+
