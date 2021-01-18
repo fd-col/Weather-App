@@ -4,7 +4,6 @@
 ---
 
 <hr>
-<hr>
 <h1 id="weather-app">Weather App</h1>
 <p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
