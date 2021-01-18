@@ -1,5 +1,9 @@
+---
 
-# Weather App
+
+---
+
+<h1 id="weather-app">Weather App</h1>
 <p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
 <p>Il dataset, che contiene dati relativi alle città di Trieste, Ortona e Venezia, è costruito con due differenti modalità :</p>
@@ -142,18 +146,10 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <p>Valgono gli stessi criteri di scelta per n1, n2, n3 e n4.<br>
 <strong>n5</strong> deve essere un numero compreso tra 0 e 100, e sta ad indicare la percentuale di soglia di errore.</p>
 <h1 id="uml">UML</h1>
-
-![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png)
-
-## Class Diagram
-
-![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png)
-
+<h2 id="use-case-diagram">Use Case Diagram</h2>
+<p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png" alt="alt text"></p>
+<h2 id="class-diagram">Class Diagram</h2>
+<p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png" alt="alt text"></p>
 <h2 id="sequence-diagram">Sequence Diagram</h2>
-<p><img src="
-## Sequence Diagram
+<p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/SEQUENCE_DIAGRAM_1.png" alt="alt text"></p>
 
-![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/SEQUENCE_DIAGRAM_1.png) 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNjkyODYwMDQyXX0=
--->
