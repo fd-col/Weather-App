@@ -87,9 +87,13 @@ In particolare:
 	 *Nota*: ciò che viene restituito da questa chiamata viene 		      sovrascritto nel dataset. 
  3. Restituisce i dati attuali
  4. Restituisce i dati storici
- 5. Restituisce
+ 5. Restituisce le previsioni future
+ 6. Restituisce le statistiche fatte con i dati storici
+ 7. Restituisce le statistiche relative alle previsioni
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Njc4OTMxMTgsODkyNzQwMjU3LC0xMj
-k1MDQ0ODcwXX0=
+eyJoaXN0b3J5IjpbODQ1NDU1MTksODkyNzQwMjU3LC0xMjk1MD
+Q0ODcwXX0=
 -->
