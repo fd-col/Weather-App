@@ -76,8 +76,9 @@ In particolare:
 |POST |/weather/current|
 |POST| /weather/historical|
 |POST| /weather/forecast|
+|POST| /
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3Nzk0OTQ0MiwtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbODkyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
 -->
