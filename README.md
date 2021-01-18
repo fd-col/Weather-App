@@ -107,9 +107,12 @@ I numeri **n3** e **n4** invece devono essere compresi tra 1 e 5 ( giorni che va
 
 *Nota*: n2 deve essere necessariamente maggiore o uguale di n1 (quest'ultimo caso se si vuole considerare una sola città), così come n4 deve essere maggiore o uguale di n3.
 
-Per la chiamata 6 vale lo stesso body, ma in questo caso **n1** e **n2** devono essere uguali, in quanto le statistiche possono
+Per la chiamata 6 si utilizza lo stesso body, ma in questo caso **n1** e **n2** devono essere uguali, in quanto le statistiche possono essere fatte solo per ogni singola città.
+
+La chiamata
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwNzU5MDAxMSwtMTI0NjU3MDM2NSwtMT
-EwNDY3OTE0MSw4OTI3NDAyNTcsLTEyOTUwNDQ4NzBdfQ==
+eyJoaXN0b3J5IjpbLTE5MDc0MDU2MzUsLTEyNDY1NzAzNjUsLT
+ExMDQ2NzkxNDEsODkyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
 -->
