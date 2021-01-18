@@ -49,28 +49,25 @@ public class Controller {
 	 */
 	@PostMapping (value= "/weather/current")
 	public  JSONArray current(@RequestBody Index i) {
-		Dataset ds = new Dataset("Trieste,Ortona,Venezia",true, false, "Trieste", i.giornoIniziale, i.giornoFinale);
-		return ds.getDatiAttuali(i.primaCitta, i.ultimaCitta);				// 1=Trieste, 2=Ortona, 3=Venezia
+		Dataset ds = new Dataset("Trieste,Ortona,Venezia",true, false, i.primaCitta, i.ultimaCitta,
+																		i.giornoIniziale, i.giornoFinale);
+		return ds.getDatiAttuali();				// 1=Trieste, 2=Ortona, 3=Venezia
 	}															
 	
 	
 	@PostMapping (value= "/weather/historical")
 	public  JSONArray historical(@RequestBody Index i) {
-		Dataset ds = new Dataset("Trieste,Ortona,Venezia",false, false, "Trieste", i.giornoIniziale, i.giornoFinale);
-		return ds.getDatiStorici(i.primaCitta, i.ultimaCitta);
+		Dataset ds = new Dataset("Trieste,Ortona,Venezia",false, false, i.primaCitta, i.ultimaCitta, 
+																		i.giornoIniziale, i.giornoFinale);
+		return ds.getDatiStorici();
 	}
 	
 	
 	@PostMapping (value= "/weather/forecast")
 	public JSONArray forecast(@RequestBody Index i) {
-		Dataset ds = new Dataset("Trieste,Ortona,Venezia",true, true, i.cityName, i.giornoIniziale, i.giornoFinale);
+		Dataset ds = new Dataset("Trieste,Ortona,Venezia",true, true, i.primaCitta, i.ultimaCitta,
+																		i.giornoIniziale, i.giornoFinale);
 		return ds.getDatiFuturi();
-	}
-	
-	@PostMapping (value= "/stats/historical")
-	public JSONObject stats(@RequestBody Index i) {
-		StatsHistorical statsHistorical = new StatsHistorical("Trieste,Ortona,Venezia", false, false, "Trieste", i.giornoIniziale, i.giornoFinale ); 		//statistiche riguardanti dati storici
-		return statsHistorical.formatter(i.primaCitta, i.ultimaCitta);
 	}
 	
 	/**
@@ -78,10 +75,22 @@ public class Controller {
 	 * @param i
 	 * @return
 	 */
+	@PostMapping (value= "/stats/historical")
+	public JSONObject stats(@RequestBody Index i) {
+		StatsHistorical statsHistorical = new StatsHistorical("Trieste,Ortona,Venezia", false, false, 
+													i.primaCitta, i.ultimaCitta, i.giornoIniziale, i.giornoFinale ); 											
+		return statsHistorical.formatter();
+	}
+	
+	/**
+	 * statistiche riguardanti previsioni future
+	 * @param i
+	 * @return
+	 */
 	@PostMapping (value= "/stats/forecast")
 	public String statsForecast(@RequestBody Index i) {
-		StatsForecast statsForecast = new StatsForecast("Trieste,Ortona,Venezia",true, true, 
-														i.cityName, i.giornoIniziale, i.giornoFinale);
+		StatsForecast statsForecast = new StatsForecast("Trieste,Ortona,Venezia",true, true, i.primaCitta, i.ultimaCitta,
+																			i.giornoIniziale, i.giornoFinale);
 		if( statsForecast.confronta(i.soglia_errore) )
 			return "OK, PREVISIONI AZZECCATE";
 		else 

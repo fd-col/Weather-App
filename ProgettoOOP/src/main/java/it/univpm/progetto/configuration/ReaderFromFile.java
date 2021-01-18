@@ -42,14 +42,14 @@ public class ReaderFromFile implements Reader {
 	public JSONArray readFile(String nome_file, boolean flag ) {
 		JSONParser parser = new JSONParser();
 		JSONArray jsonArrayFromFile = new JSONArray();
-		JSONObject jsonObj = new JSONObject();
+		JSONObject jsonObject = new JSONObject();
 		try {
 			BufferedReader buffRead = new BufferedReader(new FileReader(nome_file));
 			String line = buffRead.readLine();
 			//se è un JSONOBJECT 
 			if(flag){
-				jsonObj = (JSONObject) parser.parse(line);
-				jsonArrayFromFile.add(jsonObj);
+				jsonObject = (JSONObject) parser.parse(line);
+				jsonArrayFromFile.add(jsonObject);
 			}
 			//altrimenti è un JSONArray 
 			else 

@@ -24,12 +24,12 @@ public class StatsForecast extends Stats {
 	 * @param giornoIniziale
 	 * @param giornoFinale
 	 */
-	public StatsForecast(String allCityName, boolean flag,boolean flag2, 
-							String cityName, int giornoIniziale, int giornoFinale) {
+	public StatsForecast(String allCityName, boolean flag1 , boolean flag2, int primaCitta, int ultimaCitta,
+																		int giornoIniziale, int giornoFinale) {
 		
-		super(allCityName, flag, flag2, cityName, giornoIniziale, giornoFinale);
+		super(allCityName, flag1, flag2, primaCitta, ultimaCitta, giornoIniziale, giornoFinale);
 	
-		datiAttuali = getDatiAttuali(1,1);
+		datiAttuali = getDatiAttuali();
 	}
 	
 	

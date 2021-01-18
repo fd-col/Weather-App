@@ -23,6 +23,15 @@ public class WeatherParser {
 	private Double visibility;
 	private Double speed;
 	
+	/**
+	 * costuttore di default
+	 */
+	public WeatherParser() {};
+	
+	/**
+	 * costruttore che inizializza il cityName
+	 * @param cityName
+	 */
 	public WeatherParser(String cityName) {
 		this.cityName = cityName;
 	}
