@@ -70,7 +70,7 @@ In particolare:
   
 ## Rotte dell'applicazione
 
-| Tipo di chiamata| rotta | 
+| Tipo di chiamata| Rotta | 
 |--|--| 
 | **GET** |/metadata  | 
 |**GET** | /save|
@@ -78,10 +78,13 @@ In particolare:
 |**POST**| /weather/historical|
 |**POST**| /weather/forecast|
 |**POST**| /stats/historical|
-|POST| /stats/forecast|
+|**POST**| /stats/forecast|
 
+ 
+
+ 1. 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2NzA2MjA1NSw4OTI3NDAyNTcsLTEyOT
+eyJoaXN0b3J5IjpbMTA5NDU3NTc5Niw4OTI3NDAyNTcsLTEyOT
 UwNDQ4NzBdfQ==
 -->
