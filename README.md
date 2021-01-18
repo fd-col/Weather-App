@@ -94,9 +94,9 @@ In particolare:
 ## Filtri
 
 L'utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da restituire e il periodo da considerare.
-
+Per le chiamate 3, 4 e 5 il body (
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDY1NzAzNjUsLTExMDQ2NzkxNDEsOD
-kyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
+eyJoaXN0b3J5IjpbMjQ1MTk5MDAzLC0xMjQ2NTcwMzY1LC0xMT
+A0Njc5MTQxLDg5Mjc0MDI1NywtMTI5NTA0NDg3MF19
 -->
