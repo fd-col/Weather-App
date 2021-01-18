@@ -72,19 +72,20 @@ In particolare:
 
 | Tipo di chiamata| Rotta | 
 |--|--| 
-| **GET** |/metadata  | 
-|**GET** | /save|
-|**POST** |/weather/current|
-|**POST**| /weather/historical|
-|**POST**| /weather/forecast|
-|**POST**| /stats/historical|
-|**POST**| /stats/forecast|
+| 1) **GET** |/metadata  | 
+|2) **GET** | /save|
+|3) **POST** |/weather/current|
+|4) **POST**| /weather/historical|
+|5) **POST**| /weather/forecast|
+|6) **POST**| /stats/historical|
+|7) **POST**| /stats/forecast|
 
  
 
- 1. 
+ 1. Restituisce all'utente i metadati
+ 2. 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5NDU3NTc5Niw4OTI3NDAyNTcsLTEyOT
-UwNDQ4NzBdfQ==
+eyJoaXN0b3J5IjpbLTE5NTc3MzU2MDQsODkyNzQwMjU3LC0xMj
+k1MDQ0ODcwXX0=
 -->
