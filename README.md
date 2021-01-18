@@ -56,8 +56,8 @@ In particolare:
  
  Considerando invece i metadati relativi alle statistiche:
  
- - "**visibilityMin**", 
+ - "**visibilityMin**", "**visibilityMax**", "**visibilityAverage**" e "**visibilityVariance**" indicano rispettivamente la visibilità minima, la visibilità massima, la media e la varianza delle visibilità dei giorni presi 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwNzE2NDA5MSwtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbODgyNjM3NTI0LC0xMjk1MDQ0ODcwXX0=
 -->
