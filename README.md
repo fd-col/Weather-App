@@ -100,10 +100,10 @@ Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente
     "primaCitta": <<n>n1>,
     "ultimaCitta": <<n>n2>,
     "giornoIniziale": <<n>n3>,
-    "giornoFinale": 
-}
-
+    "giornoFinale": <<n>n4>
+}</code></pre>
+I numeri n1 e n2 devono essere compresi 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzUwMDkzMDY0LC0xMjQ2NTcwMzY1LC0xMT
+eyJoaXN0b3J5IjpbNzQ3OTIzMzYxLC0xMjQ2NTcwMzY1LC0xMT
 A0Njc5MTQxLDg5Mjc0MDI1NywtMTI5NTA0NDg3MF19
 -->
