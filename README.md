@@ -102,8 +102,9 @@ Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente
     "giornoIniziale": <<n>n3>,
     "giornoFinale": <<n>n4>
 }</code></pre>
-I numeri n1 e n2 devono essere compresi 
+I numeri **n1 e n2 devono essere compresi tra 1 e 3 (1 per Trieste, 2 per Ortona e 3 per Venezia), in questo modo l'utente può scegliere le città da mostrare. 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ3OTIzMzYxLC0xMjQ2NTcwMzY1LC0xMT
-A0Njc5MTQxLDg5Mjc0MDI1NywtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbLTE2NTQ0OTA5NywtMTI0NjU3MDM2NSwtMT
+EwNDY3OTE0MSw4OTI3NDAyNTcsLTEyOTUwNDQ4NzBdfQ==
 -->
