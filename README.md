@@ -1,9 +1,4 @@
 ---
-
-
----
-
-<hr>
 <h1 id="weather-app">Weather App</h1>
 <p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
@@ -61,7 +56,8 @@ Metadati relativi ai dati del dataset :
 </ul>
 <h2 id="statistiche">Statistiche</h2>
 <p>
-</p><p>Le statistiche che la REST API restituisce si distinguono in:</p>
+</p><p>
+Le statistiche che la REST API restituisce si distinguono in:</p>
 <ul>
 <li>
 <p>statisticherelative ai dati storici (attraverso un file JSON vengono illustrati i valori descritti in precedenza, ovvero media, varianza, valori minimi e massimi). La città e il periodo da valutare vengono scelti dall’'utente.</p>
@@ -69,7 +65,8 @@ Metadati relativi ai dati del dataset :
 <li>
 <p>
 </p></li></ul><ul>
-<li>statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all’utente se le previsioni, in base ai dati raccolti, sono state attendibili oppure no). L’utente inoltre sceglierà la soglia di errore attraverso la quale si valuterà l’attendibilità.</li>
+<li>
+statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all’utente se le previsioni, in base ai dati raccolti, sono state attendibili oppure no). L’utente inoltre sceglierà la soglia di errore attraverso la quale si valuterà l’attendibilità.</li>
 </ul>
 
 
@@ -125,16 +122,17 @@ Metadati relativi ai dati del dataset :
 <p>L’utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da restituire e il periodo da considerare.<br>
 Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente:</p>
 <pre><code>{
-    "primaCitta": &lt;n1&gt;&gt;,
+    "primaCitta": &lt;n1&gt;&gt;>,
     "ultimaCitta": &lt;n2&gt;&gt;,
-    "giornoIniziale": &lt;n3&gt;&gt;,
+    "giornoIniziale": &lt;n3&gt;&gt;>,
     "giornoFinale": &lt;n4&gt;
 }</code></pre>
 <p>I numeri <strong>n1</strong> e <strong>n2</strong> devono essere compresi tra 1 e 3 (1 per Trieste, 2 per Ortona e 3 per Venezia), in questo modo l’utente può scegliere quali città mostrare.<br>
 I numeri <strong>n3</strong> e <strong>n4</strong> invece devono essere compresi tra 1 e 5 ( giorni che vanno dal 01/01 al 05/01 per i dati storici, dal 06/01 al 10/01 per i dati attuali e dal 06/01 al 10/01 per le previsioni), così facendo l’utente può scegliere il periodo da considerare.</p>
 <p><em>Nota</em>: n2 deve essere necessariamente maggiore o uguale di n1 (quest’ultimo caso se si vuole considerare una sola città), così come n4 deve essere maggiore o uguale di n3.</p>
 <p>
-</p><p>Per la chiamata 6 si utilizza lo stesso body, ma in questo caso <strong>n1</strong> e <strong>n2</strong> devono essere uguali, in quanto le statistiche possono essere fatte solo per ogni singola città.</p><br>
+</p><p>
+Per la chiamata 6 si utilizza lo stesso body, ma in questo caso <strong>n1</strong> e <strong>n2</strong> devono essere uguali, in quanto le statistiche possono essere fatte solo per ogni singola città.</p><br>
 La chiamata 7 ha il seguente body (sempre in JSON):
 <pre><code>{
     "primaCitta": &lt;n1&gt;,
@@ -148,4 +146,7 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <h1 id="uml">UML</h1>
 <h2 id="use-case-diagram">Use Case Diagram</h2>
 <p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png" alt="alt text"></p>
-
+)
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTQ2NjU0ODk4MF19
+-->
