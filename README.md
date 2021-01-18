@@ -66,9 +66,10 @@ In particolare:
 
  - statistiche relative ai dati storici (attraverso un file JSON vengono illustrati i valori descritti in precedenza, ovvero media, varianza, valori minimi e massimi). La città e il periodo da valutare vengono scelti dall'utente.
 
- -  statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all'utente se le previsioni, in base ai dati attuali raccolti, sono state attendibili oppure no). L'utente inoltre sceglierà la soglia di errore attraverso la quale si valuterà l'attendibilità
+ -  statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all'utente se le previsioni, in base ai dati raccolti, sono state attendibili oppure no). L'utente inoltre sceglierà la soglia di errore attraverso la quale si valuterà l'attendibilità.
   
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3ODIzMTA0NiwtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbLTIwNDQ3NTI2NzgsLTEyOTUwNDQ4NzBdfQ
+==
 -->
