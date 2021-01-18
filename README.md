@@ -110,10 +110,16 @@ I numeri **n3** e **n4** invece devono essere compresi tra 1 e 5 ( giorni che va
 Per la chiamata 6 si utilizza lo stesso body, ma in questo caso **n1** e **n2** devono essere uguali, in quanto le statistiche possono essere fatte solo per ogni singola città.
 
 La chiamata 7 ha il seguente body (sempre in JSON):
-<pre><code>
+<pre><code>{
+    "primaCitta": <<n>n1>,
+    "ultimaCitta": <<n>n2>,
+    "giornoIniziale": <<n>n3>,
+    "giornoFinale": <<n>n4>,
+    "soglia_errore": <<n>n5>
+}
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTcyNjk2NDUwLC0xMjQ2NTcwMzY1LC0xMT
-A0Njc5MTQxLDg5Mjc0MDI1NywtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbLTE3ODI1MDYwOTUsLTEyNDY1NzAzNjUsLT
+ExMDQ2NzkxNDEsODkyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
 -->
