@@ -72,16 +72,16 @@ In particolare:
 
 | Tipo di chiamata| rotta | 
 |--|--| 
-| GET |/metadata  | 
-|GET | /save|
-|POST |/weather/current|
-|POST| /weather/historical|
-|POST| /weather/forecast|
-|POST| /stats/historical|
+| **GET** |/metadata  | 
+|**GET** | /save|
+|**POST** |/weather/current|
+|**POST**| /weather/historical|
+|**POST**| /weather/forecast|
+|**POST**| /stats/historical|
 |POST| /stats/forecast|
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0MTM5NTc1MSw4OTI3NDAyNTcsLTEyOT
+eyJoaXN0b3J5IjpbMTk2NzA2MjA1NSw4OTI3NDAyNTcsLTEyOT
 UwNDQ4NzBdfQ==
 -->
