@@ -18,7 +18,7 @@ import org.json.simple.JSONObject;
 public class WeatherParser {
 	
 	private String date;
-	private String cityName;
+	protected String cityName;
 	private Long timeUNIX;
 	private Double visibility;
 	private Double speed;

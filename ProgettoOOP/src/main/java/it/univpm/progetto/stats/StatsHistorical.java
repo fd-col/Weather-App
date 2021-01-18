@@ -4,9 +4,11 @@
 package it.univpm.progetto.stats;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -37,10 +39,11 @@ public class StatsHistorical extends Stats {
 	 * @return the visibilityMin
 	 */
 	public Double visibilityMin() {
-		JSONObject jObject= (JSONObject) getDatiStorici().get(giornoIniziale-1);
+		ArrayList<JSONArray> arrayLoaded = getArrayTemp();
+		JSONObject jObject= (JSONObject) arrayLoaded.get(primaCitta).get(giornoIniziale-1);
 		Double visibilityMin = (Double) jObject.get("visibility");
 		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObj= (JSONObject) getDatiStorici().get(m);
+			JSONObject jObj= (JSONObject) arrayLoaded.get(primaCitta).get(m);
 			if(visibilityMin > (Double) jObj.get("visibility")) {
 				visibilityMin = (Double) jObj.get("visibility");
 			}
@@ -57,10 +60,12 @@ public class StatsHistorical extends Stats {
 	 * @return the visibilityMax
 	 */
 	public Double visibilityMax() {
-		JSONObject jObject= (JSONObject) (getDatiStorici().get(giornoIniziale-1));
+		ArrayList<JSONArray> arrayLoaded = getArrayTemp();
+		JSONObject jObject= (JSONObject) arrayLoaded.get(primaCitta).get(giornoIniziale-1);
+		
 		Double visibilityMax = (Double) jObject.get("visibility");
 		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObj= (JSONObject) getDatiStorici().get(m);
+			JSONObject jObj= (JSONObject) arrayLoaded.get(primaCitta).get(m);
 			if(visibilityMax < (Double) jObj.get("visibility")) {
 				visibilityMax = (Double) jObj.get("visibility");
 			}
@@ -205,10 +210,10 @@ public class StatsHistorical extends Stats {
 			jsonObject.put("visibilityStats", m1);	
 			
 			Map<String, Double> m2 = new LinkedHashMap<String, Double>(4);
-			m2.put("speedMax", speedMax( ));
-			m2.put("speedMin", speedMin( ));
-			m2.put("speedAverage", speedAverage( ));
-			m2.put("speedVariance", speedVariance( ));
+			m2.put("speedMax", speedMax());
+			m2.put("speedMin", speedMin());
+			m2.put("speedAverage", speedAverage());
+			m2.put("speedVariance", speedVariance());
 			jsonObject.put("speedStats", m2);
 		}
 		return jsonObject;

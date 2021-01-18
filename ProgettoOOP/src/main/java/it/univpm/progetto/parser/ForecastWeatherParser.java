@@ -22,8 +22,8 @@ public class ForecastWeatherParser extends WeatherParser {
 	 * costruttore della classe 
 	 * @param cityName
 	 */
-	public ForecastWeatherParser(int i) {
-		super();
+	public ForecastWeatherParser(String cityName, int i) {
+		super(cityName);
 		this.i = i;
 	}
 	
@@ -32,7 +32,7 @@ public class ForecastWeatherParser extends WeatherParser {
 	public void parsing() {  
 		ReaderFromFile rff = new ReaderFromFile();
 		JSONObject obj = new JSONObject();			  //il cityName lo prende dalla superclasse
-		obj = (JSONObject) rff.readFile( rff.nomeFile( getCityName(), false, true), 		true ).get(0);    
+		obj = (JSONObject) rff.readFile( rff.nomeFile( cityName, false, true), 		true ).get(0);    
 		
 		JSONObject city = (JSONObject) obj.get("city");
 		this.setCityName((String) (city.get("name")));
