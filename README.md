@@ -83,9 +83,10 @@ In particolare:
  
 
  1. Restituisce all'utente i metadati
- 2. 
+ 2. E' servita per salvare i dati nel dataset
+ 3. 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTc3MzU2MDQsODkyNzQwMjU3LC0xMj
-k1MDQ0ODcwXX0=
+eyJoaXN0b3J5IjpbLTgzMTI5MTQwNiw4OTI3NDAyNTcsLTEyOT
+UwNDQ4NzBdfQ==
 -->
