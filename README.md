@@ -125,7 +125,7 @@ statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all�
 <p>L’utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da restituire e il periodo da considerare.<br>
 Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente:</p>
 <pre><code>{
-    "primaCitta": &lt;n1&gt;&gt;&gt;,
+    "primaCitta": &lt;n1&gt;,
     "ultimaCitta": &lt;n2&gt;&gt;,
     "giornoIniziale": &lt;n3&gt;&gt;&gt;,
     "giornoFinale": &lt;n4&gt;
@@ -157,5 +157,5 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 ![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png" alt="alt text"></p>
 )
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjIyNTUxODM3XX0=
+eyJoaXN0b3J5IjpbLTE4OTAyODM3NjNdfQ==
 -->
