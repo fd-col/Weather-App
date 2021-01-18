@@ -94,9 +94,16 @@ In particolare:
 ## Filtri
 
 L'utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da restituire e il periodo da considerare.
-Per le chiamate 3, 4 e 5 il body (
+Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente:
+
+<pre><code>{
+    "primaCitta": ,
+    "ultimaCitta": 3,
+    "giornoIniziale": 2,
+    "giornoFinale": 5
+}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ1MTk5MDAzLC0xMjQ2NTcwMzY1LC0xMT
-A0Njc5MTQxLDg5Mjc0MDI1NywtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbLTM2NDQxMDU2MCwtMTI0NjU3MDM2NSwtMT
+EwNDY3OTE0MSw4OTI3NDAyNTcsLTEyOTUwNDQ4NzBdfQ==
 -->
