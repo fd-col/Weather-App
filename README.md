@@ -29,6 +29,33 @@ Metadati relativi ai dati del dataset :
  }
 </code></pre>
 
+Metadati relativi ai dati delle statistiche:
+<pre><code>{
+"visibilityStats": {
+"visibilityMax": 10000.0,
+
+"visibilityMin": 300.0,
+
+"visibilityAverage": 9575.0,
+
+"visibilityVariance": 2.226203125E7
+
+},
+
+"speedStats": {
+
+"speedMax": 1.77,
+
+"speedMin": 0.82,
+
+"speedAverage": 1.8199999999999998,
+
+"speedVariance": 0.32124999999999987
+
+}
+
+}
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyNDQwNjVdfQ==
+eyJoaXN0b3J5IjpbLTY2OTY2OTM5OF19
 -->
