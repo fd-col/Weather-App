@@ -84,12 +84,12 @@ In particolare:
 
  1. Restituisce all'utente i metadati
  2. E' servita per salvare i dati nel dataset
-	 *Nota*: 
+	 *Nota*: ciò che viene restituito da questa chiamata viene 		      sovrascritto nel dataset. 
  3. Restituisce i dati attuali
  4. Restituisce i dati storici
  5. Restituisce
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0OTQ3NjIyNCw4OTI3NDAyNTcsLTEyOT
-UwNDQ4NzBdfQ==
+eyJoaXN0b3J5IjpbLTE4Njc4OTMxMTgsODkyNzQwMjU3LC0xMj
+k1MDQ0ODcwXX0=
 -->
