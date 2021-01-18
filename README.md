@@ -59,8 +59,8 @@ In particolare:
  - "**visibilityMin**", "**visibilityMax**", "**visibilityAverage**" e "**visibilityVariance**" indicano rispettivamente il valore minimo,  massimo, la media e la varianza delle visibilità dei giorni presi in considerazione.
  - "**speedMin**", "**speedMax**", "**speedAverage**" e "**speedVariance**" indicano rispettivamente il valore minimo, massimo, la media e la varianza delle velocità del vento dei giorni presi in considerazione.
  
- Le statistiche che la REST API restituisce si distinguono in statistiche relative ai dati storici  
+ Le statistiche che la REST API restituisce si distinguono in statistiche relative ai dati storici (attraverso un file JSON vengono illustrati i valori descritti in precedenza,  
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwMTE3NTQ3NywtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbMzQ3MjE2MTEsLTEyOTUwNDQ4NzBdfQ==
 -->
