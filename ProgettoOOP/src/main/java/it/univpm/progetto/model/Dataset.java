@@ -25,6 +25,13 @@ public class Dataset {
 	/**
 	 * costruttore (dati meteo attuali, dati meteo storici)
 	 * flag=true per i dati attuali, flag=false per i dati storici
+	 * @param allCityName
+	 * @param flag1 
+	 * @param flag2
+	 * @param primaCitta
+	 * @param ultimaCitta
+	 * @param int giornoIniziale
+	 * @param int giornoFinale
 	 */
 	@SuppressWarnings("unchecked")
 	public Dataset(String allCityName, boolean flag1, boolean flag2, 
@@ -72,19 +79,18 @@ public class Dataset {
 	}
 
 	/**
-	 * @return 
-	 * @return the datiAttuali
+	 * @return the jsonArrayTemp
 	 */
 	@SuppressWarnings("unchecked")
-	public JSONArray getDatiAttuali() {
-		JSONArray jsonArrayTemp = new JSONArray();
+	public ArrayList<JSONArray> getDatiAttuali() {
+		ArrayList<JSONArray> jsonArrayTemp = new JSONArray();
 		for(int i=primaCitta; i <= ultimaCitta; i++) 
 			 jsonArrayTemp.add( arrayTemp.get(i-1) );
 		return jsonArrayTemp;
 	}
 
 	/**
-	 * @return the datiStorici
+	 * @return the jsonArrayTemp
 	 */
 	@SuppressWarnings("unchecked")
 	public JSONArray getDatiStorici() {

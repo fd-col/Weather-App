@@ -12,8 +12,16 @@ import it.univpm.progetto.model.Dataset;
 public class Stats extends Dataset {
 	
 	protected int giornoIniziale, giornoFinale;
+	
 	/**
 	 * costruttore
+	 * @param allCityName
+	 * @param flag1 
+	 * @param flag2
+	 * @param primaCitta
+	 * @param ultimaCitta
+	 * @param int giornoIniziale
+	 * @param int giornoFinale
 	 */
 	public Stats(String allCityName, boolean flag1 ,boolean flag2, int primaCitta, int ultimaCitta,
 																int giornoIniziale, int giornoFinale)  {
@@ -22,7 +30,6 @@ public class Stats extends Dataset {
 		this.setGiornoIniziale(giornoIniziale);
 		this.setGiornoFinale(giornoFinale);
 	}
-	
 	
 	/**
 	 * @return the giornoIniziale
@@ -48,7 +55,5 @@ public class Stats extends Dataset {
 	public void setGiornoFinale(int giornoFinale) {
 		this.giornoFinale = giornoFinale;
 	}
-
-	
 
 }

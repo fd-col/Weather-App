@@ -4,6 +4,7 @@
 package it.univpm.progetto.controller;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -34,7 +35,7 @@ public class Controller {
 	 * @throws URISyntaxException
 	 */
 	@GetMapping (value= "/metadata")
-	public  JSONObject givaMeData() {
+	public  JSONObject giveMeData() {
 		WeatherData wd = new WeatherData("London");
 		return wd.getJsonObj();
 	}
@@ -48,7 +49,7 @@ public class Controller {
 	 * @throws URISyntaxException
 	 */
 	@PostMapping (value= "/weather/current")
-	public  JSONArray current(@RequestBody Index i) {
+	public  ArrayList<JSONArray> current(@RequestBody Index i) {
 		Dataset ds = new Dataset("Trieste,Ortona,Venezia",true, false, i.primaCitta, i.ultimaCitta,
 																		i.giornoIniziale, i.giornoFinale);
 		return ds.getDatiAttuali();				// 1=Trieste, 2=Ortona, 3=Venezia
@@ -89,9 +90,11 @@ public class Controller {
 	 */
 	@PostMapping (value= "/stats/forecast")
 	public String statsForecast(@RequestBody Index i) {
-		StatsForecast statsForecast = new StatsForecast("Trieste,Ortona,Venezia",true, true, i.primaCitta, i.ultimaCitta,
-																			i.giornoIniziale, i.giornoFinale);
+		StatsForecast statsForecast = new StatsForecast("Trieste,Ortona,Venezia",true, true, 
+													i.primaCitta, i.ultimaCitta, i.giornoIniziale, i.giornoFinale);
+																			
 		if( statsForecast.confronta(i.soglia_errore) )
+			
 			return "OK, PREVISIONI AZZECCATE";
 		else 
 			return "NO, PREVISIONI ERRATE";

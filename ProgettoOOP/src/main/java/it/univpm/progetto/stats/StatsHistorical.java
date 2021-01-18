@@ -17,12 +17,16 @@ import org.json.simple.JSONObject;
  */
 public class StatsHistorical extends Stats {
 	
+	ArrayList<JSONArray> arrayLoaded = getArrayTemp();
 	/**
 	 * costruttore che chiama il costruttore della superclasse con i parametri inseriti
-	 * @param cityName1
-	 * @param cityName2
-	 * @param cityName3
-	 * @param flag
+	 * @param allCityName
+	 * @param flag1 
+	 * @param flag2
+	 * @param primaCitta
+	 * @param ultimaCitta
+	 * @param int giornoIniziale
+	 * @param int giornoFinale
 	 */
 	public StatsHistorical(String allCityName, boolean flag1, boolean flag2, int primaCitta, int ultimaCitta,
 																int giornoIniziale, int giornoFinale) {
@@ -31,169 +35,99 @@ public class StatsHistorical extends Stats {
 	}
 
 	/**
-	 * calcola la minima visibilità fra i giorni passati come parametri
-	 * @param i
-	 * @param j
-	 * @param k
-	 * @param l
+	 * unico metodo che calcola i valori minimi e massimo degli attributi "visibility" e "speed"
+	 * @param flag1 seleziona l'attributo su cui fare i calcoli: "visibility" o "speed"
+	 * (flag1=true per "visibility", flag1=false per "speed")
+	 * @param flag2 determina se calcolare val. min o max dell'attributo selezionato tramite flag1
+	 * (flag2=true calcola il valore minimo, flag2=false calcola il valore massimo)
 	 * @return the visibilityMin
 	 */
-	public Double visibilityMin() {
-		ArrayList<JSONArray> arrayLoaded = getArrayTemp();
-		JSONObject jObject= (JSONObject) arrayLoaded.get(primaCitta).get(giornoIniziale-1);
-		Double visibilityMin = (Double) jObject.get("visibility");
-		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObj= (JSONObject) arrayLoaded.get(primaCitta).get(m);
-			if(visibilityMin > (Double) jObj.get("visibility")) {
-				visibilityMin = (Double) jObj.get("visibility");
-			}
-		}
-		return visibilityMin;
-	}
-	
-	/**
-	 * calcola la massima visibilità del vento fra i giorni passati come parametri
-	 * @param i
-	 * @param j
-	 * @param k
-	 * @param l
-	 * @return the visibilityMax
-	 */
-	public Double visibilityMax() {
-		ArrayList<JSONArray> arrayLoaded = getArrayTemp();
-		JSONObject jObject= (JSONObject) arrayLoaded.get(primaCitta).get(giornoIniziale-1);
+	public Double valueMinMax(boolean flag1, boolean flag2) {
+		JSONObject jObject = (JSONObject) arrayLoaded.get(primaCitta).get(giornoIniziale-1);
 		
-		Double visibilityMax = (Double) jObject.get("visibility");
-		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObj= (JSONObject) arrayLoaded.get(primaCitta).get(m);
-			if(visibilityMax < (Double) jObj.get("visibility")) {
-				visibilityMax = (Double) jObj.get("visibility");
+		Double visibility;
+		Double speed;
+		if(flag1) { 	//scelgo se calcolare visibility oppure speed (flag=true --> visibility)
+			visibility = (Double) jObject.get("visibility");
+			for(int i = giornoIniziale-1; i < giornoFinale; i++) {
+				JSONObject jsonObj= (JSONObject) arrayLoaded.get(primaCitta).get(i);
+				if(flag2) // voglio calcolare il valore minimo o massimo (flag=true --> valore minimo)
+					if(visibility >= (Double) jsonObj.get("visibility")) 
+						visibility = (Double) jsonObj.get("visibility");
+				
+				else 
+					visibility = (Double) jsonObj.get("visibility");
 			}
+			return visibility;
 		}
-		return visibilityMax;
-	}
-	
-	/**
-	 * calcola la minima velocità del vento fra i giorni passati come parametri
-	 * @param i
-	 * @param j
-	 * @param k
-	 * @param l
-	 * @return the speedMin
-	 */
-	public Double speedMin() {
-		JSONObject jsonObject= (JSONObject) getDatiStorici().get(giornoIniziale-1);
-		JSONObject wind1 = (JSONObject) jsonObject.get("wind");
-		Double speedMin = (Double) wind1.get("speed");
-		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject object= (JSONObject) getDatiStorici().get(m);
-			JSONObject wind2 = (JSONObject) object.get("wind");
-			if(speedMin > (Double) Double.parseDouble(wind2.get("speed").toString())) {
-				speedMin = (Double) Double.parseDouble(wind2.get("speed").toString());
-			}
-		}
-		return speedMin;
-	}
-	
-	/**
-	 * calcola la massima velocità del vento fra i giorni passati come parametri
-	 * @param i
-	 * @param j
-	 * @param k
-	 * @param l
-	 * @return the speedMax
-	 */
-	public Double speedMax() {
-		JSONObject jsonObject = (JSONObject) getDatiStorici().get(giornoIniziale-1);
-		JSONObject wind1 = (JSONObject) jsonObject.get("wind");
-		Double speedMax = (Double) Double.parseDouble(wind1.get("speed").toString());
-		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject object= (JSONObject) getDatiStorici().get(m);
-			JSONObject wind2 = (JSONObject) object.get("wind");
-			if(speedMax < (Double) wind2.get("speed")) {
-				speedMax = (Double) wind2.get("speed");
-			}
-		}
-		return speedMax;
-	}
-	
-	/**
-	 * calcola la visibilità media fra i giorni passati come parametri
-	 * @param visibilityAverage the visibilityAverage to set
-	 * @return visibilityAverage
-	 */
-	public Double visibilityAverage()  {
-		Double sum = (double) 0;
-		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObject= (JSONObject) getDatiStorici().get(m);
-			 sum += (double) jObject.get("visibility");
-		}
-		Double visibilityAverage = (Double) sum/(giornoFinale-giornoIniziale);
-		return visibilityAverage;
-	}
-
-	/**
-	 * calcola la velocità media del vento fra i giorni passati come parametri
-	 * @param speedAverage the speedAverage to set
-	 * @return speedAverage
-	 */
-	public Double speedAverage() {
-		Double sum = (double) 0;
-		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObject= (JSONObject) getDatiStorici().get(m);
+		else {
 			JSONObject wind = (JSONObject) jObject.get("wind");
-			Double rawSpeed = (Double) Double.parseDouble(wind.get("speed").toString());
-			sum += (Double) rawSpeed;
+			speed = (Double) wind.get("speed");
+			for(int i = giornoIniziale-1; i < giornoFinale; i++) {
+				JSONObject jsonObj= (JSONObject) arrayLoaded.get(primaCitta).get(i);
+				JSONObject wind2 = (JSONObject) jsonObj.get("wind");
+				if(flag2)
+					if(speed >= (Double) wind2.get("speed")) 
+						speed = (Double) wind2.get("speed");
+				else 
+					speed = (Double) wind2.get("speed");
+			}
+			return speed; 
 		}
-		Double speedAverage = sum/(giornoFinale-giornoIniziale);
-		return speedAverage;
 		
 	}
-
+	
 	/**
-	 * calcola la varianza della visibilità fra i giorni passati come parametri
-	 * @param visibilitiVariance the visibilitiVariance to set
-	 * @return 
-	 * @throws Exception 
+	 * calcola la media (fra i giorni passati nel costruttore) della visibilità oppure della velocità del vento 
+	 * @param flag determina se il calcolo viene effettuato su "visibility" oppure su "speed"
+	 * @return the average
 	 */
-	public Double visibilityVariance() {
-		Double media = visibilityAverage();
-		Double sommaScartiQuad = (double) 0;
+	public Double average(boolean flag)  {
+		Double sum = (double) 0;
 		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObject= (JSONObject) getDatiStorici().get(m);
-			sommaScartiQuad += ((Double) jObject.get("visibility") - media)
-								*((Double) jObject.get("visibility") - media);
+			JSONObject jObject= (JSONObject) arrayLoaded.get(primaCitta).get(m);
+			
+			if(flag) {
+				sum += (double) jObject.get("visibility");
+			}
+			else {
+				JSONObject wind = (JSONObject) jObject.get("wind");
+				Double rawSpeed = (Double) Double.parseDouble(wind.get("speed").toString());
+				sum += (Double) rawSpeed;
+			}
 		}
-		Double visibilityVariance = sommaScartiQuad/(giornoFinale-giornoIniziale);
-		return visibilityVariance;
+		Double average = (Double) sum/(giornoFinale-giornoIniziale);	
+		return average;
 	}
 
 	/**
-	 * calcola la varianza della velocità del vento fra i giorni passati come parametri
-	 * @param speedVariance the speedVariance to set
-	 * @throws Exception 
+	 * calcola la varianza (fra i giorni passati nel costruttore) della visibilità oppure della velocità del vento
+	 * @param flag permette di decide se calcolare la varianza della "visibility" oppure della "speed"
+	 * @return the variance
 	 */
-	public Double speedVariance()  {
-		Double media = speedAverage();
+	public Double variance(boolean flag) {
+		Double media = average(true);
 		Double sommaScartiQuad = (double) 0;
 		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObject= (JSONObject) getDatiStorici().get(m);
-			JSONObject wind = (JSONObject) jObject.get("wind");
-			Double rawSpeed = (Double) Double.parseDouble(wind.get("speed").toString());
-			sommaScartiQuad += (rawSpeed - media)*(rawSpeed - media);
+			JSONObject jObject= (JSONObject) arrayLoaded.get(primaCitta).get(m);
+			
+			if(flag)
+				sommaScartiQuad += ((Double) jObject.get("visibility") - media)
+									*((Double) jObject.get("visibility") - media);
+			else {
+				JSONObject wind = (JSONObject) jObject.get("wind");
+				Double rawSpeed = (Double) Double.parseDouble(wind.get("speed").toString());
+				sommaScartiQuad += (rawSpeed - media)*(rawSpeed - media);
+			}
 		}
-		Double speedVariance = sommaScartiQuad/(giornoFinale-giornoIniziale);
-		return speedVariance;
+		Double variance = sommaScartiQuad/(giornoFinale-giornoIniziale);
+		return variance;
 	}
 	
 	/**
-	 * formatta la risposta json dei valori calcolati dalla classe
-	 * @param i
-	 * @param j
-	 * @param k
-	 * @param l
-	 * @return
-	 * @throws Exception
+	 * formatta le statistiche (calcolate tramite i metodi della classe stessa) in un oggetto JSON 
+	 * @return the jsonObject
+	 * @throws InvalidParameterException
 	 */
 	@SuppressWarnings("unchecked")
 	public JSONObject formatter() throws InvalidParameterException {
@@ -203,17 +137,17 @@ public class StatsHistorical extends Stats {
 										+ " \'primaCitta\' deve essere uguale a \'ultimaCitta\' ");
 		else {
 			Map<String, Double> m1 = new LinkedHashMap<String, Double>(4);
-			m1.put("visibilityMax", visibilityMax());
-			m1.put("visibilityMin", visibilityMin());
-			m1.put("visibilityAverage", visibilityAverage());
-			m1.put("visibilityVariance", visibilityVariance());
+			m1.put("visibilityMax", valueMinMax(true, false));
+			m1.put("visibilityMin", valueMinMax(true, true));
+			m1.put("visibilityAverage", average(true));
+			m1.put("visibilityVariance", variance(true));
 			jsonObject.put("visibilityStats", m1);	
 			
 			Map<String, Double> m2 = new LinkedHashMap<String, Double>(4);
-			m2.put("speedMax", speedMax());
-			m2.put("speedMin", speedMin());
-			m2.put("speedAverage", speedAverage());
-			m2.put("speedVariance", speedVariance());
+			m2.put("speedMax", valueMinMax(false, false));
+			m2.put("speedMin", valueMinMax(false, true));
+			m2.put("speedAverage", average(false));
+			m2.put("speedVariance", variance(false));
 			jsonObject.put("speedStats", m2);
 		}
 		return jsonObject;
