@@ -4,9 +4,9 @@
 ---
 
 <h1 id="weather-app">Weather App</h1>
-<p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito., in</p>
+<p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
-<p>Il dataset è costruito con due differenti modalità :</p>
+<p>Il dataset, che contiene dati relativi alle città di Trieste, Ortona e Venezia, è costruito con due differenti modalità :</p>
 <ul>
 <li>dati-attuali &amp; dati-storici vengono già parsati come oggetti JSONArray tramite la rotta “/save” dell’app SpringBoot</li>
 <li>previsioni-future sono raccolte dalla rispettiva  API di OpenWeather così come sono, mediante una chiamata al client Postman ( e successivamente parsate tramite l’app SpringBoot )</li>
@@ -93,9 +93,9 @@ In particolare:
 
 ## Filtri
 
-
+L'utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da resti
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NTA4MDQzNiwtMTEwNDY3OTE0MSw4OT
+eyJoaXN0b3J5IjpbMTEzNTc5MTA2OCwtMTEwNDY3OTE0MSw4OT
 I3NDAyNTcsLTEyOTUwNDQ4NzBdfQ==
 -->
