@@ -18,7 +18,7 @@ public class Stats extends Dataset {
 	public Stats(String allCityName, boolean flag,boolean flag2, 
 					String cityName, int giornoIniziale, int giornoFinale)  {
 		
-		super(allCityName, flag, flag2, cityName, giornoIniziale, giornoFinale );
+		super(allCityName, flag, flag2, cityName, giornoIniziale, giornoFinale);
 		this.setGiornoIniziale(giornoIniziale);
 		this.setGiornoFinale(giornoFinale);
 	}

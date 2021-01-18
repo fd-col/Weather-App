@@ -15,7 +15,7 @@ import org.json.simple.JSONObject;
  */
 public class StatsForecast extends Stats {
 
-	private int numeroGiorni;
+	private int numeroGiorni = getGiornoFinale() - getGiornoIniziale();
 	private JSONArray datiAttuali = new JSONArray();
 	
 	/**
@@ -28,9 +28,7 @@ public class StatsForecast extends Stats {
 							String cityName, int giornoIniziale, int giornoFinale) {
 		
 		super(allCityName, flag, flag2, cityName, giornoIniziale, giornoFinale);
-		
-		this.numeroGiorni = giornoFinale - giornoIniziale;
-		
+	
 		datiAttuali = getDatiAttuali(1,1);
 	}
 	
@@ -42,8 +40,9 @@ public class StatsForecast extends Stats {
 		double sogliaErroreDecimale = soglia_errore/100;
 		
 		boolean flag = true;
+		
 		//il for serve per confrontare i corrispondenti giorni riguardo i dati attuali e le previsioni future
-		for(int i=0; i<=numeroGiorni; i++) {
+		for(int i=0; i<numeroGiorni; i++) {
 			
 			JSONObject jObjAttuali = (JSONObject) datiAttuali.get(i);
 			Double visibilityAttuali = (Double) jObjAttuali.get("visibility");
@@ -62,7 +61,7 @@ public class StatsForecast extends Stats {
 			
 			
 			//prendo la differenza in  valore assoluto tra la visibilità dei dati attuali e quella delle previsioni future 
-			Double visibilityDifference = Math.abs( (double) (visibilityAttuali - visibilityFuturi) );
+			Double visibilityDifference = Math.abs( (Double) (visibilityAttuali - visibilityFuturi) );
 			Double speedDifference = speedAttuali - speedFuturi;
 			
 			//durante il ciclo for se un solo valore di "visibilityDifference sfora la soglia_errore percentuale
@@ -72,8 +71,7 @@ public class StatsForecast extends Stats {
 		}
 		return flag;	
 	}
-				//la differenza tra le due visbilità non può discostarsi oltre il margine consetito 
-				//dalla soglia d'errore sulla visibilità dei dati attuali
+			
 
 	/**
 	 * @return the datiAttuali
