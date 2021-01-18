@@ -154,4 +154,9 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 )
 <h2 id="class-diagram">Class Diagram</h2>
 <p></p><p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png%22" alt="alt text"></p>
+## Class Diagram
 
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNjEwMDU0NDgzXX0=
+-->
