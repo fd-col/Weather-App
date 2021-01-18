@@ -149,6 +149,9 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <h2 id="use-case-diagram">Use Case Diagram</h2>
 https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png
 
+## Sequence Diagram
+
+![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/SEQUENCE_DIAGRAM_1.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3MTI4OTIyN119
+eyJoaXN0b3J5IjpbLTE4NjM2ODU2OTAsLTM3MTI4OTIyN119
 -->
