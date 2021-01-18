@@ -58,7 +58,9 @@ In particolare:
  
  - "**visibilityMin**", "**visibilityMax**", "**visibilityAverage**" e "**visibilityVariance**" indicano rispettivamente il valore minimo,  massimo, la media e la varianza delle visibilità dei giorni presi in considerazione.
  - "**speedMin**", "**speedMax**", "**speedAverage**" e "**speedVariance**" indicano rispettivamente il valore minimo, massimo, la media e la varianza delle velocità del vento dei giorni presi in considerazione.
+ 
+ Le statistiche che la REST AP
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjcwNjMwMzE0LC0xMjk1MDQ0ODcwXX0=
+eyJoaXN0b3J5IjpbMTgzNzg2NTI0NCwtMTI5NTA0NDg3MF19
 -->
