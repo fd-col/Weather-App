@@ -118,8 +118,8 @@ La chiamata 7 ha il seguente body (sempre in JSON):
     "soglia_errore": <<n>n5>
 }</code></pre>
 Valgono gli stessi criteri di scelta per n1, n2, n3 e n4.
-**n5** deve essere un numero compreso tra 0 e 100, e sta ad indicare la percentuale di soglia di er
+**n5** deve essere un numero compreso tra 0 e 100, e sta ad indicare la percentuale di soglia di errore.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODM3NTU0NjksLTEyNDY1NzAzNjUsLT
+eyJoaXN0b3J5IjpbLTE0NzAwNjgwMjksLTEyNDY1NzAzNjUsLT
 ExMDQ2NzkxNDEsODkyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
 -->
