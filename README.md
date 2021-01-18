@@ -56,9 +56,9 @@ In particolare:
  
  Considerando invece i metadati relativi alle statistiche:
  
- - "**visibilityMin**", "**visibilityMax**", "**visibilityAverage**" e "**visibilityVariance**" indicano rispettivamente il valore minima, la visibilità massima, la media e la varianza delle visibilità dei giorni presi in considerazione.
- - "**speedMin**", "**speedMax**", "**speedAverage**" e "**speedVariance**" indicano rispettivamente la velocità del vento minima, massima, la media e la varianza delle visibilità dei giorni presi in considerazione.
+ - "**visibilityMin**", "**visibilityMax**", "**visibilityAverage**" e "**visibilityVariance**" indicano rispettivamente il valore minimo,  massimo, la media e la varianza delle visibilità dei giorni presi in considerazione.
+ - "**speedMin**", "**speedMax**", "**speedAverage**" e "**speedVariance**" indicano rispettivamente il valore minimo, massimo, la media e la varianza delle velocità del vento dei giorni presi in considerazione.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzNTQ3NjIzNiwtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbNjcwNjMwMzE0LC0xMjk1MDQ0ODcwXX0=
 -->
