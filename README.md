@@ -70,10 +70,12 @@ In particolare:
   
 ## Rotte dell'applicazione
 
-| GET | /metadata|
-|--|--|ggg
-|  |  |
+| GET | /metadata | 
+|--|--| 
+| GET |  | 
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwMTA4NDA0MCwtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbNDk3MDk1MTM1LC0xMjk1MDQ0ODcwXX0=
 -->
