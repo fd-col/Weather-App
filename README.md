@@ -149,6 +149,12 @@ La chiamata 7 ha il seguente body (sempre in JSON):</p>
 <p>Valgono gli stessi criteri di scelta per n1, n2, n3 e n4.<br>
 <strong>n5</strong> deve essere un numero compreso tra 0 e 100, e sta ad indicare la percentuale di soglia di errore.</p>
 
+
+# UML
+
+## Use Case Diagram
+
+![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjkxNDM3MTNdfQ==
+eyJoaXN0b3J5IjpbLTE0MDk5NzY5OTgsNjkxNDM3MTNdfQ==
 -->
