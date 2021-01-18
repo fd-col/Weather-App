@@ -116,10 +116,9 @@ La chiamata 7 ha il seguente body (sempre in JSON):
     "giornoIniziale": <<n>n3>,
     "giornoFinale": <<n>n4>,
     "soglia_errore": <<n>n5>
-}
-
+}</code></pre>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODI1MDYwOTUsLTEyNDY1NzAzNjUsLT
-ExMDQ2NzkxNDEsODkyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
+eyJoaXN0b3J5IjpbMTkxODYxMDg5LC0xMjQ2NTcwMzY1LC0xMT
+A0Njc5MTQxLDg5Mjc0MDI1NywtMTI5NTA0NDg3MF19
 -->
