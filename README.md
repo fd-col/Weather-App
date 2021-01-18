@@ -1,4 +1,9 @@
 ---
+
+
+---
+
+<hr>
 <h1 id="weather-app">Weather App</h1>
 <p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
@@ -68,8 +73,6 @@ Le statistiche che la REST API restituisce si distinguono in:</p>
 <li>
 statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all’utente se le previsioni, in base ai dati raccolti, sono state attendibili oppure no). L’utente inoltre sceglierà la soglia di errore attraverso la quale si valuterà l’attendibilità.</li>
 </ul>
-
-
 <h2 id="rotte-dellapplicazione">Rotte dell’applicazione</h2>
 <table>
 <thead>
@@ -122,9 +125,9 @@ statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all�
 <p>L’utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da restituire e il periodo da considerare.<br>
 Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente:</p>
 <pre><code>{
-    "primaCitta": &lt;n1&gt;&gt;>,
+    "primaCitta": &lt;n1&gt;&gt;&gt;,
     "ultimaCitta": &lt;n2&gt;&gt;,
-    "giornoIniziale": &lt;n3&gt;&gt;>,
+    "giornoIniziale": &lt;n3&gt;&gt;&gt;,
     "giornoFinale": &lt;n4&gt;
 }</code></pre>
 <p>I numeri <strong>n1</strong> e <strong>n2</strong> devono essere compresi tra 1 e 3 (1 per Trieste, 2 per Ortona e 3 per Venezia), in questo modo l’utente può scegliere quali città mostrare.<br>
@@ -147,8 +150,6 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <h2 id="use-case-diagram">Use Case Diagram</h2>
 <p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png" alt="alt text"></p>
 )
+<h2 id="class-diagram">Class Diagram</h2>
+<p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png" alt="alt text"></p>
 
-##
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTM2MTg0NDhdfQ==
--->
