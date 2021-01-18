@@ -117,8 +117,9 @@ La chiamata 7 ha il seguente body (sempre in JSON):
     "giornoFinale": <<n>n4>,
     "soglia_errore": <<n>n5>
 }</code></pre>
-
+Valgono gli stessi criteri di scelta per n1, n2, n3 e n4.
+**n5** deve essere un numero compreso tra 0 e 100, e sta ad indicare la percentuale di soglia di er
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxODYxMDg5LC0xMjQ2NTcwMzY1LC0xMT
-A0Njc5MTQxLDg5Mjc0MDI1NywtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbLTEwODM3NTU0NjksLTEyNDY1NzAzNjUsLT
+ExMDQ2NzkxNDEsODkyNzQwMjU3LC0xMjk1MDQ0ODcwXX0=
 -->
