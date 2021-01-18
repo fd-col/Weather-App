@@ -49,8 +49,9 @@ Metadati relativi ai dati delle statistiche:
 In particolare:
 
  - "**date**" indica la data del giorno a cui fanno riferimento i dati riportati
- - "
+ - "**visibility**" indica il valore numerico che esprime la visibilità relativa a quella città in quel giorno
+ - "**cityname**" indica l
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2NjYzNTE4NCwtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbLTk2ODUzMDE5OSwtMTI5NTA0NDg3MF19
 -->
