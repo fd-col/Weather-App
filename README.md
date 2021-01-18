@@ -153,6 +153,5 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png" alt="alt text"></p>
 )
 <h2 id="class-diagram">Class Diagram</h2>
-<p></p><p>![alt text](<a href="https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png">https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png</a>" alt=“alt text”&gt;</p><br>
-)
+<p></p><p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png%22" alt="alt text"></p>
 
