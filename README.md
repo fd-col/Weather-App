@@ -52,9 +52,12 @@ In particolare:
  - "**visibility**" indica il valore numerico che esprime la visibilità relativa a quella città in quel giorno;
  - "**cityname**" indica la città;
  - "**timeUnix**" indica la data espressa in secondi a partire dal 1° gennaio 1970;
- - "**speed**" indica il valore numerico che esprime la velocità del vento in 
+ - "**speed**" indica il valore numerico che esprime la velocità del vento relativa a quella città in quel giorno;
+ 
+ Considerando invece i metadati relativi alle statistiche:
+ 
+ - "**visibilityMin**", 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjgzOTg5MzcsLTEyOTUwNDQ4NzBdfQ
-==
+eyJoaXN0b3J5IjpbLTUwNzE2NDA5MSwtMTI5NTA0NDg3MF19
 -->
