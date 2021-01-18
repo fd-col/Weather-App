@@ -20,12 +20,18 @@
 <h2 id="formato-dei-dati-restituiti">Formato dei dati restituiti</h2>
 Metadati relativi ai dati del dataset :
 <pre><code>{
- "date": 1609502400,
- "visibility": 10000,
- "cityname": "Trieste",
- "wind": {
-    "speed": 0.06
-    }
+ "date": "2021-01-06 12:00:00",
+"visibility": 7000.0,
+
+"cityname": "Venice",
+
+"timeUNIX": 1609934400,
+
+"wind": {
+
+"speed": 2.9
+
+}
  }
 </code></pre>
 
@@ -47,5 +53,5 @@ Metadati relativi ai dati delle statistiche:
 </code></pre>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTUwNDQ4NzBdfQ==
+eyJoaXN0b3J5IjpbNTkxMzk3MzQsLTEyOTUwNDQ4NzBdfQ==
 -->
