@@ -48,10 +48,13 @@ Metadati relativi ai dati delle statistiche:
 </code></pre>
 In particolare:
 
- - "**date**" indica la data del giorno a cui fanno riferimento i dati riportati
- - "**visibility**" indica il valore numerico che esprime la visibilità relativa a quella città in quel giorno
- - "**cityname**" indica l
+ - "**date**" indica la data del giorno a cui fanno riferimento i dati riportati;
+ - "**visibility**" indica il valore numerico che esprime la visibilità relativa a quella città in quel giorno;
+ - "**cityname**" indica la città;
+ - "**timeUnix**" indica la data espressa in secondi a partire dal 1° gennaio 1970;
+ - "**speed**" indica il valore numerico che esprime la velocità del vento in 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2ODUzMDE5OSwtMTI5NTA0NDg3MF19
+eyJoaXN0b3J5IjpbLTE4MjgzOTg5MzcsLTEyOTUwNDQ4NzBdfQ
+==
 -->
