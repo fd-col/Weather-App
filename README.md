@@ -70,12 +70,15 @@ In particolare:
   
 ## Rotte dell'applicazione
 
-| GET | /metadata | 
+| Tipo di chiamata| rotta | 
 |--|--| 
-| GET |  | 
+| GET |/metadata  | 
+|  |  |
+|--|--|
+|  |  |
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk3MDk1MTM1LC0xMjk1MDQ0ODcwXX0=
+eyJoaXN0b3J5IjpbLTE0NzYyMDg3MiwtMTI5NTA0NDg3MF19
 -->
