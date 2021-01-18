@@ -4,6 +4,8 @@
 ---
 
 <hr>
+<hr>
+<hr>
 <h1 id="weather-app">Weather App</h1>
 <p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
@@ -126,8 +128,8 @@ statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all�
 Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente:</p>
 <pre><code>{
     "primaCitta": &lt;n1&gt;,
-    "ultimaCitta": &lt;n2&gt;&gt;,
-    "giornoIniziale": &lt;n3&gt;&gt;&gt;,
+    "ultimaCitta": &lt;n2&gt;,
+    "giornoIniziale": &lt;n3&gt;,
     "giornoFinale": &lt;n4&gt;
 }</code></pre>
 <p>I numeri <strong>n1</strong> e <strong>n2</strong> devono essere compresi tra 1 e 3 (1 per Trieste, 2 per Ortona e 3 per Venezia), in questo modo l’utente può scegliere quali città mostrare.<br>
@@ -151,11 +153,6 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png" alt="alt text"></p>
 )
 <h2 id="class-diagram">Class Diagram</h2>
-<p><img src="
-## Class Diagram
-
-![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png" alt="alt text"></p>
+<p></p><p>![alt text](<a href="https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png">https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png</a>" alt=“alt text”&gt;</p><br>
 )
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTAyODM3NjNdfQ==
--->
+
