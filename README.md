@@ -3,6 +3,8 @@
 
 ---
 
+<hr>
+<hr>
 <p>-app"&gt;Weather App</p>
 <p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
 <h3 id="dataset">Dataset</h3>
@@ -148,10 +150,6 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <h1 id="uml">UML</h1>
 <h2 id="use-case-diagram">Use Case Diagram</h2>
 https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png
+<h2 id="sequence-diagram">Sequence Diagram</h2>
+<p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/SEQUENCE_DIAGRAM_1.png" alt="alt text"></p>
 
-## Sequence Diagram
-
-![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/SEQUENCE_DIAGRAM_1.png)
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjM2ODU2OTAsLTM3MTI4OTIyN119
--->
