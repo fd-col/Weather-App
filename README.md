@@ -148,7 +148,6 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <h1 id="uml">UML</h1>
 <h2 id="use-case-diagram">Use Case Diagram</h2>
 <p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png" alt="alt text"></p>
-)
-## Class Diagram
+<h2 id="class-diagram">Class Diagram</h2>
 <p><img src="https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png" alt="alt text"></p>
 
