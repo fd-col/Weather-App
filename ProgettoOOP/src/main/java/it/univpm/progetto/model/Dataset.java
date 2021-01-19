@@ -19,7 +19,8 @@ public class Dataset {
 	private String[] allCityName;
 	protected int primaCitta, ultimaCitta;
 	
-	private ArrayList<JSONArray> arrayTemp;
+	private ArrayList<JSONArray> arrayDatiAttualiStorici;
+	private ArrayList<JSONArray> arrayDatiFuturi;
 	private JSONArray datiFuturi;
 
 	/**
@@ -46,20 +47,22 @@ public class Dataset {
 		JSONArray jsonArray2 = rff.readFile(rff.nomeFile(this.allCityName[1], flag1, flag2) ,	false);
 		JSONArray jsonArray3 = rff.readFile(rff.nomeFile(this.allCityName[2], flag1, flag2) , 	false);
 		
-		arrayTemp = new ArrayList<JSONArray>();
-		arrayTemp.add(jsonArray1);
-		arrayTemp.add(jsonArray2);
-		arrayTemp.add(jsonArray3);
+		arrayDatiAttualiStorici = new ArrayList<JSONArray>();
+		arrayDatiAttualiStorici.add(jsonArray1);
+		arrayDatiAttualiStorici.add(jsonArray2);
+		arrayDatiAttualiStorici.add(jsonArray3);
 		
 		if(flag2) {
-			datiFuturi = new JSONArray();
+			arrayDatiFuturi = new ArrayList<JSONArray>();
 			for(int i=primaCitta; i <= ultimaCitta; i++) {
+				datiFuturi = new JSONArray();
 				for(int j=giornoIniziale; j<=giornoFinale; j++) {
 				
 					ForecastWeatherParser forecastWeatherParser = new ForecastWeatherParser(this.allCityName[i-1], j-1);
 					forecastWeatherParser.parsing();
 					datiFuturi.add(forecastWeatherParser.formatter());
 				}
+			arrayDatiFuturi.add(datiFuturi);
 			}
 		}
 	}
@@ -67,15 +70,15 @@ public class Dataset {
 	/**
 	 * @return the arrayTemp
 	 */
-	public ArrayList<JSONArray> getArrayTemp() {
-		return arrayTemp;
+	public ArrayList<JSONArray> getArrayDatiAttualiStorici() {
+		return arrayDatiAttualiStorici;
 	}
 
 	/**
 	 * @param arrayTemp the arrayTemp to set
 	 */
-	public void setArrayTemp(ArrayList<JSONArray> arrayTemp) {
-		this.arrayTemp = arrayTemp;
+	public void setArrayDatiAttualiStorici(ArrayList<JSONArray> arrayDatiAttualiStorici) {
+		this.arrayDatiAttualiStorici = arrayDatiAttualiStorici;
 	}
 
 	/**
@@ -83,28 +86,28 @@ public class Dataset {
 	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList<JSONArray> getDatiAttuali() {
-		ArrayList<JSONArray> jsonArrayTemp = new JSONArray();
+		ArrayList<JSONArray> arrayTemp = new JSONArray();
 		for(int i=primaCitta; i <= ultimaCitta; i++) 
-			 jsonArrayTemp.add( arrayTemp.get(i-1) );
-		return jsonArrayTemp;
+			 arrayTemp.add( arrayDatiAttualiStorici.get(i-1) );
+		return arrayTemp;
 	}
 
 	/**
 	 * @return the jsonArrayTemp
 	 */
 	@SuppressWarnings("unchecked")
-	public JSONArray getDatiStorici() {
-		JSONArray jsonArrayTemp = new JSONArray();
+	public ArrayList<JSONArray> getDatiStorici() {
+		ArrayList<JSONArray> arrayTemp = new JSONArray();
 		for(int i=primaCitta; i <= ultimaCitta; i++) 
-			 jsonArrayTemp.add( arrayTemp.get(i-1) );
-		return jsonArrayTemp;
+			 arrayTemp.add( arrayDatiAttualiStorici.get(i-1) );
+		return arrayTemp;
 	}
 	
 	/**
 	 * @return the datiFuturi
 	 */
-	public JSONArray getDatiFuturi() {
-		return datiFuturi;
+	public ArrayList<JSONArray> getDatiFuturi() {
+		return arrayDatiFuturi;
 	}
 	
 }

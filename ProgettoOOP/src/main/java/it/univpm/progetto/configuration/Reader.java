@@ -16,5 +16,4 @@ public interface Reader {
 	
 	public JSONArray readFile(String nome_file, boolean flag);
 	
-	//public JSONObject readFileToJsonObject(String nome_file);
 }

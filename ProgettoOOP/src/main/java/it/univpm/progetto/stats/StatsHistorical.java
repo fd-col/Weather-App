@@ -4,11 +4,9 @@
 package it.univpm.progetto.stats;
 
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -17,7 +15,6 @@ import org.json.simple.JSONObject;
  */
 public class StatsHistorical extends Stats {
 	
-	ArrayList<JSONArray> arrayLoaded = getArrayTemp();
 	/**
 	 * costruttore che chiama il costruttore della superclasse con i parametri inseriti
 	 * @param allCityName
@@ -43,14 +40,14 @@ public class StatsHistorical extends Stats {
 	 * @return the visibilityMin
 	 */
 	public Double valueMinMax(boolean flag1, boolean flag2) {
-		JSONObject jObject = (JSONObject) arrayLoaded.get(primaCitta).get(giornoIniziale-1);
+		JSONObject jObject = (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(giornoIniziale-1);
 		
 		Double visibility;
 		Double speed;
 		if(flag1) { 	//scelgo se calcolare visibility oppure speed (flag=true --> visibility)
 			visibility = (Double) jObject.get("visibility");
 			for(int i = giornoIniziale-1; i < giornoFinale; i++) {
-				JSONObject jsonObj= (JSONObject) arrayLoaded.get(primaCitta).get(i);
+				JSONObject jsonObj= (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(i);
 				if(flag2) // voglio calcolare il valore minimo o massimo (flag=true --> valore minimo)
 					if(visibility >= (Double) jsonObj.get("visibility")) 
 						visibility = (Double) jsonObj.get("visibility");
@@ -64,7 +61,7 @@ public class StatsHistorical extends Stats {
 			JSONObject wind = (JSONObject) jObject.get("wind");
 			speed = (Double) wind.get("speed");
 			for(int i = giornoIniziale-1; i < giornoFinale; i++) {
-				JSONObject jsonObj= (JSONObject) arrayLoaded.get(primaCitta).get(i);
+				JSONObject jsonObj= (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(i);
 				JSONObject wind2 = (JSONObject) jsonObj.get("wind");
 				if(flag2)
 					if(speed >= (Double) wind2.get("speed")) 
@@ -85,7 +82,7 @@ public class StatsHistorical extends Stats {
 	public Double average(boolean flag)  {
 		Double sum = (double) 0;
 		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObject= (JSONObject) arrayLoaded.get(primaCitta).get(m);
+			JSONObject jObject= (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(m);
 			
 			if(flag) {
 				sum += (double) jObject.get("visibility");
@@ -96,7 +93,7 @@ public class StatsHistorical extends Stats {
 				sum += (Double) rawSpeed;
 			}
 		}
-		Double average = (Double) sum/(giornoFinale-giornoIniziale);	
+		Double average = (Double) sum/(numeroGiorni);	
 		return average;
 	}
 
@@ -109,7 +106,7 @@ public class StatsHistorical extends Stats {
 		Double media = average(true);
 		Double sommaScartiQuad = (double) 0;
 		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObject= (JSONObject) arrayLoaded.get(primaCitta).get(m);
+			JSONObject jObject= (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(m);
 			
 			if(flag)
 				sommaScartiQuad += ((Double) jObject.get("visibility") - media)
@@ -120,7 +117,7 @@ public class StatsHistorical extends Stats {
 				sommaScartiQuad += (rawSpeed - media)*(rawSpeed - media);
 			}
 		}
-		Double variance = sommaScartiQuad/(giornoFinale-giornoIniziale);
+		Double variance = sommaScartiQuad/(numeroGiorni);
 		return variance;
 	}
 	

@@ -57,7 +57,7 @@ public class Controller {
 	
 	
 	@PostMapping (value= "/weather/historical")
-	public  JSONArray historical(@RequestBody Index i) {
+	public  ArrayList<JSONArray> historical(@RequestBody Index i) {
 		Dataset ds = new Dataset("Trieste,Ortona,Venezia",false, false, i.primaCitta, i.ultimaCitta, 
 																		i.giornoIniziale, i.giornoFinale);
 		return ds.getDatiStorici();
@@ -65,7 +65,7 @@ public class Controller {
 	
 	
 	@PostMapping (value= "/weather/forecast")
-	public JSONArray forecast(@RequestBody Index i) {
+	public ArrayList<JSONArray> forecast(@RequestBody Index i) {
 		Dataset ds = new Dataset("Trieste,Ortona,Venezia",true, true, i.primaCitta, i.ultimaCitta,
 																		i.giornoIniziale, i.giornoFinale);
 		return ds.getDatiFuturi();
@@ -93,7 +93,7 @@ public class Controller {
 		StatsForecast statsForecast = new StatsForecast("Trieste,Ortona,Venezia",true, true, 
 													i.primaCitta, i.ultimaCitta, i.giornoIniziale, i.giornoFinale);
 																			
-		if( statsForecast.confronta(i.soglia_errore) )
+		if( statsForecast.confronta(i.soglia_errore, false) )
 			
 			return "OK, PREVISIONI AZZECCATE";
 		else 
