@@ -3,7 +3,6 @@
  */
 package it.univpm.progetto.controller;
 
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -21,23 +20,35 @@ import it.univpm.progetto.stats.StatsForecast;
 import it.univpm.progetto.stats.StatsHistorical;
 
 /**
+ * contiene le rotte che posso essere richiamate tramite un client per richieste di tipo HTTP
  * @author colleluori
  * @author camplese
- *
+ * 
  */
 @RestController 
 public class Controller {
 	
 	/**
 	 * effettua una chiamata alle previsioni attuali tramite API di Postman 
-	 * ritornando lo stesso formato dei metadati contenuti nel database
+	 * ritornando lo stesso formato dei metadati contenuti nel dataset
 	 * @return the current weather
-	 * @throws URISyntaxException
 	 */
-	@GetMapping (value= "/metadata")
+	@GetMapping (value= "/metadata/weather")
 	public  JSONObject giveMeData() {
 		WeatherData wd = new WeatherData("London");
-		return wd.getJsonObj();
+		return wd.getJsonObjectFormatted();
+		
+	}
+	
+	/**
+	 * metodo che ritorno un esempio di metadati ritornati da una chiamata alle statistiche 
+	 * sui dati storici e sulle previsioni future
+	 * @return the metadata of a stats request
+	 */
+	@GetMapping (value= "/metadata/stats")
+	public JSONObject giveMeStatsForecast() {
+		WeatherData wd = new WeatherData();
+		return wd.getJsonObjectFormatted();
 	}
 	
 	/**

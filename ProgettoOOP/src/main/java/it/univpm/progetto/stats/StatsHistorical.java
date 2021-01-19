@@ -10,27 +10,28 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 
 /**
- * @author falco
+ * @author camplese
+ * @author colleluori
  *
  */
 public class StatsHistorical extends Stats {
 	
 	/**
 	 * costruttore che chiama il costruttore della superclasse con i parametri inseriti
-	 * @param allCityName
-	 * @param flag1 
-	 * @param flag2
-	 * @param primaCitta
-	 * @param ultimaCitta
-	 * @param int giornoIniziale
-	 * @param int giornoFinale
+	 * @param allCityName nomi delle città contenute nel dataset
+	 * @param flag1 true per i dati attuali, false per le previsioni future oppure i dati storici
+	 * @param flag2 true per le previsioni future, false per i dati storici
+	 * @param primaCitta variabile intera corrispondente all'indice della prima citta'
+	 * @param ultimaCitta variabile intera corrispondente all'indice dell'ultima citta'
+	 * @param giornoIniziale primo giorno di cui si vogliono i dati meteo
+	 * @param giornoFinale ultimo giorno di cui si vogliono i dati meteo
 	 */
 	public StatsHistorical(String allCityName, boolean flag1, boolean flag2, int primaCitta, int ultimaCitta,
 																int giornoIniziale, int giornoFinale) {
 		
 		super(allCityName, flag1, flag2, primaCitta, ultimaCitta, giornoIniziale, giornoFinale);
 	}
-
+	
 	/**
 	 * unico metodo che calcola i valori minimi e massimo degli attributi "visibility" e "speed"
 	 * @param flag1 seleziona l'attributo su cui fare i calcoli: "visibility" o "speed"
@@ -40,34 +41,41 @@ public class StatsHistorical extends Stats {
 	 * @return the visibilityMin
 	 */
 	public Double valueMinMax(boolean flag1, boolean flag2) {
-		JSONObject jObject = (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(giornoIniziale-1);
+		JSONObject jObject = (JSONObject) getDatiStorici().get(0).get(giornoIniziale-1);
 		
 		Double visibility;
 		Double speed;
 		if(flag1) { 	//scelgo se calcolare visibility oppure speed (flag=true --> visibility)
 			visibility = (Double) jObject.get("visibility");
+			
 			for(int i = giornoIniziale-1; i < giornoFinale; i++) {
-				JSONObject jsonObj= (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(i);
-				if(flag2) // voglio calcolare il valore minimo o massimo (flag=true --> valore minimo)
-					if(visibility >= (Double) jsonObj.get("visibility")) 
+				JSONObject jsonObj= (JSONObject) getDatiStorici().get(0).get(i);
+				if(flag2) { // voglio calcolare il valore minimo o massimo (flag=true --> valore minimo)
+					if(visibility > (Double) jsonObj.get("visibility")) 
 						visibility = (Double) jsonObj.get("visibility");
-				
-				else 
-					visibility = (Double) jsonObj.get("visibility");
+				}
+				else {
+					if(visibility < (Double) jsonObj.get("visibility"))
+						visibility = (Double) jsonObj.get("visibility");
+				}
 			}
 			return visibility;
 		}
 		else {
 			JSONObject wind = (JSONObject) jObject.get("wind");
 			speed = (Double) wind.get("speed");
+			
 			for(int i = giornoIniziale-1; i < giornoFinale; i++) {
-				JSONObject jsonObj= (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(i);
+				JSONObject jsonObj= (JSONObject) getDatiStorici().get(0).get(i);
 				JSONObject wind2 = (JSONObject) jsonObj.get("wind");
-				if(flag2)
-					if(speed >= (Double) wind2.get("speed")) 
+				if(flag2) {
+					if(speed > (Double) wind2.get("speed")) 
 						speed = (Double) wind2.get("speed");
-				else 
-					speed = (Double) wind2.get("speed");
+				}
+				else {
+					if(speed < (Double) wind2.get("speed"))
+						speed = (Double) wind2.get("speed");
+				}
 			}
 			return speed; 
 		}
@@ -77,12 +85,13 @@ public class StatsHistorical extends Stats {
 	/**
 	 * calcola la media (fra i giorni passati nel costruttore) della visibilità oppure della velocità del vento 
 	 * @param flag determina se il calcolo viene effettuato su "visibility" oppure su "speed"
+	 * 		  (flag=true per calcolare la visibility, =false per calcolare la speed)
 	 * @return the average
 	 */
 	public Double average(boolean flag)  {
 		Double sum = (double) 0;
 		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObject= (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(m);
+			JSONObject jObject= (JSONObject) getDatiStorici().get(0).get(m);
 			
 			if(flag) {
 				sum += (double) jObject.get("visibility");
@@ -100,13 +109,14 @@ public class StatsHistorical extends Stats {
 	/**
 	 * calcola la varianza (fra i giorni passati nel costruttore) della visibilità oppure della velocità del vento
 	 * @param flag permette di decide se calcolare la varianza della "visibility" oppure della "speed"
+	 * 		  (flag=true per calcolare la visibility, =false per calcolare la speed)
 	 * @return the variance
 	 */
 	public Double variance(boolean flag) {
-		Double media = average(true);
+		Double media = average(flag);
 		Double sommaScartiQuad = (double) 0;
 		for(int m = giornoIniziale-1; m < giornoFinale; m++) {
-			JSONObject jObject= (JSONObject) getArrayDatiAttualiStorici().get(primaCitta).get(m);
+			JSONObject jObject= (JSONObject) getDatiStorici().get(0).get(m);
 			
 			if(flag)
 				sommaScartiQuad += ((Double) jObject.get("visibility") - media)

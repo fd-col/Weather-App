@@ -30,7 +30,7 @@ public class WeatherParser {
 	
 	/**
 	 * costruttore che inizializza il cityName
-	 * @param cityName
+	 * @param cityName il nome della città da inizializzare
 	 */
 	public WeatherParser(String cityName) {
 		this.cityName = cityName;
@@ -86,7 +86,7 @@ public class WeatherParser {
 	}
 
 	/**
-	 * @param double1 the visibility to set
+	 * @param visibility the visibility to set
 	 */
 	public void setVisibility(Double visibility) {
 		this.visibility = visibility;
@@ -106,10 +106,15 @@ public class WeatherParser {
 		this.speed = speed;
 	}
 
+	/**
+	 * metodo che effettua il parsing dei dati prelevati dal dataset
+	 */
 	public void parsing() {}
 	
 	/**
-	 * assegna il valore agli attributi della classe madre WeatherParser prendendoli dal jsonObject passato come parametro
+	 * assegna un valore a tutti gli attributi della classe madre WeatherParser 
+	 * prendendoli dal jsonObject passato come parametro
+	 * @param obj the json object
 	 */
 	public void setAll(JSONObject obj) {
 		this.setTimeUNIX((Long) obj.get("dt"));	
@@ -120,7 +125,7 @@ public class WeatherParser {
 	}
 	
 	/**
-	 * formattatore generale del json restituito
+	 * formattatore un json object relativo al dataset
 	 * @return JSONObject
 	 */
 	@SuppressWarnings("unchecked")

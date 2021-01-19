@@ -19,9 +19,9 @@ import it.univpm.progetto.model.WeatherData;
 public class SaveToFile {
 	
 	/**
-	 * Metodo per salvare un oggetto in un file di testo .json
-	 * @param nome_file Nome del file in cui salvare l'oggetto.
-	 * @param isObject Specifica se l'oggetto da salvare è un JSONObject oppure un JSONArray.
+	 * metodo per salvare un oggetto in un file di testo .json
+	 * @param cityName nome della citta'
+	 * @param nome_file Nome del file in cui salvare l'oggetto
 	 */
 	public void appendToFile(String cityName, String nome_file) {
 		try {
@@ -29,7 +29,7 @@ public class SaveToFile {
 			PrintWriter file_output = new PrintWriter(
 										new BufferedWriter(
 											new FileWriter(nome_file, true)));
-			file_output.print(weatherData.getJsonObj()+","); //stampo su file il JSONObject
+			file_output.print(weatherData.getJsonObjectFormatted()+","); //stampo su file il JSONObject
 			file_output.close();
 		} catch (IOException e) {
 			e.printStackTrace();

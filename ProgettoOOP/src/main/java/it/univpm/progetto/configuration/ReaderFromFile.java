@@ -13,8 +13,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- * @author fedju
- *
+ * classe che si occupa della lettura da file
+ * @author colleluori
+ * @author camplese
  */
 public class ReaderFromFile implements Reader {
 	
@@ -35,10 +36,11 @@ public class ReaderFromFile implements Reader {
 	/**
 	 * legge da file il JSONObject o il JSONArray, e ritorna il JSONObject in prima posizione del JSONArray,
 	 * altrimenti direttamente il JSONArray
-	 * @param nome_file
+	 * @param nome_file nome del file da leggere
 	 * @param flag sceglie se prendere un JSONOBJECT o un JSONArray (true=JSONObject, false=JSONArray)
 	 * @return jsonArrayFromFile
 	 */
+	@SuppressWarnings("unchecked")
 	public JSONArray readFile(String nome_file, boolean flag ) {
 		JSONParser parser = new JSONParser();
 		JSONArray jsonArrayFromFile = new JSONArray();
@@ -54,9 +56,10 @@ public class ReaderFromFile implements Reader {
 			//altrimenti è un JSONArray 
 			else 
 				jsonArrayFromFile = (JSONArray) parser.parse(line);
-			
 			buffRead.close();
-		} catch (IOException | ParseException e) {
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
 			e.printStackTrace();
 		} 
 		return jsonArrayFromFile;

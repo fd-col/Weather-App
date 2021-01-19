@@ -21,6 +21,7 @@ public class ForecastWeatherParser extends WeatherParser {
 	/**
 	 * costruttore della classe 
 	 * @param cityName
+	 * @param i indice che scorre tramite il for() presente nella classe Dataset.java
 	 */
 	public ForecastWeatherParser(String cityName, int i) {
 		super(cityName);

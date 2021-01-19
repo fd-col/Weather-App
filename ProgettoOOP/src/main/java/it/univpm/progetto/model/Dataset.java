@@ -11,6 +11,8 @@ import it.univpm.progetto.configuration.ReaderFromFile;
 import it.univpm.progetto.parser.ForecastWeatherParser;
 
 /**
+ * questa classe inizializza i dati attuali / dati storici / previsioni future contenuti nel dataset , 
+ * e ne permette la restituzione 
  * @author colleluori
  * @author camplese
  */
@@ -24,15 +26,14 @@ public class Dataset {
 	private JSONArray datiFuturi;
 
 	/**
-	 * costruttore (dati meteo attuali, dati meteo storici)
-	 * flag=true per i dati attuali, flag=false per i dati storici
-	 * @param allCityName
-	 * @param flag1 
-	 * @param flag2
-	 * @param primaCitta
-	 * @param ultimaCitta
-	 * @param int giornoIniziale
-	 * @param int giornoFinale
+	 * costruttore (dati meteo attuali, dati meteo storici, previsioni meteo future)
+	 * @param allCityName nomi delle città contenute nel dataset
+	 * @param flag1 true per i dati attuali, false per le previsioni future oppure i dati storici
+	 * @param flag2 true per le previsioni future, false per i dati storici
+	 * @param primaCitta variabile intera corrispondente all'indice della prima citta'
+	 * @param ultimaCitta variabile intera corrispondente all'indice dell'ultima citta'
+	 * @param giornoIniziale primo giorno di cui si vogliono i dati meteo
+	 * @param giornoFinale ultimo giorno di cui si vogliono i dati meteo
 	 */
 	@SuppressWarnings("unchecked")
 	public Dataset(String allCityName, boolean flag1, boolean flag2, 
@@ -68,21 +69,28 @@ public class Dataset {
 	}
 		
 	/**
-	 * @return the arrayTemp
+	 * @return the arrayDatiAttualiStorici
 	 */
 	public ArrayList<JSONArray> getArrayDatiAttualiStorici() {
 		return arrayDatiAttualiStorici;
 	}
 
 	/**
-	 * @param arrayTemp the arrayTemp to set
+	 * @param arrayDatiAttualiStorici the arrayDatiAttualiStorici to set
 	 */
 	public void setArrayDatiAttualiStorici(ArrayList<JSONArray> arrayDatiAttualiStorici) {
 		this.arrayDatiAttualiStorici = arrayDatiAttualiStorici;
 	}
+	
+	/**
+	 * @return the arrayDatiFuturi
+	 */
+	public ArrayList<JSONArray> getDatiFuturi() {
+		return arrayDatiFuturi;
+	}
 
 	/**
-	 * @return the jsonArrayTemp
+	 * @return the arrayTemp
 	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList<JSONArray> getDatiAttuali() {
@@ -93,7 +101,7 @@ public class Dataset {
 	}
 
 	/**
-	 * @return the jsonArrayTemp
+	 * @return the arrayTemp
 	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList<JSONArray> getDatiStorici() {
@@ -101,13 +109,6 @@ public class Dataset {
 		for(int i=primaCitta; i <= ultimaCitta; i++) 
 			 arrayTemp.add( arrayDatiAttualiStorici.get(i-1) );
 		return arrayTemp;
-	}
-	
-	/**
-	 * @return the datiFuturi
-	 */
-	public ArrayList<JSONArray> getDatiFuturi() {
-		return arrayDatiFuturi;
 	}
 	
 }
