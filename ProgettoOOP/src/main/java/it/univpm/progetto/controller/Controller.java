@@ -89,15 +89,10 @@ public class Controller {
 	 * @return
 	 */
 	@PostMapping (value= "/stats/forecast")
-	public String statsForecast(@RequestBody Index i) {
+	public JSONObject statsForecast(@RequestBody Index i) {
 		StatsForecast statsForecast = new StatsForecast("Trieste,Ortona,Venezia",true, true, 
 													i.primaCitta, i.ultimaCitta, i.giornoIniziale, i.giornoFinale);
-																			
-		if( statsForecast.confronta(i.soglia_errore, false) )
-			
-			return "OK, PREVISIONI AZZECCATE";
-		else 
-			return "NO, PREVISIONI ERRATE";
+		return statsForecast.formatter(i.soglia_errore);													
 	}
 	
 	

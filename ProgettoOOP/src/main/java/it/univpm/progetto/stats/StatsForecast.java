@@ -4,6 +4,8 @@
 package it.univpm.progetto.stats;
 
 import java.security.InvalidParameterException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 
@@ -43,7 +45,7 @@ public class StatsForecast extends Stats {
 		Double visibilityAttuali = null;
 		Double visibilityFuturi = null;
 		Double speedAttuali = null;
-		Double speedFuturi = 5.5;
+		Double speedFuturi = null;
 		
 		//il for serve per confrontare i corrispondenti giorni riguardo i dati attuali e le previsioni future
 		for(int i=0; i<numeroGiorni; i++) {
@@ -67,7 +69,7 @@ public class StatsForecast extends Stats {
 				speedAttuali = (Double) Double.parseDouble( wind1.get("speed").toString() );
 				JSONObject wind2 = (JSONObject) jObjAttuali.get("wind");
 				speedFuturi = (Double) Double.parseDouble( wind2.get("speed").toString() );
-				//
+				//prendo la differenza in  valore assoluto tra la velocità del vento dei dati attuali e quella delle previsioni future 
 				Double speedDifference = Math.abs( (Double) (speedAttuali - speedFuturi) );
 				
 				if( speedDifference >= (speedAttuali*sogliaErroreDecimale)  ) 
@@ -77,24 +79,18 @@ public class StatsForecast extends Stats {
 		return flag;	
 	}
 	
-	/**
-	 * confronta i dati attuali con le previsioni riguardanti la "speed"
-	 * @param soglia_errore
-	 * @return
-	 */
-/*	public boolean confrontaSpeed(double soglia_errore) { 
-		if(primaCitta != ultimaCitta) 
-			throw new InvalidParameterException("Errore di inserimento parametri: "
-												+ "\'primaCitta\' deve essere uguale a \'ultimaCitta\' ");
-		double sogliaErroreDecimale = soglia_errore/100;
-		boolean flag = true;
+	@SuppressWarnings("unchecked")
+	public JSONObject formatter(double soglia_errore) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("cityId", this.primaCitta);
+		jsonObject.put("numeroGiorni", this.numeroGiorni);
+		jsonObject.put("sogliaDiErrore", soglia_errore);
+		Map<String, Boolean> m1 = new LinkedHashMap<String, Boolean>(2);
+		m1.put("speed", confronta(soglia_errore,false));
+		m1.put("visibility", confronta(soglia_errore,true));
+		jsonObject.put("attendibilità", m1);
 		
-		for(int i=0; i<numeroGiorni; i++) {
-			JSONObject jObjAttuali = (JSONObject) getDatiAttuali().get(0).get(i);
+		return jsonObject;
+	}
 			
-			
-		}
-*/		
-		
-	
 }
