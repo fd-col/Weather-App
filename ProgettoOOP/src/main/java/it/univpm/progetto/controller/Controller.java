@@ -31,7 +31,7 @@ public class Controller {
 	/**
 	 * effettua una chiamata alle previsioni attuali tramite API di Postman 
 	 * ritornando lo stesso formato dei metadati contenuti nel database
-	 * @return dati meteo attuali in formato JSON
+	 * @return the current weather
 	 * @throws URISyntaxException
 	 */
 	@GetMapping (value= "/metadata")
@@ -43,10 +43,8 @@ public class Controller {
 	/**
 	 * dati attuali (dal database) delle città selezionate: 1=Trieste, 2=Ortona, 3=Venezia ;
 	 * indicare nella chiamata su Postman l'indice d'inizio e di fine selezione tramite un body
-	 *
-	 * @param attributi della classe Index.java: "inizio" e "fine" 
-	 * @return i dati attuali delle città scelte   
-	 * @throws URISyntaxException
+	 * @param i
+	 * @return the current weather of the dataset 
 	 */
 	@PostMapping (value= "/weather/current")
 	public  ArrayList<JSONArray> current(@RequestBody Index i) {
@@ -56,6 +54,12 @@ public class Controller {
 	}															
 	
 	
+	/**
+	 * dati storici (dal database) delle città selezionate: 1=Trieste, 2=Ortona, 3=Venezia ;
+	 * indicare nella chiamata su Postman l'indice d'inizio e di fine selezione tramite un body
+	 * @param i
+	 * @return the historical weather of the dataset
+	 */
 	@PostMapping (value= "/weather/historical")
 	public  ArrayList<JSONArray> historical(@RequestBody Index i) {
 		Dataset ds = new Dataset("Trieste,Ortona,Venezia",false, false, i.primaCitta, i.ultimaCitta, 
@@ -64,6 +68,12 @@ public class Controller {
 	}
 	
 	
+	/**
+	 * previsioni future (dal database) delle città selezionate: 1=Trieste, 2=Ortona, 3=Venezia ;
+	 * indicare nella chiamata su Postman l'indice d'inizio e di fine selezione tramite un body
+	 * @param i
+	 * @return the forecast weather of the dataset
+	 */
 	@PostMapping (value= "/weather/forecast")
 	public ArrayList<JSONArray> forecast(@RequestBody Index i) {
 		Dataset ds = new Dataset("Trieste,Ortona,Venezia",true, true, i.primaCitta, i.ultimaCitta,
@@ -74,7 +84,7 @@ public class Controller {
 	/**
 	 * statistiche riguardanti dati storici
 	 * @param i
-	 * @return
+	 * @return the historical stats 
 	 */
 	@PostMapping (value= "/stats/historical")
 	public JSONObject stats(@RequestBody Index i) {
@@ -86,7 +96,7 @@ public class Controller {
 	/**
 	 * statistiche riguardanti previsioni future
 	 * @param i
-	 * @return
+	 * @return the forecast stats
 	 */
 	@PostMapping (value= "/stats/forecast")
 	public JSONObject statsForecast(@RequestBody Index i) {
