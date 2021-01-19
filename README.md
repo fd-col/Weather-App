@@ -149,7 +149,11 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 
 ## Class Diagram
 
+![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png)
 
+## Sequence Diagram
+
+![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/SEQUENCE_DIAGRAM_1.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5NDA3NjM1MywxNzE3ODY0OTEwXX0=
+eyJoaXN0b3J5IjpbLTk0MDYyNzE4NiwxNzE3ODY0OTEwXX0=
 -->
