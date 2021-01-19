@@ -146,16 +146,7 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <p>Valgono gli stessi criteri di scelta per n1, n2, n3 e n4.<br>
 <strong>n5</strong> deve essere un numero compreso tra 0 e 100, e sta ad indicare la percentuale di soglia di errore.</p>
 <h1 id="uml">UML</h1>
-<p><img src="
-## Use Case Diagram
-
-https://github.com/fd-col/prog-colleluori-camplese/blob/main/USE%20CASE%20DIAGRAM.png" alt="alt text"></p>
-<h2 id="class-diagram">Class Diagram</h2>
-<p><img src=")
-
-## Class Diagram
-
-![alt text](https://github.com/fd-col/prog-colleluori-camplese/blob/main/CLASS_DIAGRAM.png" alt="alt text"></phsgucm/pgceucamlehttps://github.com/fd-col/prog-colleluori-camplese/blob/main/SEQUENCE_DIAGRAM_1.png
+## 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxNzg2NDkxMF19
+eyJoaXN0b3J5IjpbMjEzMjY2NDUwNiwxNzE3ODY0OTEwXX0=
 -->
