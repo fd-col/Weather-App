@@ -61,7 +61,7 @@ public class Controller {
 	public  ArrayList<JSONArray> current(@RequestBody Index i) {
 		Dataset ds = new Dataset("Trieste,Ortona,Venezia",true, false, i.primaCitta, i.ultimaCitta,
 																		i.giornoIniziale, i.giornoFinale);
-		return ds.getDatiAttuali();				// 1=Trieste, 2=Ortona, 3=Venezia
+		return ds.getArrayDatiAttualiStorici();				// 1=Trieste, 2=Ortona, 3=Venezia
 	}															
 	
 	
@@ -75,7 +75,7 @@ public class Controller {
 	public  ArrayList<JSONArray> historical(@RequestBody Index i) {
 		Dataset ds = new Dataset("Trieste,Ortona,Venezia",false, false, i.primaCitta, i.ultimaCitta, 
 																		i.giornoIniziale, i.giornoFinale);
-		return ds.getDatiStorici();
+		return ds.getArrayDatiAttualiStorici();
 	}
 	
 	
@@ -118,6 +118,7 @@ public class Controller {
 	
 	
 	
+
 
 	
 	/**

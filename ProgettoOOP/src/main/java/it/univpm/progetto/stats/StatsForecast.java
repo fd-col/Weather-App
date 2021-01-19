@@ -52,7 +52,7 @@ public class StatsForecast extends Stats {
 		//il for serve per confrontare i corrispondenti giorni riguardo i dati attuali e le previsioni future
 		for(int i=0; i<numeroGiorni-1; i++) {
 			
-			JSONObject jsonObjectAttuali = (JSONObject) getDatiAttuali().get(0).get(i);
+			JSONObject jsonObjectAttuali = (JSONObject) getArrayDatiAttualiStorici().get(0).get(i);
 			JSONObject jsonObjectFuturi = (JSONObject) getDatiFuturi().get(0).get(i);
 			
 			if(visibility_speed) {

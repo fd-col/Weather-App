@@ -22,6 +22,7 @@ public class Dataset {
 	protected int primaCitta, ultimaCitta;
 	
 	private ArrayList<JSONArray> arrayDatiAttualiStorici;
+	private JSONArray datiAttualiStorici;
 	private ArrayList<JSONArray> arrayDatiFuturi;
 	private JSONArray datiFuturi;
 
@@ -44,15 +45,17 @@ public class Dataset {
 		this.ultimaCitta = ultimaCitta;
 	    
 		ReaderFromFile rff = new ReaderFromFile();
-		JSONArray jsonArray1 = rff.readFile(rff.nomeFile(this.allCityName[0], flag1, flag2) , 	false);
-		JSONArray jsonArray2 = rff.readFile(rff.nomeFile(this.allCityName[1], flag1, flag2) ,	false);
-		JSONArray jsonArray3 = rff.readFile(rff.nomeFile(this.allCityName[2], flag1, flag2) , 	false);
 		
 		arrayDatiAttualiStorici = new ArrayList<JSONArray>();
-		arrayDatiAttualiStorici.add(jsonArray1);
-		arrayDatiAttualiStorici.add(jsonArray2);
-		arrayDatiAttualiStorici.add(jsonArray3);
-		
+		for(int i=primaCitta; i <= ultimaCitta; i++) {
+			JSONArray jsonArrayTemp = new JSONArray();
+			datiAttualiStorici = rff.readFile(rff.nomeFile(this.allCityName[i-1], flag1, flag2) , 	false);
+			for(int j=giornoIniziale; j<=giornoFinale; j++) {
+				jsonArrayTemp.add(datiAttualiStorici.get(j-1));
+			}
+			arrayDatiAttualiStorici.add(jsonArrayTemp);
+		}
+				
 		if(flag2) {
 			arrayDatiFuturi = new ArrayList<JSONArray>();
 			for(int i=primaCitta; i <= ultimaCitta; i++) {
@@ -63,7 +66,7 @@ public class Dataset {
 					forecastWeatherParser.parsing();
 					datiFuturi.add(forecastWeatherParser.formatter());
 				}
-			arrayDatiFuturi.add(datiFuturi);
+				arrayDatiFuturi.add(datiFuturi);
 			}
 		}
 	}
@@ -87,28 +90,6 @@ public class Dataset {
 	 */
 	public ArrayList<JSONArray> getDatiFuturi() {
 		return arrayDatiFuturi;
-	}
-
-	/**
-	 * @return the arrayTemp
-	 */
-	@SuppressWarnings("unchecked")
-	public ArrayList<JSONArray> getDatiAttuali() {
-		ArrayList<JSONArray> arrayTemp = new JSONArray();
-		for(int i=primaCitta; i <= ultimaCitta; i++) 
-			 arrayTemp.add( arrayDatiAttualiStorici.get(i-1) );
-		return arrayTemp;
-	}
-
-	/**
-	 * @return the arrayTemp
-	 */
-	@SuppressWarnings("unchecked")
-	public ArrayList<JSONArray> getDatiStorici() {
-		ArrayList<JSONArray> arrayTemp = new JSONArray();
-		for(int i=primaCitta; i <= ultimaCitta; i++) 
-			 arrayTemp.add( arrayDatiAttualiStorici.get(i-1) );
-		return arrayTemp;
 	}
 	
 }
