@@ -1,6 +1,6 @@
 
 <h1 id="weather-app">Weather App</h1>
-<p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future, tutte relative ad un periodo prestabilito.</p>
+<p>L’applicazione presente nella repository è una REST API in grado di fornire informazioni meteorologiche precedentemente salvate in un dataset che contiene: dati storici, attuali e previsioni future (tutte relative ad un periodo prestabilito).</p>
 <h3 id="dataset">Dataset</h3>
 <p>Il dataset, che contiene dati relativi alle città di Trieste, Ortona e Venezia, è costruito con due differenti modalità :</p>
 <ul>
@@ -25,20 +25,31 @@ Metadati relativi ai dati del dataset :
 	}
  }
 </code></pre>
-<p>Metadati relativi ai dati delle statistiche:</p>
+<p>Metadati relativi ai dati delle statistiche sui dati storici:</p>
 <pre><code>{
 "visibilityStats": {
 	"visibilityMax": 10000.0,
 	"visibilityMin": 300.0,
-	"visibilityAverage": 9575.0,
-	"visibilityVariance": 2.226203125E7
+	"visibilityAverage": 7660.0,
+	"visibilityVariance": 1.41424E7
 	},
 "speedStats": {
 	"speedMax": 1.77,
 	"speedMin": 0.82,
-	"speedAverage": 1.8199999999999998,
-	"speedVariance": 0.32124999999999987
+	"speedAverage": 1.456,
+	"speedVariance": 0.123450400000000002
 	}
+}
+</code></pre>
+<p>Metadati relativi ai dati delle statistiche sulle previsioni future:</p>
+<pre><code>{
+    "attendibilità": {
+        "speed": false,
+        "visibility": true
+    },
+    "numeroGiorni": 5,
+    "soglia_errore": "50.0%",
+    "cityId": 3
 }
 </code></pre>
 <p>In particolare:</p>
@@ -49,10 +60,18 @@ Metadati relativi ai dati del dataset :
 <li>“<strong>timeUnix</strong>” indica la data espressa in secondi a partire dal 1° gennaio 1970;</li>
 <li>“<strong>speed</strong>” indica il valore numerico che esprime la velocità del vento relativa a quella città in quel giorno;</li>
 </ul>
-<p>Considerando invece i metadati relativi alle statistiche:</p>
+<p>Considerando invece i metadati relativi alle statistiche sui dati storici:</p>
 <ul>
 <li>“<strong>visibilityMin</strong>”, “<strong>visibilityMax</strong>”, “<strong>visibilityAverage</strong>” e “<strong>visibilityVariance</strong>” indicano rispettivamente il valore minimo,  massimo, la media e la varianza delle visibilità dei giorni presi in considerazione.</li>
 <li>“<strong>speedMin</strong>”, “<strong>speedMax</strong>”, “<strong>speedAverage</strong>” e “<strong>speedVariance</strong>” indicano rispettivamente il valore minimo, massimo, la media e la varianza delle velocità del vento dei giorni presi in considerazione.</li>
+</ul>
+<p>Considerando invece i metadati relativi alle statistiche sulle previsioni future:</p>
+<ul>
+<li>“<strong>attendibilità</strong>” contiene la risposta sull'attendibilità delle previsioni future rispetto ai dati attuali.</li>
+<li>“<strong>speed</strong>”, “<strong>visibility</strong>” sono gli attributi di cui viene valutatat l'attendibilità delle previsioni future.</li>
+<li>“<strong>numeroGiorni</strong>” indica la quantità di giorni sulla quale vengono calcolate le statistiche.</li>
+<li>“<strong>soglia_errore</strong>” evidenzia qual è la soglia di errore del risultato.</li>
+<li>“<strong>cityId</strong>” indica il numero di rifermento della città scelta (1 per Trieste, 2 per Ortona e 3 per Venezia).</li>
 </ul>
 <h2 id="statistiche">Statistiche</h2>
 <p>
@@ -157,3 +176,10 @@ La chiamata 7 ha il seguente body (sempre in JSON):
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTk0MDYyNzE4NiwxNzE3ODY0OTEwXX0=
 -->
+## Librerie esterne
+Per il funzionamento dell'applicazione importare nell'IDE le seguenti librerie: - json-simple-1.1 - junit5.</p> 
+<p><em>Nota</em>: la libreria json-simple-1.1 è presente nei file della repository.</p> 
+
+## Contributors:
+- Colleluori Federico 50%
+- Camplese Francesco 50%
