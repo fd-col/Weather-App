@@ -133,7 +133,7 @@ public class Controller {
 		saveToFile.printData("Ortona", false);
 		saveToFile.printData("Venezia", false);	
 */
-		saveToFile.printData("London", true);
-	}
+		saveToFile.printData("London", true); //è stata lasciata per effettuare una prova
+	}										  //di creazione file all'interno del dataset
 	
 }
