@@ -143,7 +143,7 @@ statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all�
 </ol>
 <h2 id="filtri">Filtri</h2>
 <p>L’utente può filtrare i dati restituiti dalle chiamate scegliendo la/le città da restituire e il periodo da considerare.<br>
-Per le chiamate 3, 4 e 5 il body (in formato JSON) deve essere del tipo seguente:</p>
+Per le chiamate 4, 5 e 6 il body (in formato JSON) deve essere del tipo seguente:</p>
 <pre><code>{
     "primaCitta": &lt;n1&gt;,
     "ultimaCitta": &lt;n2&gt;,
@@ -155,7 +155,7 @@ I numeri <strong>n3</strong> e <strong>n4</strong> invece devono essere compresi
 <p><em>Nota</em>: n2 deve essere necessariamente maggiore o uguale di n1 (quest’ultimo caso se si vuole considerare una sola città), così come n4 deve essere maggiore o uguale di n3.</p>
 <p>
 </p><p>
-Per la chiamata 6 si utilizza lo stesso body, ma in questo caso <strong>n1</strong> e <strong>n2</strong> devono essere uguali, in quanto le statistiche possono essere fatte solo per ogni singola città.</p><br>
+Per la chiamata 7 si utilizza lo stesso body, ma in questo caso <strong>n1</strong> e <strong>n2</strong> devono essere uguali, in quanto le statistiche possono essere fatte solo per ogni singola città.</p><br>
 La chiamata 7 ha il seguente body (sempre in JSON):
 <pre><code>{
     "primaCitta": &lt;n1&gt;,
@@ -190,5 +190,5 @@ Per il funzionamento dell'applicazione importare nell'IDE le seguenti librerie: 
 - Colleluori Federico 50%
 - Camplese Francesco 50%
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3MzQyMTA0NF19
+eyJoaXN0b3J5IjpbLTE4NjY1OTg3MDhdfQ==
 -->
