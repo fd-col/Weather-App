@@ -183,3 +183,6 @@ Per il funzionamento dell'applicazione importare nell'IDE le seguenti librerie: 
 ## Contributors:
 - Colleluori Federico 50%
 - Camplese Francesco 50%
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE3MjczNjAyNThdfQ==
+-->
