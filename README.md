@@ -98,7 +98,7 @@ statistiche relative ai dati futuri (attraverso un file JSON viene mostrato allâ
 <tbody>
 <tr>
 <td>1) <strong>GET</strong></td>
-<td>/metadata</td>
+<td>/metadata/weather</td>
 </tr>
 <tr>
 <td>2) <strong>GET</strong></td>
@@ -184,5 +184,5 @@ Per il funzionamento dell'applicazione importare nell'IDE le seguenti librerie: 
 - Colleluori Federico 50%
 - Camplese Francesco 50%
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjczNjAyNThdfQ==
+eyJoaXN0b3J5IjpbLTIwNDY3OTFdfQ==
 -->
