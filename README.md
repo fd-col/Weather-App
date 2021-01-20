@@ -102,26 +102,31 @@ statistiche relative ai dati futuri (attraverso un file JSON viene mostrato allâ
 </tr>
 <tr>
 <td>2) <strong>GET</strong></td>
+<td>/metadata/stats</td>
+</tr>
+</tr>
+<tr>
+<td>3) <strong>GET</strong></td>
 <td>/save</td>
 </tr>
 <tr>
-<td>3) <strong>POST</strong></td>
+<td>4) <strong>POST</strong></td>
 <td>/weather/current</td>
 </tr>
 <tr>
-<td>4) <strong>POST</strong></td>
+<td>5) <strong>POST</strong></td>
 <td>/weather/historical</td>
 </tr>
 <tr>
-<td>5) <strong>POST</strong></td>
+<td>6) <strong>POST</strong></td>
 <td>/weather/forecast</td>
 </tr>
 <tr>
-<td>6) <strong>POST</strong></td>
+<td>7) <strong>POST</strong></td>
 <td>/stats/historical</td>
 </tr>
 <tr>
-<td>7) <strong>POST</strong></td>
+<td>8) <strong>POST</strong></td>
 <td>/stats/forecast</td>
 </tr>
 </tbody>
@@ -184,5 +189,5 @@ Per il funzionamento dell'applicazione importare nell'IDE le seguenti librerie: 
 - Colleluori Federico 50%
 - Camplese Francesco 50%
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDY3OTFdfQ==
+eyJoaXN0b3J5IjpbMTYwMjg5NTI3M119
 -->
