@@ -156,7 +156,7 @@ I numeri <strong>n3</strong> e <strong>n4</strong> invece devono essere compresi
 <p>
 </p><p>
 Per la chiamata 7 si utilizza lo stesso body, ma in questo caso <strong>n1</strong> e <strong>n2</strong> devono essere uguali, in quanto le statistiche possono essere fatte solo per ogni singola città.</p><br>
-La chiamata 7 ha il seguente body (sempre in JSON):
+La chiamata 8 ha il seguente body (sempre in JSON):
 <pre><code>{
     "primaCitta": &lt;n1&gt;,
     "ultimaCitta": &lt;n2&gt;,
@@ -190,5 +190,5 @@ Per il funzionamento dell'applicazione importare nell'IDE le seguenti librerie: 
 - Colleluori Federico 50%
 - Camplese Francesco 50%
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjY1OTg3MDhdfQ==
+eyJoaXN0b3J5IjpbOTYyNTg3NDA1XX0=
 -->
