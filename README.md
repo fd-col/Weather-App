@@ -131,7 +131,8 @@ statistiche relative ai dati futuri (attraverso un file JSON viene mostrato all�
 </tr>
 </tbody>
 </table><ol>
-<li>Restituisce all’utente i metadati</li>
+<li>Restituisce all’utente i metadati relativi al dataset</li>
+<li>Restituisce all’utente i metadati relativi alle statistiche, sia storiche che future</li>
 <li>E’ servita per salvare i dati nel dataset<br>
 <em>Nota</em>: ciò che viene restituito da questa chiamata viene 		      sovrascritto nel dataset.</li>
 <li>Restituisce i dati attuali</li>
@@ -189,5 +190,5 @@ Per il funzionamento dell'applicazione importare nell'IDE le seguenti librerie: 
 - Colleluori Federico 50%
 - Camplese Francesco 50%
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMjg5NTI3M119
+eyJoaXN0b3J5IjpbLTY3MzQyMTA0NF19
 -->
