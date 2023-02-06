@@ -9,3 +9,4 @@ description:
 
 theme: minima
 plugins:
+  - jekyll-feed
